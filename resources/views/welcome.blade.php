@@ -13,7 +13,17 @@
 <body>
     <header class="site-header">
         <div class="container header-inner">
-            <a class="brand" href="#">PESO</a>
+            @if (file_exists(public_path('images/logo-peso.png')))
+                <a class="brand" href="#">
+                    <img src="{{ asset('images/logo-peso.png') }}" alt="PESO logo" class="logo" />
+                    <span class="brand-text">PESO</span>
+                </a>
+            @else
+                <a class="brand" href="#">
+                    <img src="https://bangaaklan.gov.ph/wp-content/uploads/2025/07/logo-peso.png" alt="PESO logo" class="logo" />
+                    <span class="brand-text">PESO</span>
+                </a>
+            @endif
             <nav class="nav">
                 <a href="#features">Features</a>
                 <a href="#pricing">Pricing</a>
