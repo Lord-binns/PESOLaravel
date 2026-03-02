@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>PESO — Professional Landing</title>
+    <title>PESO —  Landing Page</title>
     @if (file_exists(public_path('build/manifest.json')))
         @vite(['resources/css/app.css'])
     @else
@@ -64,6 +64,54 @@
                         <p>Integrates easily with your existing stack and workflows.</p>
                     </article>
                 </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">About PESO</h2>
+                <p class="lead">A legacy of service and excellence, PESO supports communities by connecting people to opportunities and empowering local development.</p>
+                <div class="about-grid">
+                    <div>
+                        <h3>History</h3>
+                        <p>Since its inception, PESO has been committed to delivering workforce solutions and community programs that uplift livelihoods and promote inclusive growth.</p>
+                    </div>
+                    <div>
+                        <h3>Mission</h3>
+                        <p>We deliver accessible employment services and partner with stakeholders to create sustainable opportunities for all citizens.</p>
+                    </div>
+                    <div>
+                        <h3>Vision</h3>
+                        <p>To be the leading catalyst for workforce development and local economic resilience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="features">
+            <div class="container">
+                <h2 class="section-title">Services</h2>
+                <div class="cards">
+                    <article class="card">
+                        <h3>Job Matching</h3>
+                        <p>Connecting jobseekers with employers through streamlined placement services.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Training & Development</h3>
+                        <p>Skill-building programs and trainings that prepare workers for in-demand roles.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Community Programs</h3>
+                        <p>Local initiatives that support entrepreneurship, microbusinesses, and livelihood projects.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="establishment" class="establishment">
+            <div class="container">
+                <h2 class="section-title">Establishment</h2>
+                <p>Established under applicable legislation. (Republic Act number and date to be provided.)</p>
             </div>
         </section>
 
