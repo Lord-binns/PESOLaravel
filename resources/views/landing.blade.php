@@ -53,7 +53,16 @@
             border: 2px solid #001a4d;
         }
         .site-footer {
-            background-color: #5c0000;
+            background: linear-gradient(to right, 
+                #FF0000 0%, 
+                #FF0000 10%, 
+                #8B0000 20%, 
+                #5c0000 30%, 
+                #2d0000 40%, 
+                #09012a 50%, 
+                #050515 60%, 
+                #001a4d 100%
+            ) !important;
             border-top: 3px solid #ffd700;
             color: #ffffff;
         }
@@ -85,23 +94,53 @@
             padding: 4rem 0;
         }
 
-        /* Services section - white background */
+        /* Services section - solid dark blue background */
         .features {
-            background: #ffffff;
+            background: #001a4d !important;
             padding: 4rem 0;
         }
 
-        /* Make text readable */
-        .about h2,
-        .about h3,
-        .about p {
-            color: #333333;
-        }
-        
+        /* Make text readable on dark blue */
         .features h2,
         .features h3,
         .features p {
+            color: #ffffff;
+        }
+
+        .features .section-title {
+            color: #ffd700;
+        }
+
+        .features .card {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 2px solid #ffd700;
+        }
+
+        .features .card h3 {
+            color: #ffd700;
+        }
+
+        .features .card p {
+            color: #ffffff;
+        }
+
+        /* Legal Section */
+        .legal-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+            border-left: 5px solid #001a4d;
+        }
+
+        .legal-section h2 {
+            color: #001a4d;
+            font-weight: bold;
+        }
+
+        .legal-section p {
             color: #333333;
+            line-height: 1.8;
+            text-align: justify;
         }
     </style>
 </head>
@@ -137,6 +176,15 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+
+        <!-- Republic Act Information -->
+        <section class="legal-section">
+            <div class="container">
+                <h2 class="section-title">REPUBLIC ACT No. 10691</h2>
+                <p><strong>AN ACT DEFINING THE ROLE OF THE DEPARTMENT OF LABOR AND EMPLOYMENT (DOLE), THE LOCAL GOVERNMENT UNITS (LGUs), AND ACCREDITED NONGOVERNMENT ORGANIZATIONS (NGOs) IN THE ESTABLISHMENT AND OPERATION OF THE PUBLIC EMPLOYMENT SERVICE OFFICE (PESO), AND THE OPERATION OF JOB PLACEMENT OFFICES IN EDUCATIONAL INSTITUTIONs (Els), AMENDING FOR THE PURPOSE SECTIONS 3, 5, 6, 7 AND 9 OF REPUBLIC ACT NO. 8759, OTHERWISE KNOWN AS THE "PUBLIC EMPLOYMENT SERVICE OFFICE ACT OF 1999"</strong></p>
+                <p>This Act aims to strengthen the Public Employment Service Office (PESO) system in the Philippines by clearly defining the roles of DOLE, LGUs, and accredited NGOs in establishing and operating PESOs. It also addresses job placement services in educational institutions, ensuring better coordination between government agencies and local communities in promoting employment opportunities and workforce development.</p>
+            </div>
+        </section>
 
        <section class="hero white-section">
             <div class="container hero-inner" style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem;">

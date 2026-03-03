@@ -1,41 +1,204 @@
- 
-        body { 
-            background-color: #022261;
-            color: #ffffff;
-        }
-        .site-header {
-            
-            background-color: #001a4d;
-            border-bottom: 3px solid #ffd700;
-        }
-        .btn-primary {
-            background-color: #ff4444;
-            border-color: #ff4444;
-        }
-        .btn-primary:hover {
-            background-color: #cc0000;
-        }
-        .btn-outline {
-            color: #ffd700;
-            border-color: #ffd700;
-        }
-        .btn-outline:hover {
-            background-color: #ffd700;
-            color: #001a4d;
-        }
-        .section-title {
-            color: #ffd700;
-        }
-        .card {
-            background-color: #0033cc;
-            color: #ffffff;
-            border: 2px solid #ff4444;
-        }
-        .site-footer {
-            background-color: #000d26;
-            border-top: 3px solid #ffd700;
-        }
-        h1, h2, h3 {
-            color: #ffd700;
-        }
-  
+/* Base styles */
+body { 
+    background-color: #ffffff;
+    color: #333333;
+}
+
+/* Header */
+.site-header {
+    background-color: #001a4d;
+    border-bottom: 3px solid #ffd700;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #ff4444;
+    border-color: #ff4444;
+}
+.btn-primary:hover {
+    background-color: #cc0000;
+}
+.btn-outline {
+    color: #ffd700;
+    border-color: #ffd700;
+}
+.btn-outline:hover {
+    background-color: #ffd700;
+    color: #001a4d;
+}
+
+/* Section titles */
+.section-title {
+    color: #001a4d;
+}
+
+/* Cards */
+.card {
+    background-color: #f8f9fa;
+    color: #333333;
+    border: 2px solid #001a4d;
+}
+
+/* Footer */
+.site-footer {
+    background: linear-gradient(to right, 
+        #FF0000 0%, 
+        #FF0000 10%, 
+        #8B0000 20%, 
+        #5c0000 30%, 
+        #2d0000 40%, 
+        #09012a 50%, 
+        #050515 60%, 
+        #001a4d 100%
+    ) !important;
+    border-top: 3px solid #ffd700;
+    color: #ffffff;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #001a4d;
+}
+
+/* Main content */
+main {
+    background: #ffffff;
+}
+
+/* White section (Mission & Vision) */
+.white-section {
+    background: #ffffff;
+    color: #333333;
+    padding: 4rem 0;
+}
+
+.white-section h1,
+.white-section h2,
+.white-section h3 {
+    color: #001a4d;
+}
+
+/* Hero section */
+.hero-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+}
+
+.hero-copy {
+    flex: 1 1 320px;
+    min-width: 280px;
+}
+
+.hero-title {
+    color: #001a4d;
+}
+
+.hero-sub {
+    color: #333333;
+}
+
+.hero-cta {
+    margin-top: 1rem;
+}
+
+.hero-media {
+    flex: 0 0 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.device-mock {
+    background: transparent;
+    padding: 0;
+}
+
+.screen img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+/* About section */
+.about {
+    background: #ffffff;
+    padding: 4rem 0;
+}
+
+.about h2,
+.about h3,
+.about p {
+    color: #333333;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Services section - dark blue */
+.features {
+    background: #001a4d !important;
+    padding: 4rem 0;
+}
+
+/* Make text readable on dark blue */
+.features h2,
+.features h3,
+.features p {
+    color: #ffffff;
+}
+
+.features .section-title {
+    color: #ffd700;
+}
+
+.features .card {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 2px solid #ffd700;
+}
+
+.features .card h3 {
+    color: #ffd700;
+}
+
+.features .card p {
+    color: #ffffff;
+}
+
+/* Cards grid */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Carousel */
+.carousel-inner img {
+    height: 655px;
+    object-fit: cover;
+}
+
+/* Footer */
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.footer-nav a {
+    color: #ffffff;
+    margin-left: 1rem;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    color: #ffd700;
+}

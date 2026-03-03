@@ -34,7 +34,7 @@
                 <a class="btn" href="#">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <circle cx="12" cy="12" r="1"/>
-                        <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m2.12 2.12l4.24 4.24M1 12h6m6 0h6m-15.78 7.78l4.24-4.24m2.12-2.12l4.24-4.24"/>
+                        <path d="M12 1v6m0 6v6M4.22 4.22l4.24m2.12 4.24 2.12l4.24 4.24M1 12h6m6 0h6m-15.78 7.78l4.24-4.24m2.12-2.12l4.24-4.24"/>
                     </svg>
                     GET TO KNOW US
                 </a>
@@ -60,10 +60,10 @@
 
         </nav>
 
-        
-        <div class="nav-right" style="display: flex; align-items: center; background:transparent padding: 0 25px; height: 80px; margin-right: -1.5rem; border-left: none;">
+        <!-- Right Section - Transparent background (no gradient) -->
+        <div class="nav-right" style="display: flex; align-items: center; padding: 0 25px; height: 80px; margin-right: -1.5rem;">
 
-            <!-- Search Icon Button -->
+            <!-- Search Icon Button - transparent bg -->
             <div class="nav-item" style="margin-right: 1rem;">
                 <a class="btn search-btn" href="#" onclick="toggleSearch()" title="Search">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="2">
@@ -121,9 +121,18 @@ function toggleSearch() {
 
 <style>
 
-/* HEADER LAYOUT */
+/* HEADER LAYOUT - with smoother color transitions only */
 .site-header {
-    background: linear-gradient(to right, #001a4d 0%, #09012a 75%, #8B0000 75%, #FF0000 100%) !important;
+    background: linear-gradient(to right, 
+        #02205c 0%, 
+        #001a4d 60%, 
+        #020230 65%, 
+        #000000 70%, 
+        #2d0000 80%, 
+        #5a0202 85%, 
+        #8B0000 90%, 
+        #FF0000 100%
+    ) !important;
     border-bottom: 3px solid #ffd700 !important;
     overflow: visible;
 }
@@ -207,11 +216,11 @@ function toggleSearch() {
     display: block;
 }
 
-/* RIGHT NAV SECTION - Gradient Red */
+/* RIGHT NAV SECTION - Transparent background */
 .nav-right {
     display: flex !important;
     align-items: center !important;
-
+    background: transparent !important;
     margin-right: 0 !important;
 }
 
@@ -222,7 +231,7 @@ function toggleSearch() {
     padding: 8px 12px;
 }
 
-/* Search button */
+/* Search button - transparent bg */
 .search-btn {
     background: transparent !important;
 }
