@@ -17,7 +17,45 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @endif
     <style>
-        body { background-color: #e0f2ff; }
+        body { 
+            background-color: #022261;
+            color: #ffffff;
+        }
+        .site-header {
+            
+            background-color: #001a4d;
+            border-bottom: 3px solid #ffd700;
+        }
+        .btn-primary {
+            background-color: #ff4444;
+            border-color: #ff4444;
+        }
+        .btn-primary:hover {
+            background-color: #cc0000;
+        }
+        .btn-outline {
+            color: #ffd700;
+            border-color: #ffd700;
+        }
+        .btn-outline:hover {
+            background-color: #ffd700;
+            color: #001a4d;
+        }
+        .section-title {
+            color: #ffd700;
+        }
+        .card {
+            background-color: #0033cc;
+            color: #ffffff;
+            border: 2px solid #ff4444;
+        }
+        .site-footer {
+            background-color: #000d26;
+            border-top: 3px solid #ffd700;
+        }
+        h1, h2, h3 {
+            color: #ffd700;
+        }
     </style>
 </head>
 <body>
@@ -26,12 +64,23 @@
     <main>
 
     
+<div id="simple-carousel" class="relative w-full" style="overflow:hidden; border-radius: var(--radius);">
+    <div class="carousel-slides" style="position:relative; height:655px;"> <img class="carousel-slide" src="{{ asset('images/Pic1.jpg') }}" alt="Slide 1" 
+             style="position:absolute; top:0; left:0; width:100%; height:100%; 
+                    object-fit: cover; 
+                    object-position: center 20%; 
+                    opacity:0; transition:opacity .5s;">
 
-<div id="simple-carousel" class="relative w-full" style="overflow:hidden;">
-    <div class="carousel-slides" style="position:relative; height:400px;">
-        <img class="carousel-slide" src="https://www.web.manolofortich.gov.ph/storage/content_image/22f8936a010d95ee468d5be23f72ab16.jpg" alt="Slide 1" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s;">
-        <img class="carousel-slide" src="https://web.manolofortich.gov.ph/web/img_lgu/carousel-8.jpg" alt="Slide 2" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s;">
-        <img class="carousel-slide" src="https://via.placeholder.com/1200x400?text=Slide+3" alt="Slide 3" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s;">
+        <img class="carousel-slide" src="https://web.manolofortich.gov.ph/web/img_lgu/carousel-8.jpg" alt="Slide 2" 
+             style="position:absolute; top:0; left:0; width:100%; height:100%; 
+                    object-fit: cover; 
+                    object-position: center; 
+                    opacity:0; transition:opacity .5s;">
+        
+        <img class="carousel-slide" src="{{ asset('images/Pic3.jpg') }}" alt="Slide 3" 
+             style="position:absolute; top:0; left:0; width:100%; height:100%; 
+                    object-fit: cover; 
+                    opacity:0; transition:opacity .5s;">
     </div>
 </div>
 
@@ -84,7 +133,7 @@
 
         <section id="features" class="features">
             <div class="container">
-                <h2 class="section-title">Powerful features, simple interface</h2>
+                <h2 class="section-title">Gutom naman</h2>
                 <div class="cards">
                     <article class="card">
                         <h3>Fast setup</h3>
