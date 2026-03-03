@@ -11,6 +11,9 @@
         <link rel="icon" href="https://bangaaklan.gov.ph/wp-content/uploads/2025/07/logo-peso.png" type="image/png">
         <link rel="apple-touch-icon" href="https://bangaaklan.gov.ph/wp-content/uploads/2025/07/logo-peso.png">
     @endif
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     @if (file_exists(public_path('build/manifest.json')))
         @vite(['resources/css/app.css'])
     @else
@@ -50,12 +53,42 @@
             border: 2px solid #ff4444;
         }
         .site-footer {
-            background-color: #000d26;
+            background-color: #010d3a;
             border-top: 3px solid #ffd700;
         }
         h1, h2, h3 {
             color: #ffd700;
         }
+        /* WHITE SECTION (Mission & Vision) */
+.white-section {
+    background: #ffffff;
+    color: #001a4d;
+    padding: 4rem 0;
+}
+
+.white-section h1,
+.white-section h2,
+.white-section h3 {
+    color: #001a4d;
+}
+
+/* RED SECTION (Bottom part) */
+.red-section {
+    background: #cc0000;
+    padding: 4rem 0;
+}
+
+.red-section .card {
+    background-color: #ff4444;
+    border: none;
+}
+
+/* Make text readable on red */
+.red-section h2,
+.red-section h3,
+.red-section p {
+    color: #ffffff;
+}
     </style>
 </head>
 <body>
@@ -64,42 +97,34 @@
     <main>
 
     
-<div id="simple-carousel" class="relative w-full" style="overflow:hidden; border-radius: var(--radius);">
-    <div class="carousel-slides" style="position:relative; height:655px;"> <img class="carousel-slide" src="{{ asset('images/Pic1.jpg') }}" alt="Slide 1" 
-             style="position:absolute; top:0; left:0; width:100%; height:100%; 
-                    object-fit: cover; 
-                    object-position: center 20%; 
-                    opacity:0; transition:opacity .5s;">
-
-        <img class="carousel-slide" src="https://web.manolofortich.gov.ph/web/img_lgu/carousel-8.jpg" alt="Slide 2" 
-             style="position:absolute; top:0; left:0; width:100%; height:100%; 
-                    object-fit: cover; 
-                    object-position: center; 
-                    opacity:0; transition:opacity .5s;">
-        
-        <img class="carousel-slide" src="{{ asset('images/Pic3.jpg') }}" alt="Slide 3" 
-             style="position:absolute; top:0; left:0; width:100%; height:100%; 
-                    object-fit: cover; 
-                    opacity:0; transition:opacity .5s;">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ asset('images/Pic1.jpg') }}" class="d-block w-100" alt="Slide 1" style="height: 655px; object-fit: cover; object-position: center 20%;">
+        </div>
+        <div class="carousel-item">
+            <img src="https://web.manolofortich.gov.ph/web/img_lgu/carousel-8.jpg" class="d-block w-100" alt="Slide 2" style="height: 655px; object-fit: cover; object-position: center;">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ asset('images/Pic3.jpg') }}" class="d-block w-100" alt="Slide 3" style="height: 655px; object-fit: cover;">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
 
-<script>
-    (function(){
-        const slides = document.querySelectorAll('.carousel-slide');
-        let current = 0;
-        function show(index){
-            slides.forEach((s,i)=> s.style.opacity = i===index ? '1' : '0');
-        }
-        show(current);
-        setInterval(()=>{
-            current = (current + 1) % slides.length;
-            show(current);
-        }, 4000);
-    })();
-</script>
-
-        <section class="hero">
+       <section class="hero white-section">
             <div class="container hero-inner" style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem;">
                 <div class="hero-copy" style="flex:1 1 320px; min-width:280px;">
                     <h1 class="hero-title">Mission</h1>
@@ -172,6 +197,8 @@
             </div>
         </section>
 
+<div class="red-section">
+
         <section id="services" class="features">
             <div class="container">
                 <h2 class="section-title">Services</h2>
@@ -191,24 +218,9 @@
                 </div>
             </div>
         </section>
-
-        <section id="establishment" class="establishment">
-            <div class="container">
-                <h2 class="section-title">Establishment</h2>
-                <p>Established under applicable legislation. (Republic Act number and date to be provided.)</p>
-            </div>
-        </section>
-
-        <section id="contact" class="cta-strip">
-            <div class="container cta-inner">
-                <div>
-                    <h3>Ready to ship something great?</h3>
-                    <p>Contact our team and get a personalized plan.</p>
-                </div>
-                <a class="btn btn-primary" href="#">Contact Us</a>
-            </div>
-        </section>
     </main>
+
+    
 
     <footer class="site-footer">
         <div class="container footer-inner">
@@ -219,5 +231,8 @@
             </nav>
         </div>
     </footer>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
