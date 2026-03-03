@@ -11,7 +11,7 @@
 }
 
 :root{
-    --bg:#345dcf; /* white background */
+    --bg:#ffffff; /* white background */
     --muted:#6b7280; /* muted gray */
     --accent:#0b3d91; /* blue */
     --accent-red:#d62828; /* red */
@@ -37,13 +37,7 @@
 .site-header{backdrop-filter:blur(6px);background:var(--card);padding:10px 0;position:sticky;top:0;z-index:40;border-bottom:1px solid rgba(7,33,70,0.06)}
 .header-inner{display:flex;align-items:center;justify-content:space-between}
 .brand{font-weight:700;color:var(--text);text-decoration:none;font-size:1rem;display:flex;align-items:center;gap:8px}
-.logo {
-    height: 32px;
-    width: 32px;
-    display: inline-block;
-    border-radius: 50%; /* This makes it a circle */
-    object-fit: cover;   /* This prevents the logo from stretching */
-}
+.logo{height:32px;width:32px;display:inline-block;border-radius:50%;object-fit:cover}
 .brand-text{font-weight:700;color:var(--text);letter-spacing:0.4px}
 .application-logo{height:26px;width:26px;display:inline-block;border-radius:50%;object-fit:cover}
 .nav a{color:var(--muted);text-decoration:none;margin-left:20px}
@@ -85,4 +79,3 @@
     .footer-inner{flex-direction:column;gap:12px}
     .nav a{margin-left:10px}
 }
-

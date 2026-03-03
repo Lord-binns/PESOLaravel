@@ -3,54 +3,79 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>PESO —  Landing Page</title>
+    <title>PESO Manolo Fortich</title>
+    @if (file_exists(public_path('images/logo-peso.png')))
+        <link rel="icon" href="{{ asset('images/logo-peso.png') }}" type="image/png">
+        <link rel="apple-touch-icon" href="{{ asset('images/logo-peso.png') }}">
+    @else
+        <link rel="icon" href="https://bangaaklan.gov.ph/wp-content/uploads/2025/07/logo-peso.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://bangaaklan.gov.ph/wp-content/uploads/2025/07/logo-peso.png">
+    @endif
     @if (file_exists(public_path('build/manifest.json')))
         @vite(['resources/css/app.css'])
     @else
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @endif
+    <style>
+        body { background-color: #e0f2ff; }
+    </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="container header-inner">
-            @if (file_exists(public_path('images/logo-peso.png')))
-                <a class="brand" href="#">
-                    <img src="{{ asset('images/logo-peso.png') }}" alt="PESO logo" class="logo" />
-                    <span class="brand-text">PESO</span>
-                </a>
-            @else
-                <a class="brand" href="#">
-                    <img src="https://bangaaklan.gov.ph/wp-content/uploads/2025/07/logo-peso.png" alt="PESO logo" class="logo" />
-                    <span class="brand-text">PESO</span>
-                </a>
-            @endif
-            <nav class="nav">
-                <a href="#features">Features</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#contact">Contact</a>
-                <a class="btn btn-ghost" href="#">Sign In</a>
-            </nav>
-        </div>
-    </header>
+    <x-navbar />
 
     <main>
+
+    
+
+<div id="simple-carousel" class="relative w-full" style="overflow:hidden;">
+    <div class="carousel-slides" style="position:relative; height:400px;">
+        <img class="carousel-slide" src="https://www.web.manolofortich.gov.ph/storage/content_image/22f8936a010d95ee468d5be23f72ab16.jpg" alt="Slide 1" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s;">
+        <img class="carousel-slide" src="https://web.manolofortich.gov.ph/web/img_lgu/carousel-8.jpg" alt="Slide 2" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s;">
+        <img class="carousel-slide" src="https://via.placeholder.com/1200x400?text=Slide+3" alt="Slide 3" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s;">
+    </div>
+</div>
+
+<script>
+    (function(){
+        const slides = document.querySelectorAll('.carousel-slide');
+        let current = 0;
+        function show(index){
+            slides.forEach((s,i)=> s.style.opacity = i===index ? '1' : '0');
+        }
+        show(current);
+        setInterval(()=>{
+            current = (current + 1) % slides.length;
+            show(current);
+        }, 4000);
+    })();
+</script>
+
         <section class="hero">
-            <div class="container hero-inner">
-                <div class="hero-copy">
-                    <h1 class="hero-title">Design. Deliver. Delight.</h1>
-                    <p class="hero-sub">Build beautiful, performant web experiences with tools and workflows that scale with your team.</p>
+            <div class="container hero-inner" style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem;">
+                <div class="hero-copy" style="flex:1 1 320px; min-width:280px;">
+                    <h1 class="hero-title">Mission</h1>
+                    <p class="hero-sub">To promote economic growth and sustainable development in Manolo Fortich through the implementation of the PESO program, providing employment opportunities and skills development for the community.</p>
                     <div class="hero-cta">
                         <a class="btn btn-primary" href="#contact">Get Started</a>
                         <a class="btn btn-outline" href="#features">Learn More</a>
                     </div>
                 </div>
-                <div class="hero-media" aria-hidden="true">
-                    <div class="device-mock">
+
+                <div class="hero-copy" style="flex:1 1 320px; min-width:280px;">
+                    <h1 class="hero-title">Vision</h1>
+                    <p class="hero-sub">A premier agri-ecotourist destination with people resilient and responsible towards the environment propelled by well-governed institutions responsive to the challenges of development</p>
+                    <div class="hero-cta">
+                        <a class="btn btn-primary" href="#contact">Get Started</a>
+                        <a class="btn btn-outline" href="#features">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="hero-media" aria-hidden="true" style="flex:0 0 300px; display:flex; justify-content:center;">
+                    <div class="device-mock" style="background: transparent; padding: 0;">
                         <div class="screen">
-                            <svg width="320" height="200" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="320" height="200" rx="12" fill="#0f172a" />
-                                <rect x="12" y="12" width="296" height="176" rx="8" fill="#0ea5a8" />
-                            </svg>
+                            <img src="{{ asset('images/LogoLGU.png') }}" 
+                                 alt="logo LGU" 
+                                 style="width: 100%; height: auto; max-width: 300px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
                         </div>
                     </div>
                 </div>
