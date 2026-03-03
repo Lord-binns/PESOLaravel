@@ -8,7 +8,7 @@
                 <span class="brand-text" style="font-size: 1.1rem; line-height: 1; color: #ffffff; opacity: 0.9;">
                     Public Employment Service Office
                 </span>
-                <h1 class="site-title" style="font-size: 3rem; margin: 0; line-height: 1.1;">
+                <h1 class="site-title" style="font-size: 3rem; color: #f8ce00; margin: 0; line-height: 1.1;">
                     <strong>Manolo Fortich</strong>
                 </h1>
             </div>
@@ -58,10 +58,15 @@
                 </ul>
             </div>
 
+        </nav>
+
+        
+        <div class="nav-right" style="display: flex; align-items: center; background:transparent padding: 0 25px; height: 80px; margin-right: -1.5rem; border-left: none;">
+
             <!-- Search Icon Button -->
             <div class="nav-item" style="margin-right: 1rem;">
-                <a class="btn search-btn" href="#" onclick="toggleSearch()" title="Search" style="padding: 8px;">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <a class="btn search-btn" href="#" onclick="toggleSearch()" title="Search">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="2">
                         <circle cx="11" cy="11" r="8"/>
                         <path d="m21 21-4.35-4.35"/>
                     </svg>
@@ -77,12 +82,11 @@
                     Sign In
                 </a>
             </div>
-
-        </nav>
+        </div>
     </div>
 
     <!-- Search Overlay (hidden by default) -->
-    <div id="search-overlay" style="display: none; position: absolute; top: 100%; right: 0; background: #fff; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000; border-radius: 8px; margin-right: 20px;">
+    <div id="search-overlay" style="display: none; position: absolute; top: 100%; right: 150px; background: #fff; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000; border-radius: 8px;">
         <form action="#" method="GET" style="display: flex; align-items: center; gap: 8px;">
             <input 
                 type="text" 
@@ -119,8 +123,9 @@ function toggleSearch() {
 
 /* HEADER LAYOUT */
 .site-header {
-    background-color: #001a4d !important;
+    background: linear-gradient(to right, #001a4d 0%, #09012a 75%, #8B0000 75%, #FF0000 100%) !important;
     border-bottom: 3px solid #ffd700 !important;
+    overflow: visible;
 }
 
 .header-inner {
@@ -134,7 +139,7 @@ function toggleSearch() {
 .header-inner.container {
     max-width: none !important;
     padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
+    padding-right: 0 !important;
     width: 100% !important;
 }
 
@@ -202,14 +207,24 @@ function toggleSearch() {
     display: block;
 }
 
-/* SIGN IN push right */
-.nav-item:last-child {
-    margin-left: 2rem;
+/* RIGHT NAV SECTION - Gradient Red */
+.nav-right {
+    display: flex !important;
+    align-items: center !important;
+
+    margin-right: 0 !important;
+}
+
+.nav-right .btn {
+    color: white !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 8px 12px;
 }
 
 /* Search button */
 .search-btn {
-    padding: 8px !important;
+    background: transparent !important;
 }
 
 </style>

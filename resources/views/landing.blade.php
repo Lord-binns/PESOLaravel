@@ -21,8 +21,8 @@
     @endif
     <style>
         body { 
-            background-color: #022261;
-            color: #ffffff;
+            background-color: #ffffff;
+            color: #333333;
         }
         .site-header {
             
@@ -45,50 +45,64 @@
             color: #001a4d;
         }
         .section-title {
-            color: #ffd700;
+            color: #001a4d;
         }
         .card {
-            background-color: #0033cc;
-            color: #ffffff;
-            border: 2px solid #ff4444;
+            background-color: #f8f9fa;
+            color: #333333;
+            border: 2px solid #001a4d;
         }
         .site-footer {
-            background-color: #010d3a;
+            background-color: #5c0000;
             border-top: 3px solid #ffd700;
+            color: #ffffff;
         }
         h1, h2, h3 {
-            color: #ffd700;
+            color: #001a4d;
         }
+        
+        /* Main content sections - white background */
+        main {
+            background: #ffffff;
+        }
+        
         /* WHITE SECTION (Mission & Vision) */
-.white-section {
-    background: #ffffff;
-    color: #001a4d;
-    padding: 4rem 0;
-}
+        .white-section {
+            background: #ffffff;
+            color: #333333;
+            padding: 4rem 0;
+        }
 
-.white-section h1,
-.white-section h2,
-.white-section h3 {
-    color: #001a4d;
-}
+        .white-section h1,
+        .white-section h2,
+        .white-section h3 {
+            color: #001a4d;
+        }
 
-/* RED SECTION (Bottom part) */
-.red-section {
-    background: #cc0000;
-    padding: 4rem 0;
-}
+        /* About section - white background */
+        .about {
+            background: #ffffff;
+            padding: 4rem 0;
+        }
 
-.red-section .card {
-    background-color: #ff4444;
-    border: none;
-}
+        /* Services section - white background */
+        .features {
+            background: #ffffff;
+            padding: 4rem 0;
+        }
 
-/* Make text readable on red */
-.red-section h2,
-.red-section h3,
-.red-section p {
-    color: #ffffff;
-}
+        /* Make text readable */
+        .about h2,
+        .about h3,
+        .about p {
+            color: #333333;
+        }
+        
+        .features h2,
+        .features h3,
+        .features p {
+            color: #333333;
+        }
     </style>
 </head>
 <body>
@@ -111,7 +125,7 @@
             <img src="https://web.manolofortich.gov.ph/web/img_lgu/carousel-8.jpg" class="d-block w-100" alt="Slide 2" style="height: 655px; object-fit: cover; object-position: center;">
         </div>
         <div class="carousel-item">
-            <img src="{{ asset('images/Pic3.jpg') }}" class="d-block w-100" alt="Slide 3" style="height: 655px; object-fit: cover;">
+            <img src="https://www.web.manolofortich.gov.ph/storage/content_image/22f8936a010d95ee468d5be23f72ab16.jpg" class="d-block w-100" alt="Slide 3" style="height: 655px; object-fit: cover;">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -156,7 +170,8 @@
             </div>
         </section>
 
-        <section id="features" class="features">
+     
+        <section id="features" class="hero white-section">
             <div class="container">
                 <h2 class="section-title">Gutom naman</h2>
                 <div class="cards">
@@ -196,8 +211,6 @@
                 </div>
             </div>
         </section>
-
-<div class="red-section">
 
         <section id="services" class="features">
             <div class="container">
