@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>PESO Manolo Fortich</title>
-    @if (file_exists(public_path('images/logo-peso.png')))
-        <link rel="icon" href="{{ asset('images/logo-peso.png') }}" type="image/png">
-        <link rel="apple-touch-icon" href="{{ asset('images/logo-peso.png') }}">
+    @if (file_exists(public_path('images/LogoPNG.png')))
+        <link rel="icon" href="{{ asset('images/LogoPNG.png') }}" type="image/png">
+        <link rel="apple-touch-icon" href="{{ asset('images/LogoPNG.png') }}">
     @else
         <link rel="icon" href="https://bangaaklan.gov.ph/wp-content/uploads/2025/07/logo-peso.png" type="image/png">
         <link rel="apple-touch-icon" href="https://bangaaklan.gov.ph/wp-content/uploads/2025/07/logo-peso.png">
@@ -53,7 +53,16 @@
             border: 2px solid #001a4d;
         }
         .site-footer {
-            background-color: #5c0000;
+            background: linear-gradient(to right, 
+                #FF0000 0%, 
+                #FF0000 10%, 
+                #000000 20%, 
+                #030112 30%, 
+                #03010f 40%, 
+                #09012a 50%, 
+                #010135 60%, 
+                #02256a 100%
+            ) !important;
             border-top: 3px solid #ffd700;
             color: #ffffff;
         }
@@ -85,24 +94,64 @@
             padding: 4rem 0;
         }
 
-        /* Services section - white background */
+        /* Services section - solid dark blue background */
         .features {
-            background: #ffffff;
+            background: #001a4d !important;
             padding: 4rem 0;
         }
 
-        /* Make text readable */
-        .about h2,
-        .about h3,
-        .about p {
-            color: #333333;
-        }
-        
+        /* Make text readable on dark blue */
         .features h2,
         .features h3,
         .features p {
-            color: #333333;
+            color: #ffffff;
         }
+
+        .features .section-title {
+            color: #ffd700;
+        }
+
+        .features .card {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 2px solid #ffd700;
+        }
+
+        .features .card h3 {
+            color: #ffd700;
+        }
+
+        .features .card p {
+            color: #ffffff;
+        }
+
+        /* Legal Section */
+        .legal-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('{{ asset("images/LogoPNG.png") }}');
+            background-size: 700px;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 4rem 0;
+            padding-top: 2rem;
+            border-left: 5px solid #001a4d;
+        }
+        
+        .legal-section h2 {
+            color: #001a4d;
+            font-weight: bold;
+        }
+
+        .legal-section p {
+            color: #333333;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .peso-container {
+    display: flex;
+    max-height: 250px;
+    max-width: 100%;
+}
     </style>
 </head>
 <body>
@@ -137,6 +186,63 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+
+
+ 
+<div style="display: flex; width: 100%; min-height: 40vh;">
+
+    <!-- Mission -->
+    <div style="flex: 1; background-color: #02205c; padding: 40px; color: white; font-family: Arial, sans-serif; display: flex; flex-direction: column; justify-content: center;">
+
+        <h1 style="font-size: 32px; font-weight: 700; text-align:center; margin-bottom: 20px; color: #f8ce00;">
+            🎯 Mission
+        </h1>
+
+        <p style="font-size: 16px; line-height: 1.8; margin: 0;">
+            To promote economic growth and sustainable development in Manolo Fortich through the implementation of the PESO program, providing employment opportunities and skills development for the community.
+        </p>
+
+    </div>
+
+
+    <!-- Logo Section -->
+    <div style="flex: 1; background-color: #f5f4f4; display: flex; align-items: center; justify-content: center; padding: 20px;">
+
+        <img src="{{ asset('images/LGU.png') }}" 
+             alt="logo LGU" 
+             style="width: 100%; max-width: 250px; height: auto; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));">
+
+    </div>
+
+
+    <!-- Vision -->
+    <div style="flex: 1; background-color: #011a4d; padding: 40px; color: white; font-family: Arial, sans-serif; display: flex; flex-direction: column; justify-content: center;">
+
+        <h1 style="font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 20px; color: #f8ce00;">
+            🌟 Vision
+        </h1>
+
+        <p style="font-size: 16px; line-height: 1.8; margin: 0;">
+            A premier agri-ecotourist destination with people resilient and responsible towards the environment propelled by well-governed institutions responsive to the challenges of development.
+        </p>
+
+    </div>
+
+</div>
+
+        <!-- Republic Act Information -->
+        <section class="legal-section">
+            <div class="container">
+                <h2 class="section-title">REPUBLIC ACT No. 10691</h2>
+                <p><strong>AN ACT DEFINING THE ROLE OF THE DEPARTMENT OF LABOR AND EMPLOYMENT (DOLE), THE LOCAL GOVERNMENT UNITS (LGUs), AND ACCREDITED NONGOVERNMENT ORGANIZATIONS (NGOs) IN THE ESTABLISHMENT AND OPERATION OF THE PUBLIC EMPLOYMENT SERVICE OFFICE (PESO), AND THE OPERATION OF JOB PLACEMENT OFFICES IN EDUCATIONAL INSTITUTIONs (Els), AMENDING FOR THE PURPOSE SECTIONS 3, 5, 6, 7 AND 9 OF REPUBLIC ACT NO. 8759, OTHERWISE KNOWN AS THE "PUBLIC EMPLOYMENT SERVICE OFFICE ACT OF 1999"</strong></p>
+                <p>This Act aims to strengthen the Public Employment Service Office (PESO) system in the Philippines by clearly defining the roles of DOLE, LGUs, and accredited NGOs in establishing and operating PESOs. It also addresses job placement services in educational institutions, ensuring better coordination between government agencies and local communities in promoting employment opportunities and workforce development.</p>
+                
+                <h2 class="section-title" style="margin-top: 2rem;">REPUBLIC ACT No. 8759</h2>
+                <p><strong>February 14, 2000</strong></p>
+                <p><strong>AN ACT INSTITUTIONALIZING A NATIONAL FACILITATION SERVICE NETWORK THROUGH THE ESTABLISHMENT OF A PUBLIC EMPLOYMENT SERVICE OFFICE IN EVERY PROVINCE, KEY CITY AND OTHER STRATEGIC AREAS THROUGHOUT THE COUNTRY</strong></p>
+                <p>This Act institutionalizes a national facilitation service network through the establishment of a Public Employment Service Office (PESO) in every province, key city, and other strategic areas throughout the country. The PESO serves as a linkage between jobseekers and employers, providing employment services such as job matching, career guidance, and information dissemination on labor market trends. This law aims to devolve employment services to the local government level to ensure more accessible and efficient delivery of employment assistance to the Filipino workforce.</p>
+            </div>
+        </section>
 
        <section class="hero white-section">
             <div class="container hero-inner" style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem;">

@@ -6,6 +6,10 @@ Route::get('/', function () {
     return view('landing'); // default Laravel landing page
 });
 
+Route::get('/history', function () {
+    return view('history'); // history page
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard'); // you can create this view
 });
