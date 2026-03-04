@@ -115,9 +115,22 @@ document.getElementById('navbarToggler').addEventListener('click', function() {
 </script>
 
 <style>
+
+/* HEADER LAYOUT */
 /* HEADER LAYOUT */
 .site-header {
-    background: linear-gradient(to right, #02205c 0%, #001a4d 60%, #020230 65%, #000000 70%, #2d0000 80%, #5a0202 85%, #8B0000 90%, #FF0000 100%) !important;
+    background: linear-gradient(
+        to right,
+        #02205c 0%,
+        #001a4d 60%,
+        #020230 65%,
+        #000000 70%,
+        #2d0000 80%,
+        #5a0202 85%,
+        #8B0000 90%,
+        #FF0000 100%
+    ) !important;
+
     border-bottom: 3px solid #ffd700 !important;
     overflow: visible;
     position: relative;

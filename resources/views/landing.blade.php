@@ -133,6 +133,14 @@
             padding: 4rem 0;
             padding-top: 2rem;
             border-left: 5px solid #001a4d;
+            position: relative;
+            z-index: 1;
+            margin-top: 2rem;
+        }
+        
+        /* Ensure proper spacing between sections */
+        .mvo-section {
+            margin-bottom: 0;
         }
         
         .legal-section h2 {
@@ -144,6 +152,18 @@
             color: #333333;
             line-height: 1.8;
             text-align: justify;
+        }
+
+        /* Transparent cards for Republic Acts */
+        .legal-section .card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+
+        .legal-section .row {
+            justify-content: center;
         }
 
         .peso-container {
@@ -164,6 +184,11 @@
             display: flex;
             width: 100%;
             min-height: 40vh;
+            margin-bottom: 0;
+        }
+        
+        .mvo-section + .legal-section {
+            margin-top: 3rem;
         }
 
         .mvo-section .mission {
@@ -397,53 +422,34 @@
         <!-- Republic Act Information -->
         <section class="legal-section">
             <div class="container">
-                <h2 class="section-title">REPUBLIC ACT No. 10691</h2>
-                <p><strong>AN ACT DEFINING THE ROLE OF THE DEPARTMENT OF LABOR AND EMPLOYMENT (DOLE), THE LOCAL GOVERNMENT UNITS (LGUs), AND ACCREDITED NONGOVERNMENT ORGANIZATIONS (NGOs) IN THE ESTABLISHMENT AND OPERATION OF THE PUBLIC EMPLOYMENT SERVICE OFFICE (PESO), AND THE OPERATION OF JOB PLACEMENT OFFICES IN EDUCATIONAL INSTITUTIONs (Els), AMENDING FOR THE PURPOSE SECTIONS 3, 5, 6, 7 AND 9 OF REPUBLIC ACT NO. 8759, OTHERWISE KNOWN AS THE "PUBLIC EMPLOYMENT SERVICE OFFICE ACT OF 1999"</strong></p>
-                <p>This Act aims to strengthen the Public Employment Service Office (PESO) system in the Philippines by clearly defining the roles of DOLE, LGUs, and accredited NGOs in establishing and operating PESOs. It also addresses job placement services in educational institutions, ensuring better coordination between government agencies and local communities in promoting employment opportunities and workforce development.</p>
-                
-                <h2 class="section-title" style="margin-top: 2rem;">REPUBLIC ACT No. 8759</h2>
-                <p><strong>February 14, 2000</strong></p>
-                <p><strong>AN ACT INSTITUTIONALIZING A NATIONAL FACILITATION SERVICE NETWORK THROUGH THE ESTABLISHMENT OF A PUBLIC EMPLOYMENT SERVICE OFFICE IN EVERY PROVINCE, KEY CITY AND OTHER STRATEGIC AREAS THROUGHOUT THE COUNTRY</strong></p>
-                <p>This Act institutionalizes a national facilitation service network through the establishment of a Public Employment Service Office (PESO) in every province, key city, and other strategic areas throughout the country. The PESO serves as a linkage between jobseekers and employers, providing employment services such as job matching, career guidance, and information dissemination on labor market trends. This law aims to devolve employment services to the local government level to ensure more accessible and efficient delivery of employment assistance to the Filipino workforce.</p>
-            </div>
-        </section>
-
-       <section class="hero white-section">
-            <div class="container hero-inner">
-                <div class="hero-copy">
-                    <h1 class="hero-title">Mission</h1>
-                    <p class="hero-sub">To promote economic growth and sustainable development in Manolo Fortich through the implementation of the PESO program, providing employment opportunities and skills development for the community.</p>
-                    <div class="hero-cta">
-                        <a class="btn btn-primary" href="#contact">Get Started</a>
-                        <a class="btn btn-outline" href="#features">Learn More</a>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h2 class="section-title">REPUBLIC ACT No. 10691</h2>
+                                <p><strong>AN ACT DEFINING THE ROLE OF THE DEPARTMENT OF LABOR AND EMPLOYMENT (DOLE), THE LOCAL GOVERNMENT UNITS (LGUs), AND ACCREDITED NONGOVERNMENT ORGANIZATIONS (NGOs) IN THE ESTABLISHMENT AND OPERATION OF THE PUBLIC EMPLOYMENT SERVICE OFFICE (PESO), AND THE OPERATION OF JOB PLACEMENT OFFICES IN EDUCATIONAL INSTITUTIONs (Els), AMENDING FOR THE PURPOSE SECTIONS 3, 5, 6, 7 AND 9 OF REPUBLIC ACT NO. 8759, OTHERWISE KNOWN AS THE "PUBLIC EMPLOYMENT SERVICE OFFICE ACT OF 1999"</strong></p>
+                                <p>This Act aims to strengthen the Public Employment Service Office (PESO) system in the Philippines by clearly defining the roles of DOLE, LGUs, and accredited NGOs in establishing and operating PESOs. It also addresses job placement services in educational institutions, ensuring better coordination between government agencies and local communities in promoting employment opportunities and workforce development.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="hero-copy">
-                    <h1 class="hero-title">Vision</h1>
-                    <p class="hero-sub">A premier agri-ecotourist destination with people resilient and responsible towards the environment propelled by well-governed institutions responsive to the challenges of development</p>
-                    <div class="hero-cta">
-                        <a class="btn btn-primary" href="#contact">Get Started</a>
-                        <a class="btn btn-outline" href="#features">Learn More</a>
-                    </div>
-                </div>
-
-                <div class="hero-media" aria-hidden="true">
-                    <div class="device-mock" style="background: transparent; padding: 0;">
-                        <div class="screen">
-                            <img src="{{ asset('images/LogoLGU.png') }}" 
-                                 alt="logo LGU" 
-                                 style="width: 100%; height: auto; max-width: 300px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h2 class="section-title">REPUBLIC ACT No. 8759</h2>
+                                <p><strong>February 14, 2000</strong></p>
+                                <p><strong>AN ACT INSTITUTIONALIZING A NATIONAL FACILITATION SERVICE NETWORK THROUGH THE ESTABLISHMENT OF A PUBLIC EMPLOYMENT SERVICE OFFICE IN EVERY PROVINCE, KEY CITY AND OTHER STRATEGIC AREAS THROUGHOUT THE COUNTRY</strong></p>
+                                <p>This Act institutionalizes a national facilitation service network through the establishment of a Public Employment Service Office (PESO) in every province, key city, and other strategic areas throughout the country. The PESO serves as a linkage between jobseekers and employers, providing employment services such as job matching, career guidance, and information dissemination on labor market trends. This law aims to devolve employment services to the local government level to ensure more accessible and efficient delivery of employment assistance to the Filipino workforce.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-     
+  
         <section id="features" class="hero white-section">
             <div class="container">
-                <h2 class="section-title">Gutom naman</h2>
+                <h2 class="section-title"> Placeholder</h2>
                 <div class="cards">
                     <article class="card">
                         <h3>Fast setup</h3>
@@ -503,17 +509,7 @@
         </section>
     </main>
 
-    
-
-    <footer class="site-footer">
-        <div class="container footer-inner" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-            <div>© {{ date('Y') }} PESO. All rights reserved.</div>
-            <nav class="footer-nav">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-            </nav>
-        </div>
-    </footer>
+    <x-footer />
     
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

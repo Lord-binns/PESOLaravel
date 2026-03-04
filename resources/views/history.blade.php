@@ -299,15 +299,7 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <div>© {{ date('Y') }} PESO. All rights reserved.</div>
-            <nav class="footer-nav">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-            </nav>
-        </div>
-    </footer>
+    <x-footer />
     
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -2,6 +2,7 @@
 body { 
     background-color: #ffffff;
     color: #333333;
+    overflow-x: hidden;
 }
 
 /* Header */
