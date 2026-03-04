@@ -67,10 +67,13 @@
         
         /* History Page Styles */
         .history-hero {
-            background: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
+            background: linear-gradient(rgba(0, 26, 77, 0.85), rgba(2, 32, 92, 0.85)), url('{{ asset("images/history.png") }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: white;
             padding: 4rem 0;
-            margin-bottom: 3rem;
+        
         }
         
         .history-hero h1 {
@@ -82,10 +85,11 @@
         .timeline {
             position: relative;
             padding: 2rem 0;
-            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('{{ asset("images/LogoPNG.png") }}');
-            background-size: 300px;
-            background-position: center right;
+            background: linear-gradient(rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.50)), url('{{ asset("images/LogoPNG.png") }}');
+            background-size: 700px;
+            background-position: center;
             background-repeat: no-repeat;
+            background-attachment: fixed;
         }
         
         .timeline::before {
@@ -127,7 +131,7 @@
         }
         
         .timeline-content {
-            background: #f8f9fa;
+            background: rgba(248, 249, 250, 0.85);
             padding: 2rem;
             border-radius: 10px;
             border-left: 5px solid #ffd700;
