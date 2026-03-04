@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>PESO Manolo Fortich</title>
-    @if (file_exists(public_path('images/logo-peso.png')))
-        <link rel="icon" href="{{ asset('images/logo-peso.png') }}" type="image/png">
-        <link rel="apple-touch-icon" href="{{ asset('images/logo-peso.png') }}">
+    @if (file_exists(public_path('images/LogoPNG.png')))
+        <link rel="icon" href="{{ asset('images/LogoPNG.png') }}" type="image/png">
+        <link rel="apple-touch-icon" href="{{ asset('images/LogoPNG.png') }}">
     @else
         <link rel="icon" href="https://bangaaklan.gov.ph/wp-content/uploads/2025/07/logo-peso.png" type="image/png">
         <link rel="apple-touch-icon" href="https://bangaaklan.gov.ph/wp-content/uploads/2025/07/logo-peso.png">
@@ -56,12 +56,12 @@
             background: linear-gradient(to right, 
                 #FF0000 0%, 
                 #FF0000 10%, 
-                #8B0000 20%, 
-                #5c0000 30%, 
-                #2d0000 40%, 
+                #000000 20%, 
+                #030112 30%, 
+                #03010f 40%, 
                 #09012a 50%, 
-                #050515 60%, 
-                #001a4d 100%
+                #010135 60%, 
+                #02256a 100%
             ) !important;
             border-top: 3px solid #ffd700;
             color: #ffffff;
@@ -142,6 +142,12 @@
             line-height: 1.8;
             text-align: justify;
         }
+
+        .peso-container {
+    display: flex;
+    max-height: 250px;
+    max-width: 100%;
+}
     </style>
 </head>
 <body>
@@ -175,6 +181,71 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
+</div>
+
+
+{{--  <div class="peso-container" style="background-color: #03163c; padding: 2rem; margin-top: 0;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-white">
+                <div class="left">Left Side</div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mx-auto" style="width: 100%; max-width: 18rem;">
+                    <img src="https://i.pinimg.com/originals/5a/dc/ae/5adcae5e3af5cdba2bb417b92e6d05bc.gif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-white">
+                <div class="right">Right Side</div>
+            </div>
+        </div>
+    </div>
+</div>  --}}
+ 
+<div style="display: flex; width: 100%; min-height: 40vh;">
+
+    <!-- Mission -->
+    <div style="flex: 1; background-color: #02205c; padding: 40px; color: white; font-family: Arial, sans-serif; display: flex; flex-direction: column; justify-content: center;">
+
+        <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 20px; color: #f8ce00;">
+            🎯 Mission
+        </h1>
+
+        <p style="font-size: 16px; line-height: 1.8; margin: 0;">
+            To promote economic growth and sustainable development in Manolo Fortich through the implementation of the PESO program, providing employment opportunities and skills development for the community.
+        </p>
+
+    </div>
+
+
+    <!-- Logo Section -->
+    <div style="flex: 1; background-color: #f5f4f4; display: flex; align-items: center; justify-content: center; padding: 20px;">
+
+        <img src="{{ asset('images/LGU.png') }}" 
+             alt="logo LGU" 
+             style="width: 100%; max-width: 250px; height: auto; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));">
+
+    </div>
+
+
+    <!-- Vision -->
+    <div style="flex: 1; background-color: #011a4d; padding: 40px; color: white; font-family: Arial, sans-serif; display: flex; flex-direction: column; justify-content: center;">
+
+        <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 20px; color: #f8ce00;">
+            🌟 Vision
+        </h1>
+
+        <p style="font-size: 16px; line-height: 1.8; margin: 0;">
+            A premier agri-ecotourist destination with people resilient and responsible towards the environment propelled by well-governed institutions responsive to the challenges of development.
+        </p>
+
+    </div>
+
 </div>
 
         <!-- Republic Act Information -->
