@@ -17,17 +17,14 @@
         <nav class="nav" aria-label="Main navigation">
 
             <div class="nav-item" style="position:relative; margin-right:1.5rem;">
-                <a class="btn" href="#">
+                <a class="btn" href="/">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                         <polyline points="9 22 9 12 15 12 15 22"/>
                     </svg>
                     HOME
                 </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Placeholder A</a></li>
-                    <li><a href="#">Placeholder B</a></li>
-                </ul>
+         
             </div>
 
             <div class="nav-item" style="position:relative; margin-right:1.5rem;">
@@ -39,8 +36,8 @@
                     GET TO KNOW US
                 </a>
                 <ul class="dropdown-menu">
+                    <li><a href="{{ url('/history') }}">Our History</a></li>
                     <li><a href="#">Our Team</a></li>
-                    <li><a href="#">Our History</a></li>
                 </ul>
             </div>
 

@@ -127,11 +127,15 @@
 
         /* Legal Section */
         .legal-section {
-            background: #f8f9fa;
+            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('{{ asset("images/LogoPNG.png") }}');
+            background-size: 700px;
+            background-position: center;
+            background-repeat: no-repeat;
             padding: 4rem 0;
+            padding-top: 2rem;
             border-left: 5px solid #001a4d;
         }
-
+        
         .legal-section h2 {
             color: #001a4d;
             font-weight: bold;
@@ -184,35 +188,13 @@
 </div>
 
 
-{{--  <div class="peso-container" style="background-color: #03163c; padding: 2rem; margin-top: 0;">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-4 text-white">
-                <div class="left">Left Side</div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mx-auto" style="width: 100%; max-width: 18rem;">
-                    <img src="https://i.pinimg.com/originals/5a/dc/ae/5adcae5e3af5cdba2bb417b92e6d05bc.gif" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 text-white">
-                <div class="right">Right Side</div>
-            </div>
-        </div>
-    </div>
-</div>  --}}
  
 <div style="display: flex; width: 100%; min-height: 40vh;">
 
     <!-- Mission -->
     <div style="flex: 1; background-color: #02205c; padding: 40px; color: white; font-family: Arial, sans-serif; display: flex; flex-direction: column; justify-content: center;">
 
-        <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 20px; color: #f8ce00;">
+        <h1 style="font-size: 32px; font-weight: 700; text-align:center; margin-bottom: 20px; color: #f8ce00;">
             🎯 Mission
         </h1>
 
@@ -236,7 +218,7 @@
     <!-- Vision -->
     <div style="flex: 1; background-color: #011a4d; padding: 40px; color: white; font-family: Arial, sans-serif; display: flex; flex-direction: column; justify-content: center;">
 
-        <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 20px; color: #f8ce00;">
+        <h1 style="font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 20px; color: #f8ce00;">
             🌟 Vision
         </h1>
 
@@ -254,6 +236,11 @@
                 <h2 class="section-title">REPUBLIC ACT No. 10691</h2>
                 <p><strong>AN ACT DEFINING THE ROLE OF THE DEPARTMENT OF LABOR AND EMPLOYMENT (DOLE), THE LOCAL GOVERNMENT UNITS (LGUs), AND ACCREDITED NONGOVERNMENT ORGANIZATIONS (NGOs) IN THE ESTABLISHMENT AND OPERATION OF THE PUBLIC EMPLOYMENT SERVICE OFFICE (PESO), AND THE OPERATION OF JOB PLACEMENT OFFICES IN EDUCATIONAL INSTITUTIONs (Els), AMENDING FOR THE PURPOSE SECTIONS 3, 5, 6, 7 AND 9 OF REPUBLIC ACT NO. 8759, OTHERWISE KNOWN AS THE "PUBLIC EMPLOYMENT SERVICE OFFICE ACT OF 1999"</strong></p>
                 <p>This Act aims to strengthen the Public Employment Service Office (PESO) system in the Philippines by clearly defining the roles of DOLE, LGUs, and accredited NGOs in establishing and operating PESOs. It also addresses job placement services in educational institutions, ensuring better coordination between government agencies and local communities in promoting employment opportunities and workforce development.</p>
+                
+                <h2 class="section-title" style="margin-top: 2rem;">REPUBLIC ACT No. 8759</h2>
+                <p><strong>February 14, 2000</strong></p>
+                <p><strong>AN ACT INSTITUTIONALIZING A NATIONAL FACILITATION SERVICE NETWORK THROUGH THE ESTABLISHMENT OF A PUBLIC EMPLOYMENT SERVICE OFFICE IN EVERY PROVINCE, KEY CITY AND OTHER STRATEGIC AREAS THROUGHOUT THE COUNTRY</strong></p>
+                <p>This Act institutionalizes a national facilitation service network through the establishment of a Public Employment Service Office (PESO) in every province, key city, and other strategic areas throughout the country. The PESO serves as a linkage between jobseekers and employers, providing employment services such as job matching, career guidance, and information dissemination on labor market trends. This law aims to devolve employment services to the local government level to ensure more accessible and efficient delivery of employment assistance to the Filipino workforce.</p>
             </div>
         </section>
 
