@@ -25,7 +25,6 @@
             color: #333333;
         }
         .site-header {
-            
             background-color: #001a4d;
             border-bottom: 3px solid #ffd700;
         }
@@ -148,10 +147,191 @@
         }
 
         .peso-container {
-    display: flex;
-    max-height: 250px;
-    max-width: 100%;
-}
+            display: flex;
+            max-height: 250px;
+            max-width: 100%;
+        }
+
+        /* Carousel responsive */
+        .carousel-item img {
+            height: 655px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Mission/Vision/Logo section responsive */
+        .mvo-section {
+            display: flex;
+            width: 100%;
+            min-height: 40vh;
+        }
+
+        .mvo-section .mission {
+            flex: 1;
+            background-color: #02205c;
+            padding: 40px;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .mvo-section .logo-section {
+            flex: 1;
+            background-color: #f5f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .mvo-section .vision {
+            flex: 1;
+            background-color: #011a4d;
+            padding: 40px;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .mvo-section h1 {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #f8ce00;
+        }
+
+        .mvo-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* Hero section responsive */
+        .hero-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .hero-copy {
+            flex: 1 1 320px;
+            min-width: 280px;
+        }
+
+        .hero-media {
+            flex: 0 0 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Cards responsive */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .cards .card {
+            flex: 1 1 280px;
+            max-width: 350px;
+            min-width: 250px;
+            padding: 1.5rem;
+        }
+
+        /* About grid responsive */
+        .about-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-grid > div {
+            flex: 1 1 280px;
+            min-width: 250px;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 991px) {
+            .mvo-section {
+                flex-direction: column;
+            }
+            
+            .mvo-section .mission,
+            .mvo-section .vision,
+            .mvo-section .logo-section {
+                padding: 30px 20px;
+                min-height: auto;
+            }
+            
+            .mvo-section h1 {
+                font-size: 24px;
+            }
+            
+            .mvo-section p {
+                font-size: 14px;
+            }
+            
+            .hero-media {
+                flex: 0 0 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .carousel-item img {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .mvo-section .mission,
+            .mvo-section .vision {
+                padding: 25px 15px;
+            }
+            
+            .mvo-section h1 {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+            
+            .mvo-section p {
+                font-size: 13px;
+            }
+            
+            .carousel-item img {
+                height: 300px;
+            }
+            
+            .white-section,
+            .about,
+            .features,
+            .legal-section {
+                padding: 3rem 0;
+            }
+            
+            .legal-section {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            .cards .card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+            
+            .site-footer .footer-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -168,13 +348,13 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="{{ asset('images/Pic1.jpg') }}" class="d-block w-100" alt="Slide 1" style="height: 655px; object-fit: cover; object-position: center 20%;">
+            <img src="{{ asset('images/Pic1.jpg') }}" class="d-block w-100" alt="Slide 1">
         </div>
         <div class="carousel-item">
-            <img src="https://web.manolofortich.gov.ph/web/img_lgu/carousel-8.jpg" class="d-block w-100" alt="Slide 2" style="height: 655px; object-fit: cover; object-position: center;">
+            <img src="https://web.manolofortich.gov.ph/web/img_lgu/carousel-8.jpg" class="d-block w-100" alt="Slide 2">
         </div>
         <div class="carousel-item">
-            <img src="https://www.web.manolofortich.gov.ph/storage/content_image/22f8936a010d95ee468d5be23f72ab16.jpg" class="d-block w-100" alt="Slide 3" style="height: 655px; object-fit: cover;">
+            <img src="https://www.web.manolofortich.gov.ph/storage/content_image/22f8936a010d95ee468d5be23f72ab16.jpg" class="d-block w-100" alt="Slide 3">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -189,43 +369,27 @@
 
 
  
-<div style="display: flex; width: 100%; min-height: 40vh;">
+<div class="mvo-section">
 
     <!-- Mission -->
-    <div style="flex: 1; background-color: #02205c; padding: 40px; color: white; font-family: Arial, sans-serif; display: flex; flex-direction: column; justify-content: center;">
-
-        <h1 style="font-size: 32px; font-weight: 700; text-align:center; margin-bottom: 20px; color: #f8ce00;">
-            🎯 Mission
-        </h1>
-
-        <p style="font-size: 16px; line-height: 1.8; margin: 0;">
-            To promote economic growth and sustainable development in Manolo Fortich through the implementation of the PESO program, providing employment opportunities and skills development for the community.
-        </p>
-
+    <div class="mission">
+        <h1>🎯 Mission</h1>
+        <p>To promote economic growth and sustainable development in Manolo Fortich through the implementation of the PESO program, providing employment opportunities and skills development for the community.</p>
     </div>
 
 
     <!-- Logo Section -->
-    <div style="flex: 1; background-color: #f5f4f4; display: flex; align-items: center; justify-content: center; padding: 20px;">
-
+    <div class="logo-section">
         <img src="{{ asset('images/LGU.png') }}" 
              alt="logo LGU" 
              style="width: 100%; max-width: 250px; height: auto; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));">
-
     </div>
 
 
     <!-- Vision -->
-    <div style="flex: 1; background-color: #011a4d; padding: 40px; color: white; font-family: Arial, sans-serif; display: flex; flex-direction: column; justify-content: center;">
-
-        <h1 style="font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 20px; color: #f8ce00;">
-            🌟 Vision
-        </h1>
-
-        <p style="font-size: 16px; line-height: 1.8; margin: 0;">
-            A premier agri-ecotourist destination with people resilient and responsible towards the environment propelled by well-governed institutions responsive to the challenges of development.
-        </p>
-
+    <div class="vision">
+        <h1>🌟 Vision</h1>
+        <p>A premier agri-ecotourist destination with people resilient and responsible towards the environment propelled by well-governed institutions responsive to the challenges of development.</p>
     </div>
 
 </div>
@@ -245,8 +409,8 @@
         </section>
 
        <section class="hero white-section">
-            <div class="container hero-inner" style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem;">
-                <div class="hero-copy" style="flex:1 1 320px; min-width:280px;">
+            <div class="container hero-inner">
+                <div class="hero-copy">
                     <h1 class="hero-title">Mission</h1>
                     <p class="hero-sub">To promote economic growth and sustainable development in Manolo Fortich through the implementation of the PESO program, providing employment opportunities and skills development for the community.</p>
                     <div class="hero-cta">
@@ -255,7 +419,7 @@
                     </div>
                 </div>
 
-                <div class="hero-copy" style="flex:1 1 320px; min-width:280px;">
+                <div class="hero-copy">
                     <h1 class="hero-title">Vision</h1>
                     <p class="hero-sub">A premier agri-ecotourist destination with people resilient and responsible towards the environment propelled by well-governed institutions responsive to the challenges of development</p>
                     <div class="hero-cta">
@@ -264,7 +428,7 @@
                     </div>
                 </div>
 
-                <div class="hero-media" aria-hidden="true" style="flex:0 0 300px; display:flex; justify-content:center;">
+                <div class="hero-media" aria-hidden="true">
                     <div class="device-mock" style="background: transparent; padding: 0;">
                         <div class="screen">
                             <img src="{{ asset('images/LogoLGU.png') }}" 
@@ -342,7 +506,7 @@
     
 
     <footer class="site-footer">
-        <div class="container footer-inner">
+        <div class="container footer-inner" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
             <div>© {{ date('Y') }} PESO. All rights reserved.</div>
             <nav class="footer-nav">
                 <a href="#">Privacy</a>
