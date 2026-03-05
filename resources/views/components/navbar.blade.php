@@ -1,5 +1,5 @@
 <header class="site-header">
-    <div class="container header-inner">
+    <div class="header-container">
         
         <a class="brand" href="#">
             <x-application-logo class="application-logo" />
@@ -39,7 +39,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ url('/history') }}">Our History</a></li>
-                    <li><a href="#">Our Team</a></li>
+                    <li><a href="{{ url('/about') }}">Our Team</a></li>
                 </ul>
             </div>
 
@@ -117,7 +117,6 @@ document.getElementById('navbarToggler').addEventListener('click', function() {
 <style>
 
 /* HEADER LAYOUT */
-/* HEADER LAYOUT */
 .site-header {
     background: linear-gradient(
         to right,
@@ -136,19 +135,15 @@ document.getElementById('navbarToggler').addEventListener('click', function() {
     position: relative;
 }
 
-.header-inner {
+.header-container {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     flex-wrap: nowrap !important;
     padding: 0 1.5rem;
     height: 80px;
-}
-
-.container {
-    max-width: none !important;
-    padding-left: 1.5rem !important;
-    padding-right: 0 !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
     width: 100% !important;
 }
 
@@ -316,7 +311,7 @@ document.getElementById('navbarToggler').addEventListener('click', function() {
 
 /* MOBILE STYLES */
 @media (max-width: 991px) {
-    .header-inner {
+    .header-container {
         flex-wrap: wrap !important;
         padding: 10px 15px;
         height: auto;

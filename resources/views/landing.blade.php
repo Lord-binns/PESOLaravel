@@ -156,7 +156,7 @@
 
         /* Transparent cards for Republic Acts */
         .legal-section .card {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.25);
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             padding: 1.5rem;
@@ -467,26 +467,7 @@
             </div>
         </section>
 
-        <section id="about" class="about">
-            <div class="container">
-                <h2 class="section-title">About PESO</h2>
-                <p class="lead">A legacy of service and excellence, PESO supports communities by connecting people to opportunities and empowering local development.</p>
-                <div class="about-grid">
-                    <div>
-                        <h3>History</h3>
-                        <p>Since its inception, PESO has been committed to delivering workforce solutions and community programs that uplift livelihoods and promote inclusive growth.</p>
-                    </div>
-                    <div>
-                        <h3>Mission</h3>
-                        <p>We deliver accessible employment services and partner with stakeholders to create sustainable opportunities for all citizens.</p>
-                    </div>
-                    <div>
-                        <h3>Vision</h3>
-                        <p>To be the leading catalyst for workforce development and local economic resilience.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+       
 
         <section id="services" class="features">
             <div class="container">

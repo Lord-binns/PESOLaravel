@@ -1,11 +1,13 @@
 <footer class="site-footer">
-    <div class="container footer-inner" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-        <div>© {{ date('Y') }} PESO. All rights reserved.</div>
-        
-        <nav class="footer-nav" style="margin-right: 40px;">
-            <a href="#" style="margin-right: 15px;">Privacy</a>
-            <a href="#">Terms</a>
-        </nav>
+    <div class="footer-container">
+        <div class="footer-inner">
+            <div>© {{ date('Y') }} PESO. All rights reserved.</div>
+            
+            <nav class="footer-nav">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </nav>
+        </div>
     </div>
 </footer>
 
@@ -26,6 +28,22 @@
     padding: 1.5rem 0;
 }
 
+.footer-container {
+    width: 100%;
+    max-width: 100% !important;
+    padding: 0 1.5rem;
+    margin: 0 auto;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+}
+
 .site-footer a {
     color: #ffffff;
     text-decoration: none;
@@ -36,12 +54,6 @@
     color: #ffd700;
 }
 
-.footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
 .footer-nav a {
     margin-left: 15px;
 }
@@ -50,10 +62,6 @@
     .footer-inner {
         flex-direction: column;
         text-align: center;
-    }
-    
-    .footer-nav {
-        margin-right: 0 !important;
     }
     
     .footer-nav a {
