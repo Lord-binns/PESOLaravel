@@ -305,11 +305,7 @@
     <!-- Navbar -->
     @include('components.employee-navbar')
     
-    <!-- Page Header -->
-    <div class="page-header">
-        <h1><i class="fas fa-user me-3"></i>Employee Dashboard</h1>
-        <p>Find your dream job, track your applications, and manage your profile.</p>
-    </div>
+
     
     <!-- Main Content -->
     <main>

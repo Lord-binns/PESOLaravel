@@ -73,11 +73,6 @@
                     </svg>
                 </a>
             </div>
-            <div class="nav-item">
-                <a class="btn" href="{{ url('/settings') }}" title="Settings">
-                    <i class="fas fa-cog" style="color: #ffd700;"></i>
-                </a>
-            </div>
     </div>
 
     <!-- Search Overlay -->

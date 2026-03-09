@@ -228,11 +228,7 @@
     <!-- Navbar -->
     @include('components.dashboard-navbar')
     
-    <!-- Page Header -->
-    <div class="page-header">
-        <h1><i class="fas fa-user-shield me-3"></i>Admin Dashboard</h1>
-        <p>Manage employers, job seekers, and system settings here.</p>
-    </div>
+
     
     <!-- Main Content -->
     <main>
