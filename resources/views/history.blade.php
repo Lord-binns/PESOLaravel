@@ -287,16 +287,55 @@
             </div>
         </section>
 
-        <!-- Placeholder Section -->
-        <section class="py-5" style="background-color: #061858;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10 mx-auto">
-                        <p>Placeholder content goes here...</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+ <!-- Contact Footer -->
+<section id="contact-footer" style="background-color: #03153b; color: white; padding: 40px 20px; font-family: Arial, sans-serif;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between;">
+
+        <!-- Contact Info -->
+        <div style="flex: 1 1 250px; min-width: 220px;">
+<h2 style="margin-bottom: 15px; font-size: 1.5rem; color: #ffffff; font-weight: 700; display: flex; align-items: center;">
+    Contact Us
+    <span style="flex: 1; height: 2px; background-color: #FF2D2D; margin-left: 10px;"></span>
+</h2>
+
+
+            <p style="margin: 4px 0;">PESO Manolo Fortich</p>
+            <p style="margin: 4px 0;">Manolo Fortich, Bukidnon</p>
+            <p style="margin: 4px 0;">Phone: (XXX) XXX-XXXX</p>
+            <p style="margin: 4px 0;">Email: <a href="mailto:peso@manolofortich.gov.ph" style="color: #ffd700; text-decoration: none;">peso@manolofortich.gov.ph</a></p>
+        </div>
+
+        <!-- Categories -->
+        <div style="flex: 1 1 200px; min-width: 200px;">
+<h2 style="margin-bottom: 15px; font-size: 1.5rem; color: #ffffff; font-weight: 700; display: flex; align-items: center;">
+    Categories
+    <span style="flex: 1; height: 2px; background-color: #FF2D2D; margin-left: 10px;"></span>
+</h2>
+
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 6px;">Employment Services</li>
+                <li style="margin-bottom: 6px;">Training Programs</li>
+                <li style="margin-bottom: 6px;">Job Fairs</li>
+                <li style="margin-bottom: 6px;">Career Counseling</li>
+            </ul>
+        </div>
+
+        <!-- Useful Pages -->
+        <div style="flex: 1 1 200px; min-width: 200px;">
+<h2 style="margin-bottom: 15px; font-size: 1.5rem; color: #ffffff; font-weight: 700; display: flex; align-items: center;">
+    Useful Pages
+    <span style="flex: 1; height: 2px; background-color: #FF2D2D; margin-left: 10px;"></span>
+</h2>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 6px;"><a href="#" style="color: #ffd700; text-decoration: none;">Home</a></li>
+                <li style="margin-bottom: 6px;"><a href="#" style="color: #ffd700; text-decoration: none;">About Us</a></li>
+                <li style="margin-bottom: 6px;"><a href="#" style="color: #ffd700; text-decoration: none;">Services</a></li>
+                <li style="margin-bottom: 6px;"><a href="#" style="color: #ffd700; text-decoration: none;">Contact</a></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
     </main>
 
     <x-footer />

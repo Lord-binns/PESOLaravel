@@ -85,7 +85,7 @@
         /* About Section */
         .about-section {
             padding: 4rem 0;
-            background: linear-gradient(rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0.90)), url('{{ asset("images/LogoPNG.png") }}');
+            background: linear-gradient(rgba(5, 23, 99, 0.9), (rgba(5, 23, 99, 0.9)));
             background-size: 700px;
             background-position: center;
             background-repeat: no-repeat;
@@ -106,11 +106,15 @@
         /* Team Section */
         .team-section {
             padding: 3rem 0;
-            background: #ffffff;
+            background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+                        url('{{ asset("images/LogoPNG.png") }}');
+            background-size: 1000px;
+            background-position: center;
+            background-repeat: no-repeat; /* prevents repeating */
             position: relative;
             overflow: hidden;
         }
-        
+                
         .team-section h2 {
             color: #ffd700;
             font-weight: bold;
@@ -171,7 +175,7 @@
         
         /* Manager Card - Larger */
         .team-card.manager-card {
-            background: rgba(255, 215, 0, 0.2);
+            background: #001a4d;
             border: 3px solid #ffd700;
             min-height: 190px;
         }

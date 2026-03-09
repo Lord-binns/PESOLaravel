@@ -13,6 +13,8 @@
     @endif
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     @if (file_exists(public_path('build/manifest.json')))
         @vite(['resources/css/app.css'])
@@ -126,13 +128,15 @@
 
         /* Legal Section */
         .legal-section {
-            background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('{{ asset("images/LogoPNG.png") }}');
-            background-size: 700px;
+    background: linear-gradient(rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.68)), 
+            url('https://blancco.com/wp-content/uploads/2024/07/DPA-blog-resized.jpg');
+
+            background-size: 1600px;
             background-position: center;
             background-repeat: no-repeat;
-            padding: 4rem 0;
+     
             padding-top: 2rem;
-            border-left: 5px solid #001a4d;
+            
             position: relative;
             z-index: 1;
             margin-top: 2rem;
@@ -242,6 +246,9 @@
             flex-wrap: wrap;
             align-items: center;
             gap: 2rem;
+        }
+        .contact-title{
+    color: #ffd700;
         }
 
         .hero-copy {
@@ -355,6 +362,7 @@
                 flex-direction: column;
                 text-align: center;
                 gap: 1rem;
+
             }
         }
     </style>
@@ -362,7 +370,7 @@
 <body>
     <x-navbar />
 
-    <main>
+    
 
     
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -393,6 +401,20 @@
 </div>
 
 
+<!-- Hero / Call to Action Section -->
+<section class="hero-cta" style="background: linear-gradient(135deg, #001a4d 0%, #02205c 100%); padding: 60px 20px; text-align: center;">
+    <div class="container">
+        <h2 style="color: #ffffff; font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">Ready to Get Started?</h2>
+        <p style="color: #ffffff; font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Sign Up to access job listings, apply for positions, and track your applications. New users can register to create an account.</p>
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+<a href="{{ route('register') }}" class="btn btn-lg" style="background: linear-gradient(90deg, #ff4444, #cc0000); color: white; border: none; padding: 15px 40px; border-radius: 10px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s;">
+                <i class="fas fa-user-plus me-2"></i> Sign Up
+            </a>
+        </div>
+    </div>
+</section>
+
+
  
 <div class="mvo-section">
 
@@ -419,76 +441,146 @@
 
 </div>
 
-        <!-- Republic Act Information -->
-        <section class="legal-section">
-            <div class="container">
-                <div class="row g-4">
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h2 class="section-title">REPUBLIC ACT No. 10691</h2>
-                                <p><strong>AN ACT DEFINING THE ROLE OF THE DEPARTMENT OF LABOR AND EMPLOYMENT (DOLE), THE LOCAL GOVERNMENT UNITS (LGUs), AND ACCREDITED NONGOVERNMENT ORGANIZATIONS (NGOs) IN THE ESTABLISHMENT AND OPERATION OF THE PUBLIC EMPLOYMENT SERVICE OFFICE (PESO), AND THE OPERATION OF JOB PLACEMENT OFFICES IN EDUCATIONAL INSTITUTIONs (Els), AMENDING FOR THE PURPOSE SECTIONS 3, 5, 6, 7 AND 9 OF REPUBLIC ACT NO. 8759, OTHERWISE KNOWN AS THE "PUBLIC EMPLOYMENT SERVICE OFFICE ACT OF 1999"</strong></p>
-                                <p>This Act aims to strengthen the Public Employment Service Office (PESO) system in the Philippines by clearly defining the roles of DOLE, LGUs, and accredited NGOs in establishing and operating PESOs. It also addresses job placement services in educational institutions, ensuring better coordination between government agencies and local communities in promoting employment opportunities and workforce development.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h2 class="section-title">REPUBLIC ACT No. 8759</h2>
-                                <p><strong>February 14, 2000</strong></p>
-                                <p><strong>AN ACT INSTITUTIONALIZING A NATIONAL FACILITATION SERVICE NETWORK THROUGH THE ESTABLISHMENT OF A PUBLIC EMPLOYMENT SERVICE OFFICE IN EVERY PROVINCE, KEY CITY AND OTHER STRATEGIC AREAS THROUGHOUT THE COUNTRY</strong></p>
-                                <p>This Act institutionalizes a national facilitation service network through the establishment of a Public Employment Service Office (PESO) in every province, key city, and other strategic areas throughout the country. The PESO serves as a linkage between jobseekers and employers, providing employment services such as job matching, career guidance, and information dissemination on labor market trends. This law aims to devolve employment services to the local government level to ensure more accessible and efficient delivery of employment assistance to the Filipino workforce.</p>
-                            </div>
-                        </div>
+ 
+<section id="features" class="hero white-section">
+    <div class="container">
+      <h2 style="display:flex; align-items:center; text-align:center; width:100%;">
+    
+    <span style="flex:1; height:3px; background:#FF2D2D;"></span>
+    
+    <span style="padding:0 15px; font-weight:700;">
+        News & Updates
+    </span>
+    
+    <span style="flex:1; height:3px; background:#FF2D2D;"></span>
+
+</h2>
+<div class="cards" style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+
+    <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
+        <img src="https://i.pinimg.com/originals/8a/6a/a5/8a6aa5562f75eaf051bc1dcba7a097f1.gif" class="card-img-top" alt="Feature 1" style="width:100%; height:200px; object-fit:cover;">
+        <div class="card-body" style="padding:15px;">
+            <h5 class="card-title">Fast Setup</h5>
+            <p class="card-text">Get started quickly with sensible defaults and clear documentation.</p>
+            <a href="#" class="btn btn-danger">Learn More</a>
+        </div>
+    </div>
+
+    <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
+        <img src="https://i.pinimg.com/originals/e8/c8/1b/e8c81be301355d927d75fbb273a94267.gif" class="card-img-top" alt="Feature 2" style="width:100%; height:200px; object-fit:cover;">
+        <div class="card-body" style="padding:15px;">
+            <h5 class="card-title">Reliable</h5>
+            <p class="card-text">Designed for production — performance, security, and stability.</p>
+            <a href="#" class="btn btn-danger">Learn More</a>
+        </div>
+    </div>
+
+    <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
+        <img src="https://i.pinimg.com/originals/f0/cd/8d/f0cd8d9c038e3d477e9435863e924932.gif" class="card-img-top" alt="Feature 3" style="width:100%; height:200px; object-fit:cover;">
+        <div class="card-body" style="padding:15px;">
+            <h5 class="card-title">Flexible</h5>
+            <p class="card-text">Integrates easily with your existing stack and workflows.</p>
+            <a href="#" class="btn btn-danger">Learn More</a>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
+</section>
+
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+
+    <!-- News & Updates Header with Lines -->
+    <h2 style="display:flex; align-items:center; text-align:center; width:100%; margin-bottom: 40px;">
+        <span style="flex:1; height:3px; background:#FF2D2D;"></span>
+        <span style="padding:0 15px; font-weight:700; color: #190278;">
+            Republic Acts
+        </span>
+        <span style="flex:1; height:3px; background:#FF2D2D;"></span>
+    </h2>
+
+    <!-- Republic Act Information -->
+    <section class="legal-section">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="section-title">REPUBLIC ACT No. 10691</h2>
+                        <p><strong>AN ACT DEFINING THE ROLE OF THE DEPARTMENT OF LABOR AND EMPLOYMENT (DOLE), THE LOCAL GOVERNMENT UNITS (LGUs), AND ACCREDITED NONGOVERNMENT ORGANIZATIONS (NGOs) IN THE ESTABLISHMENT AND OPERATION OF THE PUBLIC EMPLOYMENT SERVICE OFFICE (PESO), AND THE OPERATION OF JOB PLACEMENT OFFICES IN EDUCATIONAL INSTITUTIONs (Els), AMENDING FOR THE PURPOSE SECTIONS 3, 5, 6, 7 AND 9 OF REPUBLIC ACT NO. 8759, OTHERWISE KNOWN AS THE "PUBLIC EMPLOYMENT SERVICE OFFICE ACT OF 1999"</strong></p>
+                        <p>This Act aims to strengthen the Public Employment Service Office (PESO) system in the Philippines by clearly defining the roles of DOLE, LGUs, and accredited NGOs in establishing and operating PESOs. It also addresses job placement services in educational institutions, ensuring better coordination between government agencies and local communities in promoting employment opportunities and workforce development.</p>
                     </div>
                 </div>
             </div>
-        </section>
-
-  
-        <section id="features" class="hero white-section">
-            <div class="container">
-                <h2 class="section-title"> Placeholder</h2>
-                <div class="cards">
-                    <article class="card">
-                        <h3>Fast setup</h3>
-                        <p>Get started quickly with sensible defaults and clear documentation.</p>
-                    </article>
-                    <article class="card">
-                        <h3>Reliable</h3>
-                        <p>Designed for production — performance, security, and stability.</p>
-                    </article>
-                    <article class="card">
-                        <h3>Flexible</h3>
-                        <p>Integrates easily with your existing stack and workflows.</p>
-                    </article>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="section-title">REPUBLIC ACT No. 8759</h2>
+                        <p><strong>February 14, 2000</strong></p>
+                        <p><strong>AN ACT INSTITUTIONALIZING A NATIONAL FACILITATION SERVICE NETWORK THROUGH THE ESTABLISHMENT OF A PUBLIC EMPLOYMENT SERVICE OFFICE IN EVERY PROVINCE, KEY CITY AND OTHER STRATEGIC AREAS THROUGHOUT THE COUNTRY</strong></p>
+                        <p>This Act institutionalizes a national facilitation service network through the establishment of a Public Employment Service Office (PESO) in every province, key city, and other strategic areas throughout the country. The PESO serves as a linkage between jobseekers and employers, providing employment services such as job matching, career guidance, and information dissemination on labor market trends. This law aims to devolve employment services to the local government level to ensure more accessible and efficient delivery of employment assistance to the Filipino workforce.</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
+</div>
        
 
-        <section id="services" class="features">
-            <div class="container">
-                <h2 class="section-title">Services</h2>
-                <div class="cards">
-                    <article class="card">
-                        <h3>Job Matching</h3>
-                        <p>Connecting jobseekers with employers through streamlined placement services.</p>
-                    </article>
-                    <article class="card">
-                        <h3>Training & Development</h3>
-                        <p>Skill-building programs and trainings that prepare workers for in-demand roles.</p>
-                    </article>
-                    <article class="card">
-                        <h3>Community Programs</h3>
-                        <p>Local initiatives that support entrepreneurship, microbusinesses, and livelihood projects.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-    </main>
+ <!-- Contact Footer -->
+<section id="contact-footer" style="background-color: #03153b; color: white; padding: 40px 20px; font-family: Arial, sans-serif;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between;">
+
+        <!-- Contact Info -->
+        <div style="flex: 1 1 250px; min-width: 220px;">
+<h2 style="margin-bottom: 15px; font-size: 1.5rem; color: #ffffff; font-weight: 700; display: flex; align-items: center;">
+    Contact Us
+    <span style="flex: 1; height: 2px; background-color: #FF2D2D; margin-left: 10px;"></span>
+</h2>
+
+
+            <p style="margin: 4px 0;">PESO Manolo Fortich</p>
+            <p style="margin: 4px 0;">Manolo Fortich, Bukidnon</p>
+            <p style="margin: 4px 0;">Phone: (XXX) XXX-XXXX</p>
+            <p style="margin: 4px 0;">Email: <a href="mailto:peso@manolofortich.gov.ph" style="color: #ffd700; text-decoration: none;">peso@manolofortich.gov.ph</a></p>
+        </div>
+
+        <!-- Categories -->
+        <div style="flex: 1 1 200px; min-width: 200px;">
+<h2 style="margin-bottom: 15px; font-size: 1.5rem; color: #ffffff; font-weight: 700; display: flex; align-items: center;">
+    Categories
+    <span style="flex: 1; height: 2px; background-color: #FF2D2D; margin-left: 10px;"></span>
+</h2>
+
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 6px;">Employment Services</li>
+                <li style="margin-bottom: 6px;">Training Programs</li>
+                <li style="margin-bottom: 6px;">Job Fairs</li>
+                <li style="margin-bottom: 6px;">Career Counseling</li>
+            </ul>
+        </div>
+
+        <!-- Useful Pages -->
+        <div style="flex: 1 1 200px; min-width: 200px;">
+<h2 style="margin-bottom: 15px; font-size: 1.5rem; color: #ffffff; font-weight: 700; display: flex; align-items: center;">
+    Useful Pages
+    <span style="flex: 1; height: 2px; background-color: #FF2D2D; margin-left: 10px;"></span>
+</h2>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 6px;"><a href="#" style="color: #ffd700; text-decoration: none;">Home</a></li>
+                <li style="margin-bottom: 6px;"><a href="#" style="color: #ffd700; text-decoration: none;">About Us</a></li>
+                <li style="margin-bottom: 6px;"><a href="#" style="color: #ffd700; text-decoration: none;">Services</a></li>
+                <li style="margin-bottom: 6px;"><a href="#" style="color: #ffd700; text-decoration: none;">Contact</a></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+    
+
 
     <x-footer />
     

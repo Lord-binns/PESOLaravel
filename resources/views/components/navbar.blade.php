@@ -73,12 +73,12 @@
             </div>
 
             <div class="nav-item">
-                <a class="btn btn-ghost" href="#">
+                <a class="btn btn-ghost" href="{{ route('Register') }}">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                         <circle cx="12" cy="7" r="4"/>
                     </svg>
-                    Sign In
+                    Sign Up
                 </a>
             </div>
         </div>
