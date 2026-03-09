@@ -1,4 +1,4 @@
- did <header class="dashboard-header">
+  <header class="dashboard-header">
     <div class="header-container">
         
         <a class="brand" href="{{ url('/') }}">
