@@ -1,4 +1,4 @@
-<header class="dashboard-header">
+  <header class="dashboard-header">
     <div class="header-container">
         
         <a class="brand" href="{{ url('/') }}">
@@ -85,12 +85,7 @@
                 </ul>
             </div>
 
-            <!-- Settings -->
-            <div class="nav-item">
-                <a class="btn" href="{{ url('/settings') }}" title="Settings">
-                    <i class="fas fa-cog" style="color: white;"></i>
-                </a>
-            </div>
+
 
             <!-- User Menu -->
             <div class="nav-item user-menu">

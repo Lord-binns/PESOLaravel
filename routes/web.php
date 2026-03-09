@@ -1,60 +1,43 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
-// Public Routes
 Route::get('/', function () {
     return view('landing');
-});
-
-Route::get('/history', function () {
-    return view('history');
-});
+})->name('landing');
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
 
-// Dashboard Routes
+Route::get('/history', function () {
+    return view('history');
+})->name('history');
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+    return view('admin.dashboard');
+})->name('dashboard');
 
 Route::get('/employer/dashboard', function () {
-    return view('employer-dashboard');
-});
+    return view('employer.dashboard');
+})->name('employer.dashboard');
 
 Route::get('/employee/dashboard', function () {
-    return view('employee-dashboard');
-});
+    return view('employee.dashboard');
+})->name('employee.dashboard');
 
 Route::get('/settings', function () {
     return view('settings');
-});
+})->name('settings');
 
-// Authentication Routes - Separate Login and Register Pages
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
 
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
-
-// POST routes for form submission (UI only - placeholder behavior)
-Route::post('/login', function () {
-    return redirect('/dashboard');
-})->name('login.post');
-
-Route::post('/register', function () {
-    return redirect('/login');
-})->name('register.post');
-
-Route::post('/logout', function () {
-    return redirect('/');
-})->name('logout');
-
-// Example of protected route (requires authentication)
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware('auth')->name('dashboard');
+// Authentication Routes
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

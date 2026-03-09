@@ -25,10 +25,8 @@
             --header-bg: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
             --accent-color: #ffd700;
             --danger-color: #ff4444;
-            --sidebar-bg: #f8f9fa;
             --input-bg: #ffffff;
             --input-border: #ced4da;
-            --table-stripe: #f8f9fa;
         }
         
         /* Dark Mode */
@@ -40,16 +38,16 @@
             --header-bg: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
             --accent-color: #ffd700;
             --danger-color: #ff6b6b;
-            --sidebar-bg: #16213e;
             --input-bg: #1a1a2e;
             --input-border: #0f3460;
-            --table-stripe: #16213e;
         }
         
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: all 0.3s ease;
+            margin: 0;
+            padding: 0;
         }
         
         /* Header */
@@ -195,11 +193,6 @@
             transition: all 0.3s ease;
         }
         
-        .form-select:focus, .form-control:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
-        }
-        
         /* Danger Zone */
         .danger-zone {
             border-color: var(--danger-color);
@@ -238,67 +231,6 @@
             font-weight: 500;
         }
         
-        .btn-danger:hover {
-            background: #cc0000;
-        }
-        
-        /* Dark Mode Icon */
-        .theme-icon {
-            font-size: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        [data-theme="dark"] .theme-icon {
-            color: #ffd700;
-        }
-        
-        /* Notification Preview */
-        .notification-preview {
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 15px;
-        }
-        
-        .preview-badge {
-            display: inline-block;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        
-        .preview-badge.email {
-            background: #dbeafe;
-            color: #1e40af;
-        }
-        
-        .preview-badge.push {
-            background: #dcfce7;
-            color: #166534;
-        }
-        
-        .preview-badge.sms {
-            background: #fef3c7;
-            color: #92400e;
-        }
-        
-        [data-theme="dark"] .preview-badge.email {
-            background: #1e3a5f;
-            color: #60a5fa;
-        }
-        
-        [data-theme="dark"] .preview-badge.push {
-            background: #14532d;
-            color: #86efac;
-        }
-        
-        [data-theme="dark"] .preview-badge.sms {
-            background: #78350f;
-            color: #fcd34d;
-        }
-        
         /* Success Message */
         .success-message {
             position: fixed;
@@ -332,7 +264,14 @@
 </head>
 <body>
     <!-- Navbar -->
-    @include('components.navbar')
+    @include('components.employer-navbar')
+    
+    <!-- Back Button -->
+    <div style="background: #f5f5f5; padding: 15px 20px;">
+        <a href="{{ url('/employer/dashboard') }}" style="display: inline-flex; align-items: center; gap: 8px; color: #001a4d; text-decoration: none; font-weight: 600; padding: 10px 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
     
     <!-- Page Header -->
     <div class="page-header">
@@ -350,7 +289,7 @@
                 
                 <div class="setting-item">
                     <div class="setting-info">
-                        <h4><i class="fas fa-moon theme-icon me-2"></i>Dark Mode</h4>
+                        <h4><i class="fas fa-moon me-2"></i>Dark Mode</h4>
                         <p>Switch between light and dark themes</p>
                     </div>
                     <label class="toggle-switch dark-mode-toggle">
@@ -358,18 +297,6 @@
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
-                
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <h4>Compact Mode</h4>
-                        <p>Reduce spacing for more content visibility</p>
-                    </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="compactModeToggle">
-                        <span class="toggle-slider"></span>
-                    </label>
-                </div>
-            </div>
             
             <!-- Notification Settings -->
             <div class="settings-card">
@@ -381,7 +308,7 @@
                         <p>Receive updates via email</p>
                     </div>
                     <label class="toggle-switch">
-                        <input type="checkbox" checked id="emailToggle">
+                        <input type="checkbox" checked>
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
@@ -392,29 +319,10 @@
                         <p>Receive browser push notifications</p>
                     </div>
                     <label class="toggle-switch">
-                        <input type="checkbox" id="pushToggle">
+                        <input type="checkbox">
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
-                
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <h4>SMS Notifications</h4>
-                        <p>Receive text message alerts</p>
-                    </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="smsToggle">
-                        <span class="toggle-slider"></span>
-                    </label>
-                </div>
-                
-                <div class="notification-preview">
-                    <h5 style="font-size: 0.9rem; margin-bottom: 15px;">Notification Types</h5>
-                    <span class="preview-badge email me-2"><i class="fas fa-envelope me-1"></i> Email</span>
-                    <span class="preview-badge push me-2"><i class="fas fa-bell me-1"></i> Push</span>
-                    <span class="preview-badge sms"><i class="fas fa-sms me-1"></i> SMS</span>
-                </div>
-            </div>
             
             <!-- Privacy Settings -->
             <div class="settings-card">
@@ -434,68 +342,14 @@
                 
                 <div class="setting-item">
                     <div class="setting-info">
-                        <h4>Show Online Status</h4>
-                        <p>Let others see when you're online</p>
-                    </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox" checked id="onlineStatusToggle">
-                        <span class="toggle-slider"></span>
-                    </label>
-                </div>
-                
-                <div class="setting-item">
-                    <div class="setting-info">
                         <h4>Two-Factor Authentication</h4>
                         <p>Add an extra layer of security</p>
                     </div>
                     <label class="toggle-switch">
-                        <input type="checkbox" id="twoFactorToggle">
+                        <input type="checkbox">
                         <span class="toggle-slider"></span>
                     </label>
                 </div>
-            </div>
-            
-            <!-- Language & Region -->
-            <div class="settings-card">
-                <h2><i class="fas fa-globe"></i> Language & Region</h2>
-                
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <h4>Language</h4>
-                        <p>Select your preferred language</p>
-                    </div>
-                    <select class="form-select" style="width: auto; min-width: 150px;">
-                        <option>English</option>
-                        <option>Filipino</option>
-                        <option>Bisaya</option>
-                    </select>
-                </div>
-                
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <h4>Timezone</h4>
-                        <p>Set your local timezone</p>
-                    </div>
-                    <select class="form-select" style="width: auto; min-width: 200px;">
-                        <option>Asia/Manila (GMT+8)</option>
-                        <option>Asia/Tokyo (GMT+9)</option>
-                        <option>UTC (GMT+0)</option>
-                        <option>America/New_York (GMT-5)</option>
-                    </select>
-                </div>
-                
-                <div class="setting-item">
-                    <div class="setting-info">
-                        <h4>Date Format</h4>
-                        <p>Choose your preferred date format</p>
-                    </div>
-                    <select class="form-select" style="width: auto; min-width: 150px;">
-                        <option>MM/DD/YYYY</option>
-                        <option>DD/MM/YYYY</option>
-                        <option>YYYY-MM-DD</option>
-                    </select>
-                </div>
-            </div>
             
             <!-- Danger Zone -->
             <div class="settings-card danger-zone">
@@ -508,7 +362,6 @@
                     </div>
                     <button class="btn-danger"><i class="fas fa-trash me-2"></i>Delete Account</button>
                 </div>
-            </div>
             
             <!-- Save Button -->
             <div class="text-center">
@@ -516,8 +369,6 @@
                     <i class="fas fa-save me-2"></i>Save Changes
                 </button>
             </div>
-            
-        </div>
     </main>
     
     <!-- Footer -->
@@ -550,29 +401,10 @@
             }
         });
         
-        // Compact Mode Toggle
-        document.getElementById('compactModeToggle').addEventListener('change', function() {
-            if (this.checked) {
-                document.body.classList.add('compact-mode');
-                localStorage.setItem('compactMode', 'enabled');
-            } else {
-                document.body.classList.remove('compact-mode');
-                localStorage.setItem('compactMode', 'disabled');
-            }
-        });
-        
-        // Check for saved compact mode
-        if (localStorage.getItem('compactMode') === 'enabled') {
-            document.getElementById('compactModeToggle').checked = true;
-            document.body.classList.add('compact-mode');
-        }
-        
         // Save Settings
         function saveSettings() {
             const successMessage = document.getElementById('successMessage');
             successMessage.classList.add('show');
-            
-            // Hide after 3 seconds
             setTimeout(() => {
                 successMessage.classList.remove('show');
             }, 3000);

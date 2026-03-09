@@ -43,7 +43,6 @@
             max-width: 900px;
             width: 100%;
             display: flex;
-            position: relative;
         }
         
         .register-image {
@@ -71,152 +70,6 @@
             opacity: 0.1;
         }
         
-        .register-image h2 {
-            color: #ffd700;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .register-image p {
-            text-align: center;
-            opacity: 0.9;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        
-        .register-image .logo-img {
-            width: 120px;
-            height: auto;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-        }
-        
-        .register-image .features-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 25px;
-            text-align: left;
-        }
-        
-        .register-image .features-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .register-image .features-list li i {
-            color: #ffd700;
-        }
-        
-        .register-form {
-            flex: 1;
-            padding: 40px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        
-        .register-form h1 {
-            color: #001a4d;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .register-form .subtitle {
-            color: #6b7280;
-            margin-bottom: 25px;
-        }
-        
-        .form-group {
-            margin-bottom: 18px;
-        }
-        
-        .form-group label {
-            color: #001a4d;
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: block;
-        }
-        
-        .form-control {
-            border: 2px solid #e5e7eb;
-            border-radius: 10px;
-            padding: 12px 15px;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-        
-        .form-control:focus {
-            border-color: #001a4d;
-            box-shadow: 0 0 0 3px rgba(0, 26, 77, 0.1);
-        }
-        
-        .input-group-text {
-            background: #f8f9fa;
-            border: 2px solid #e5e7eb;
-            border-left: none;
-            border-radius: 0 10px 10px 0;
-            color: #6b7280;
-        }
-        
-        .form-control.with-icon {
-            border-right: none;
-            border-radius: 10px 0 0 10px;
-        }
-        
-        .btn-register {
-            background: linear-gradient(90deg, #ff4444, #cc0000);
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 10px;
-            font-weight: 600;
-            width: 100%;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-        
-        .btn-register:hover {
-            background: linear-gradient(90deg, #cc0000, #ff4444);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(255, 68, 68, 0.3);
-        }
-        
-        .form-check-input:checked {
-            background-color: #001a4d;
-            border-color: #001a4d;
-        }
-        
-        .terms-link {
-            color: #001a4d;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .terms-link:hover {
-            color: #ffd700;
-            text-decoration: underline;
-        }
-        
-        .login-link {
-            text-align: center;
-            margin-top: 20px;
-            color: #6b7280;
-        }
-        
-        .login-link a {
-            color: #001a4d;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        
-        .login-link a:hover {
-            color: #ffd700;
-            text-decoration: underline;
-        }
-        
         .back-home {
             position: absolute;
             top: 20px;
@@ -229,6 +82,10 @@
             gap: 5px;
             transition: all 0.3s;
             z-index: 10;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1rem;
         }
         
         .back-home:hover {
@@ -236,46 +93,160 @@
             text-decoration: none;
         }
         
-        .password-strength {
+        .register-image h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .register-image p {
+            font-size: 1.1rem;
+            text-align: center;
+            opacity: 0.9;
+        }
+        
+        .register-form {
+            flex: 1;
+            padding: 40px;
+            position: relative;
+        }
+        
+        .register-form h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #001a4d;
+            margin-bottom: 5px;
+        }
+        
+        .register-form .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .form-group .input-group {
+            position: relative;
+        }
+        
+        .form-group input, .form-group select {
+            padding: 12px 15px 12px 40px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            border-color: #001a4d;
+            box-shadow: 0 0 0 3px rgba(0, 26, 77, 0.1);
+            outline: none;
+        }
+        
+        .form-group .input-group-text {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: #666;
+            z-index: 10;
+        }
+        
+        .password-requirements {
             margin-top: 8px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            font-size: 0.85rem;
         }
         
-        .password-strength .progress {
+        .password-requirements .progress {
             height: 6px;
+            margin-top: 8px;
             border-radius: 3px;
-            background: #e5e7eb;
+            background: #e9ecef;
         }
         
-        .password-strength .progress-bar {
-            transition: width 0.3s;
+        .password-requirements .progress-bar {
+            transition: all 0.3s;
         }
         
-        .password-strength .strength-text {
-            font-size: 12px;
+        .strength-text {
+            font-size: 0.8rem;
+            font-weight: 600;
             margin-top: 5px;
         }
         
         .strength-weak { color: #dc3545; }
         .strength-fair { color: #ffc107; }
-        .strength-good { color: #28a745; }
-        .strength-strong { color: #198754; }
+        .strength-good { color: #17a2b8; }
+        .strength-strong { color: #28a745; }
+        
+        .btn-register {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .btn-register:hover {
+            background: linear-gradient(135deg, #02205c 0%, #001a4d 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 26, 77, 0.3);
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            color: #666;
+        }
+        
+        .login-link a {
+            color: #001a4d;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
         
         @media (max-width: 768px) {
             .register-container {
                 flex-direction: column;
-                max-width: 400px;
             }
             
             .register-image {
-                padding: 30px 20px;
+                padding: 30px;
             }
             
-            .register-image .logo-img {
-                width: 80px;
+            .register-image h2 {
+                font-size: 1.8rem;
             }
             
             .register-form {
-                padding: 30px 20px;
+                padding: 30px;
             }
         }
     </style>
@@ -283,46 +254,56 @@
 <body>
     <div class="register-container">
         <div class="register-image">
-            <a href="{{ url('/') }}" class="back-home">
-                <i class="fas fa-arrow-left"></i>
-            </a>
-            <img src="{{ asset('images/LogoPNG.png') }}" alt="PESO Logo" class="logo-img">
-            <h2>Join PESO!</h2>
-            <p>Create your account to access employment opportunities and services in Manolo Fortich.</p>
-            
-            <ul class="features-list">
-                <li><i class="fas fa-check-circle"></i> Browse job listings</li>
-                <li><i class="fas fa-check-circle"></i> Apply for jobs online</li>
-                <li><i class="fas fa-check-circle"></i> Track your applications</li>
-                <li><i class="fas fa-check-circle"></i> Get career guidance</li>
-                <li><i class="fas fa-check-circle"></i> Access training programs</li>
-            </ul>
+            <button type="button" class="back-home" onclick="history.back()">
+                <i class="fas fa-arrow-left"></i> 
+            </button>
+            <img src="{{ asset('images/LogoPNG.png') }}" alt="PESO Logo" style="width: 150px; height: auto; margin-bottom: 20px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));">
+            <h2>Join PESO Manolo Fortich</h2>
+            <p>Create your account to access job opportunities and services</p>
         </div>
         
         <div class="register-form">
             <h1>Create Account</h1>
             <p class="subtitle">Fill in your details to get started</p>
             
-            <form method="POST" action="{{ route('register.post') }}">
+            <form method="POST" action="{{ route('register') }}">
                 @csrf
                 
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control with-icon" id="name" name="name" value="{{ old('name') }}" placeholder="Enter your full name" required>
-                        <span class="input-group-text">
-                            <i class="fas fa-user"></i>
-                        </span>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="first_name">First Name</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ old('first_name') }}" placeholder="Enter your first name" required>
+                                <span class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                            @error('first_name')
+                                <div class="text-danger mt-2" style="font-size: 14px;">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
-                    @error('name')
-                        <div class="text-danger mt-2" style="font-size: 14px;">{{ $message }}</div>
-                    @enderror
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ old('last_name') }}" placeholder="Enter your last name" required>
+                                <span class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                            @error('last_name')
+                                <div class="text-danger mt-2" style="font-size: 14px;">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <div class="input-group">
-                        <input type="email" class="form-control with-icon" id="email" name="email" value="{{ old('email') }}" placeholder="Enter your email" required>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Enter your email" required>
                         <span class="input-group-text">
                             <i class="fas fa-envelope"></i>
                         </span>
@@ -333,28 +314,47 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="role">Register as</label>
                     <div class="input-group">
-                        <input type="password" class="form-control with-icon" id="password" name="password" placeholder="Create a password" required>
+                        <select class="form-control" id="role" name="role" required style="padding-left: 40px;">
+                            <option value="" selected disabled>Select your role</option>
+                            <option value="employee">Employee (Job Seeker)</option>
+                            <option value="employer">Employer</option>
+                        </select>
                         <span class="input-group-text">
-                            <i class="fas fa-lock"></i>
+                            <i class="fas fa-user-tag"></i>
                         </span>
                     </div>
-                    <div class="password-strength">
-                        <div class="progress">
-                            <div class="progress-bar" id="passwordStrength" role="progressbar" style="width: 0%"></div>
-                        </div>
-                        <span class="strength-text" id="strengthText"></span>
-                    </div>
-                    @error('password')
+                    @error('role')
                         <div class="text-danger mt-2" style="font-size: 14px;">{{ $message }}</div>
                     @enderror
                 </div>
                 
                 <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Create a password" required>
+                        <span class="input-group-text">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </div>
+                    @error('password')
+                        <div class="text-danger mt-2" style="font-size: 14px;">{{ $message }}</div>
+                    @enderror
+                    
+                    <div class="password-requirements">
+                        <small>Password strength:</small>
+                        <div class="progress">
+                            <div id="passwordStrength" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <span id="strengthText" class="strength-text"></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
                     <label for="password_confirmation">Confirm Password</label>
                     <div class="input-group">
-                        <input type="password" class="form-control with-icon" id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" required>
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" required>
                         <span class="input-group-text">
                             <i class="fas fa-lock"></i>
                         </span>
@@ -362,15 +362,6 @@
                     @error('password_confirmation')
                         <div class="text-danger mt-2" style="font-size: 14px;">{{ $message }}</div>
                     @enderror
-                </div>
-                
-                <div class="form-group">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
-                        <label class="form-check-label" for="terms">
-                            I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
-                        </label>
-                    </div>
                 </div>
                 
                 <button type="submit" class="btn btn-register">
@@ -382,7 +373,6 @@
                 Already have an account? <a href="{{ route('login') }}">Sign In</a>
             </p>
         </div>
-    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

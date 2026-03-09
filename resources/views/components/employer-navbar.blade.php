@@ -29,28 +29,34 @@
             <div class="nav-item">
                 <a class="btn" href="#">
                     <i class="fas fa-briefcase"></i>
-                    POSTS
+                    MY JOBS
+                    <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Post a Job</a></li>
+                    <li><a href="#">Manage Jobs</a></li>
+                    <li><a href="#">Job Listings</a></li>
+                </ul>
             </div>
 
             <div class="nav-item">
                 <a class="btn" href="#">
                     <i class="fas fa-users"></i>
                     APPLICANTS
+                    <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">View Applicants</a></li>
+                    <li><a href="#">Pending Applications</a></li>
+                    <li><a href="#">Shortlisted</a></li>
+                </ul>
             </div>
 
             <div class="nav-item">
                 <a class="btn" href="#">
-                    <i class="fas fa-calendar-alt"></i>
-                    EVENTS
-                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    <i class="fas fa-chart-line"></i>
+                    ANALYTICS
                 </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Job Fairs</a></li>
-                    <li><a href="#">Training Sessions</a></li>
-                    <li><a href="#">Seminars</a></li>
-                </ul>
             </div>
 
         </nav>
@@ -65,27 +71,29 @@
                 </a>
                 <ul class="dropdown-menu notification-dropdown">
                     <li class="dropdown-header">Notifications</li>
-                    <li><a href="#"><i class="fas fa-user-plus"></i> New applicant for Software Developer</a></li>
-                    <li><a href="#"><i class="fas fa-calendar-check"></i> Interview scheduled with John Doe</a></li>
+                    <li><a href="#"><i class="fas fa-user"></i> New applicant for Software Engineer</a></li>
                     <li><a href="#"><i class="fas fa-check-circle"></i> Job posting approved</a></li>
+                    <li><a href="#"><i class="fas fa-eye"></i> Your job was viewed 50 times</a></li>
                     <li class="divider"></li>
                     <li><a href="#" class="view-all">View All Notifications</a></li>
                 </ul>
             </div>
 
+
+
             <!-- User Menu -->
             <div class="nav-item user-menu">
                 <a class="btn user-btn" href="#">
-                    <div class="user-avatar">EM</div>
+                    <div class="user-avatar">EP</div>
                     <span class="user-name">Employer</span>
                     <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </a>
                 <ul class="dropdown-menu user-dropdown">
-                    <li><a href="#"><i class="fas fa-user"></i> My Profile</a></li>
+                    <li><a href="{{ url('/profile') }}"><i class="fas fa-user"></i> My Profile</a></li>
                     <li><a href="{{ url('/settings') }}"><i class="fas fa-cog"></i> Settings</a></li>
                     <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
                     <li class="divider"></li>
-                    <li><a href="{{ url('/') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    <li><a href="{{ url('/login') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </div>
     </div>

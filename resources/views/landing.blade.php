@@ -408,7 +408,7 @@
         <p style="color: #ffffff; font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Sign Up to access job listings, apply for positions, and track your applications. New users can register to create an account.</p>
         <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
 <a href="{{ route('register') }}" class="btn btn-lg" style="background: linear-gradient(90deg, #ff4444, #cc0000); color: white; border: none; padding: 15px 40px; border-radius: 10px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s;">
-                <i class="fas fa-user-plus me-2"></i> Sign Up
+                <i class="fas fa-rocket"></i> Click here
             </a>
         </div>
     </div>
