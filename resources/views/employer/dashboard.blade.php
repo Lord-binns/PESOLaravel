@@ -20,92 +20,93 @@
         /* Enhanced DateTime Bar */
         .datetime-bar {
             background: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
-            padding: 25px 30px;
+            padding: 20px 30px;
             border-radius: 15px;
             margin-bottom: 40px;
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
         /* Analog Clock */
-        .clock-container { display: flex; align-items: center; gap: 25px; }
+        .clock-container { display: flex; align-items: center; gap: 20px; }
         
         .analog-clock {
-            width: 120px; height: 120px; border-radius: 50%;
+            width: 100px; height: 100px; border-radius: 50%;
             background: linear-gradient(145deg, #0a1f4d, #001a4d);
-            border: 4px solid #ffd700;
+            border: 3px solid #ffd700;
             position: relative;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), inset 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3), inset 0 0 15px rgba(0,0,0,0.5);
         }
         
         .clock-center {
             position: absolute; top: 50%; left: 50%;
-            width: 12px; height: 12px; background: #ffd700;
+            width: 10px; height: 10px; background: #ffd700;
             border-radius: 50%; transform: translate(-50%, -50%); z-index: 10;
         }
         
         .clock-hand {
             position: absolute; bottom: 50%; left: 50%;
-            transform-origin: bottom center; border-radius: 3px;
+            transform-origin: bottom center; border-radius: 2px;
         }
         
-        .hour-hand { width: 4px; height: 35px; background: #ffd700; transform: translateX(-50%) rotate(0deg); }
-        .minute-hand { width: 3px; height: 45px; background: #ffffff; transform: translateX(-50%) rotate(0deg); }
-        .second-hand { width: 2px; height: 50px; background: #ff4444; transform: translateX(-50%) rotate(0deg); }
+        .hour-hand { width: 3px; height: 28px; background: #ffd700; transform: translateX(-50%) rotate(0deg); }
+        .minute-hand { width: 2px; height: 35px; background: #ffffff; transform: translateX(-50%) rotate(0deg); }
+        .second-hand { width: 1px; height: 40px; background: #ff4444; transform: translateX(-50%) rotate(0deg); }
         
         .clock-number {
-            position: absolute; color: #ffffff; font-size: 10px;
-            font-weight: bold; width: 20px; height: 20px;
-            text-align: center; line-height: 20px;
+            position: absolute; color: #ffffff; font-size: 8px;
+            font-weight: bold; width: 14px; height: 14px;
+            text-align: center; line-height: 14px;
         }
-        .clock-number.n12 { top: 5px; left: 50%; transform: translateX(-50%); }
-        .clock-number.n3 { top: 50%; right: 5px; transform: translateY(-50%); }
-        .clock-number.n6 { bottom: 5px; left: 50%; transform: translateX(-50%); }
-        .clock-number.n9 { top: 50%; left: 5px; transform: translateY(-50%); }
+        .clock-number.n12 { top: 3px; left: 50%; transform: translateX(-50%); }
+        .clock-number.n3 { top: 50%; right: 3px; transform: translateY(-50%); }
+        .clock-number.n6 { bottom: 3px; left: 50%; transform: translateX(-50%); }
+        .clock-number.n9 { top: 50%; left: 3px; transform: translateY(-50%); }
         
         .digital-time { text-align: center; }
         .digital-time .time-display {
-            font-size: 42px; font-weight: 700; color: #ffd700;
+            font-size: 32px; font-weight: 700; color: #ffd700;
             line-height: 1; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
             font-family: 'Courier New', monospace;
         }
         .digital-time .time-period {
-            font-size: 16px; color: rgba(255, 255, 255, 0.8);
+            font-size: 12px; color: rgba(255, 255, 255, 0.8);
             text-transform: uppercase; letter-spacing: 2px;
         }
-        .digital-time .date-display { font-size: 14px; color: rgba(255, 255, 255, 0.7); margin-top: 5px; }
+        .digital-time .date-display { font-size: 12px; color: rgba(255, 255, 255, 0.7); margin-top: 3px; }
         
-        /* Full Calendar */
+        /* Full Calendar - Shorter & Wider */
         .calendar-wrapper {
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+            padding: 12px 20px;
             border-radius: 12px;
             border: 1px solid rgba(255, 215, 0, 0.3);
+            min-width: 320px;
         }
         
         .calendar-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
         .calendar-header h4 {
             color: #ffd700;
             margin: 0;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
         }
         
         .calendar-nav {
             color: white;
             cursor: pointer;
-            font-size: 16px;
-            padding: 5px 10px;
+            font-size: 14px;
+            padding: 3px 8px;
             border-radius: 5px;
             transition: background 0.3s;
         }
@@ -115,27 +116,27 @@
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
+            gap: 3px;
         }
         
         .calendar-day-header {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             text-align: center;
-            padding: 5px 0;
+            padding: 3px 0;
             text-transform: uppercase;
         }
         
         .calendar-day {
-            aspect-ratio: 1;
+            aspect-ratio: 1.3;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 500;
-            border-radius: 8px;
+            border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -157,9 +158,9 @@
         .calendar-day.has-event::after {
             content: '';
             position: absolute;
-            bottom: 3px;
-            width: 5px;
-            height: 5px;
+            bottom: 2px;
+            width: 4px;
+            height: 4px;
             background: #ff4444;
             border-radius: 50%;
         }
@@ -252,9 +253,10 @@
         }
         
         @media (max-width: 768px) {
-            .datetime-bar { flex-direction: column; text-align: center; }
+            .datetime-bar { flex-direction: column; text-align: center; gap: 20px; }
             .clock-container { flex-direction: column; }
-            .analog-clock { width: 100px; height: 100px; }
+            .analog-clock { width: 80px; height: 80px; }
+            .calendar-wrapper { min-width: 280px; }
         }
     </style>
 </head>
@@ -284,7 +286,7 @@
                     </div>
                 </div>
                 
-                <!-- Full Calendar -->
+                <!-- Full Calendar - Shorter & Wider -->
                 <div class="calendar-wrapper">
                     <div class="calendar-header">
                         <span class="calendar-nav" onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i></span>
@@ -489,7 +491,7 @@
         let currentMonth = currentDate.getMonth();
         let currentYear = currentDate.getFullYear();
         
-        const eventDays = [5, 10, 15, 20, 25]; // Days with events
+        const eventDays = [5, 10, 15, 20, 25];
         
         function updateDateTime() {
             const now = new Date();
@@ -535,12 +537,10 @@
                 calendarHTML += `<div class="calendar-day-header">${day}</div>`;
             });
             
-            // Previous month days
             for (let i = firstDay - 1; i >= 0; i--) {
                 calendarHTML += `<div class="calendar-day other-month">${daysInPrevMonth - i}</div>`;
             }
             
-            // Current month days
             for (let day = 1; day <= daysInMonth; day++) {
                 let classes = 'calendar-day';
                 if (isCurrentMonth && today.getDate() === day) classes += ' today';
@@ -548,7 +548,6 @@
                 calendarHTML += `<div class="${classes}">${day}</div>`;
             }
             
-            // Next month days
             const totalCells = firstDay + daysInMonth;
             const remainingCells = 42 - totalCells;
             for (let i = 1; i <= remainingCells; i++) {
