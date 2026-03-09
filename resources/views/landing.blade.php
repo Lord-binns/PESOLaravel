@@ -420,7 +420,7 @@
 
     <!-- Mission -->
     <div class="mission">
-        <h1>🎯 Mission</h1>
+        <h1><i class="fas fa-bullseye" style="margin-right: 10px;"></i> Mission</h1>
         <p>To promote economic growth and sustainable development in Manolo Fortich through the implementation of the PESO program, providing employment opportunities and skills development for the community.</p>
     </div>
 
@@ -435,7 +435,7 @@
 
     <!-- Vision -->
     <div class="vision">
-        <h1>🌟 Vision</h1>
+        <h1><i class="fas fa-lightbulb" style="margin-right: 10px;"></i> Vision</h1>
         <p>A premier agri-ecotourist destination with people resilient and responsible towards the environment propelled by well-governed institutions responsive to the challenges of development.</p>
     </div>
 

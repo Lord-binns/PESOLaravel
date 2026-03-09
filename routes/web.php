@@ -15,11 +15,24 @@ Route::get('/about', function () {
     return view('about');
 });
 
+// Dashboard Routes
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-// Authentication Routes
+Route::get('/employer/dashboard', function () {
+    return view('employer-dashboard');
+});
+
+Route::get('/employee/dashboard', function () {
+    return view('employee-dashboard');
+});
+
+Route::get('/settings', function () {
+    return view('settings');
+});
+
+// Authentication Routes - Separate Login and Register Pages
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
@@ -34,7 +47,7 @@ Route::post('/login', function () {
 })->name('login.post');
 
 Route::post('/register', function () {
-    return redirect('/dashboard');
+    return redirect('/login');
 })->name('register.post');
 
 Route::post('/logout', function () {
@@ -45,4 +58,3 @@ Route::post('/logout', function () {
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware('auth')->name('dashboard');
-

@@ -43,6 +43,7 @@
             max-width: 900px;
             width: 100%;
             display: flex;
+            position: relative;
         }
         
         .login-image {
@@ -222,14 +223,17 @@
             left: 20px;
             color: white;
             text-decoration: none;
-            font-weight: 500;
-            display: flex;
+            font-weight: 600;
+            display: inline-flex;
             align-items: center;
             gap: 5px;
+            transition: all 0.3s;
+            z-index: 10;
         }
         
         .back-home:hover {
             color: #ffd700;
+            text-decoration: none;
         }
         
         @media (max-width: 768px) {
@@ -253,12 +257,11 @@
     </style>
 </head>
 <body>
-    <a href="{{ url('/') }}" class="back-home">
-        <i class="fas fa-arrow-left"></i> Back to Home
-    </a>
-
     <div class="login-container">
         <div class="login-image">
+            <a href="{{ url('/') }}" class="back-home">
+                <i class="fas fa-arrow-left"></i>
+            </a>
             <img src="{{ asset('images/LogoPNG.png') }}" alt="PESO Logo" class="logo-img">
             <h2>Welcome Back!</h2>
             <p>Access your PESO Manolo Fortich account to manage your job applications, track your employment status, and connect with potential employers.</p>
@@ -268,7 +271,7 @@
             <h1>Sign In</h1>
             <p class="subtitle">Enter your credentials to access your account</p>
             
-<form method="POST" action="{{ route('login.post') }}">
+            <form method="POST" action="{{ route('login.post') }}">
                 @csrf
                 
                 <div class="form-group">

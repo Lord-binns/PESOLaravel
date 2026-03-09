@@ -1,12 +1,12 @@
-<header class="site-header">
+<header class="dashboard-header">
     <div class="header-container">
         
-        <a class="brand" href="#">
+        <a class="brand" href="{{ url('/') }}">
             <x-application-logo class="application-logo" />
             
             <div class="brand-text-wrap">
-                <span class="brand-text">Public Employment Service Office</span>
-                <h1 class="site-title">Manolo Fortich</h1>
+                <span class="brand-text">PESO Manolo Fortich</span>
+                <h1 class="site-title">Job Seeker Portal</h1>
             </div>
         </a>
        
@@ -20,90 +20,97 @@
         <nav class="nav" id="mainNav">
 
             <div class="nav-item">
-                <a class="btn" href="/">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
+                <a class="btn" href="{{ url('/employee/dashboard') }}">
+                    <i class="fas fa-home"></i>
                     HOME
                 </a>
             </div>
 
             <div class="nav-item">
                 <a class="btn" href="#">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <circle cx="12" cy="12" r="1"/>
-                        <path d="M12 1v6m0 6v6M4.22 4.22l4.24m2.12 4.24 2.12l4.24 4.24M1 12h6m6 0h6m-15.78 7.78l4.24-4.24m2.12-2.12l4.24-4.24"/>
-                    </svg>
-                    GET TO KNOW US
+                    <i class="fas fa-briefcase"></i>
+                    JOBS
                     <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ url('/history') }}">Our History</a></li>
-                    <li><a href="{{ url('/about') }}">Our Team</a></li>
+                    <li><a href="#">Browse Jobs</a></li>
+                    <li><a href="#">My Applications</a></li>
+                    <li><a href="#">Saved Jobs</a></li>
                 </ul>
             </div>
 
             <div class="nav-item">
                 <a class="btn" href="#">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                    </svg>
-                    SERVICES
+                    <i class="fas fa-calendar-alt"></i>
+                    EVENTS
                     <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Job Placement</a></li>
-                    <li><a href="#">Skills Training</a></li>
-                    <li><a href="#">Career Counseling</a></li>
-                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Job Fairs</a></li>
+                    <li><a href="#">Training Sessions</a></li>
+                    <li><a href="#">Seminars</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-item">
+                <a class="btn" href="#">
+                    <i class="fas fa-file-alt"></i>
+                    DOCUMENTS
+                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">PESO Clearance</a></li>
+                    <li><a href="#">Certificates</a></li>
+                    <li><a href="#">Requirements</a></li>
                 </ul>
             </div>
 
         </nav>
 
-        <!-- Right Section -->
+        <!-- Right Section - Notifications & User Menu -->
         <div class="nav-right">
-            <div class="nav-item">
-                <a class="btn search-btn" href="#" onclick="toggleSearch()" title="Search">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"/>
-                        <path d="m21 21-4.35-4.35"/>
-                    </svg>
+            <!-- Notifications -->
+            <div class="nav-item notification-item">
+                <a class="btn notification-btn" href="#">
+                    <i class="fas fa-bell notification-icon"></i>
+                    <span class="notification-badge">3</span>
                 </a>
+                <ul class="dropdown-menu notification-dropdown">
+                    <li class="dropdown-header">Notifications</li>
+                    <li><a href="#"><i class="fas fa-briefcase"></i> New job matching your profile</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-check"></i> Interview scheduled with Tech Corp</a></li>
+                    <li><a href="#"><i class="fas fa-check-circle"></i> Your application was viewed</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#" class="view-all">View All Notifications</a></li>
+                </ul>
             </div>
+
+            <!-- Settings -->
             <div class="nav-item">
                 <a class="btn" href="{{ url('/settings') }}" title="Settings">
-                    <i class="fas fa-cog" style="color: #ffd700;"></i>
+                    <i class="fas fa-cog" style="color: white;"></i>
                 </a>
             </div>
-    </div>
 
-    <!-- Search Overlay -->
-    <div id="search-overlay">
-        <form action="#" method="GET">
-            <input type="text" name="search" placeholder="Search..." autofocus>
-            <button type="submit">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"/>
-                    <path d="m21 21-4.35-4.35"/>
-                </svg>
-            </button>
-        </form>
+            <!-- User Menu -->
+            <div class="nav-item user-menu">
+                <a class="btn user-btn" href="#">
+                    <div class="user-avatar">JS</div>
+                    <span class="user-name">John Smith</span>
+                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </a>
+                <ul class="dropdown-menu user-dropdown">
+                    <li><a href="#"><i class="fas fa-user"></i> My Profile</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ url('/') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </div>
     </div>
 </header>
 
 <script>
-function toggleSearch() {
-    var searchOverlay = document.getElementById('search-overlay');
-    if (searchOverlay.style.display === 'none' || searchOverlay.style.display === '') {
-        searchOverlay.style.display = 'block';
-    } else {
-        searchOverlay.style.display = 'none';
-    }
-}
-
 document.getElementById('navbarToggler').addEventListener('click', function() {
     document.getElementById('mainNav').classList.toggle('active');
     document.querySelector('.nav-right').classList.toggle('active');
@@ -112,8 +119,8 @@ document.getElementById('navbarToggler').addEventListener('click', function() {
 
 <style>
 
-/* HEADER LAYOUT */
-.site-header {
+/* DASHBOARD HEADER */
+.dashboard-header {
     background: linear-gradient(
         to right,
         #02205c 0%,
@@ -159,21 +166,21 @@ document.getElementById('navbarToggler').addEventListener('click', function() {
 }
 
 .brand-text {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1;
     color: #ffffff;
     opacity: 0.9;
 }
 
 .site-title {
-    font-size: 3rem;
-    color: #f8ce00;
+    font-size: 1.5rem;
+    color: #ffd700;
     margin: 0;
     line-height: 1.1;
 }
 
 .application-logo {
-    width: 70px;
+    width: 50px;
     height: auto;
 }
 
@@ -259,7 +266,7 @@ document.getElementById('navbarToggler').addEventListener('click', function() {
     display: block;
 }
 
-/* RIGHT NAV */
+/* RIGHT NAV - Notifications & User Menu */
 .nav-right {
     display: flex !important;
     align-items: center !important;
@@ -269,47 +276,114 @@ document.getElementById('navbarToggler').addEventListener('click', function() {
     height: 80px;
 }
 
-.nav-right .btn {
+/* Notification Bell */
+.notification-item {
+    position: relative;
+    margin-right: 15px;
+}
+
+.notification-btn {
+    position: relative;
+    padding: 8px 12px !important;
+    font-size: 18px;
+    color: white !important;
+}
+
+.notification-icon {
+    color: white !important;
+}
+
+.notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #ff4444;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.notification-dropdown {
+    right: 0;
+    left: auto;
+    min-width: 280px;
+}
+
+.notification-dropdown .dropdown-header {
+    font-weight: bold;
+    color: #001a4d;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.notification-dropdown li a {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.notification-dropdown li a i {
+    color: #001a4d;
+    margin-top: 3px;
+}
+
+.notification-dropdown .view-all {
+    text-align: center;
+    font-weight: 600;
+    color: #001a4d;
+}
+
+/* User Menu */
+.user-menu {
+    position: relative;
+}
+
+.user-btn {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
     color: white !important;
     background: transparent !important;
     border: none !important;
-    padding: 8px 12px;
+    padding: 5px 10px !important;
 }
 
-.search-btn {
-    background: transparent !important;
-}
-
-/* Search Overlay */
-#search-overlay {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 150px;
-    background: #fff;
-    padding: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-    border-radius: 8px;
-}
-
-#search-overlay input {
-    padding: 8px 12px;
-    border: 2px solid #ffd700;
-    border-radius: 20px;
-    outline: none;
-    font-size: 14px;
-    width: 200px;
-    color: #001a4d;
-}
-
-#search-overlay button {
-    padding: 8px 12px;
+.user-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
     background: #ffd700;
     color: #001a4d;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.user-name {
+    font-weight: 500;
+}
+
+.user-dropdown {
+    right: 0;
+    left: auto;
+}
+
+.user-dropdown li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-dropdown li.divider {
+    height: 1px;
+    background: #dee2e6;
+    margin: 5px 0;
 }
 
 /* MOBILE STYLES */
@@ -327,16 +401,16 @@ document.getElementById('navbarToggler').addEventListener('click', function() {
         margin-left: auto;
     }
     
-    .brand-text {
+    .brand-text-wrap {
         display: none;
     }
     
     .site-title {
-        font-size: 1.5rem !important;
+        font-size: 1.2rem !important;
     }
     
     .application-logo {
-        width: 50px !important;
+        width: 40px !important;
     }
     
     .nav {
@@ -384,13 +458,14 @@ document.getElementById('navbarToggler').addEventListener('click', function() {
     
     .nav-right {
         display: none !important;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: flex-end;
         width: 100%;
         order: 6;
         padding: 15px 0;
         border-top: 1px solid rgba(255,255,255,0.2);
         height: auto;
-        padding: 0;
+        padding: 10px 0;
     }
     
     .nav-right.active {
@@ -398,31 +473,21 @@ document.getElementById('navbarToggler').addEventListener('click', function() {
     }
     
     .nav-right .nav-item {
-        width: 100%;
-    }
-    
-    .nav-right .btn {
-        justify-content: flex-start;
-        padding: 12px 0;
-    }
-    
-    #search-overlay {
-        right: 10px;
-        left: 10px;
-    }
-    
-    #search-overlay input {
-        width: 100%;
+        width: auto;
     }
 }
 
 @media (max-width: 576px) {
     .site-title {
-        font-size: 1.2rem !important;
+        font-size: 1rem !important;
     }
     
     .nav .btn {
         font-size: 14px;
+    }
+    
+    .user-name {
+        display: none;
     }
 }
 </style>

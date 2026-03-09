@@ -43,6 +43,7 @@
             max-width: 900px;
             width: 100%;
             display: flex;
+            position: relative;
         }
         
         .register-image {
@@ -222,14 +223,17 @@
             left: 20px;
             color: white;
             text-decoration: none;
-            font-weight: 500;
-            display: flex;
+            font-weight: 600;
+            display: inline-flex;
             align-items: center;
             gap: 5px;
+            transition: all 0.3s;
+            z-index: 10;
         }
         
         .back-home:hover {
             color: #ffd700;
+            text-decoration: none;
         }
         
         .password-strength {
@@ -277,12 +281,11 @@
     </style>
 </head>
 <body>
-    <a href="{{ url('/') }}" class="back-home">
-        <i class="fas fa-arrow-left"></i> Back to Home
-    </a>
-
     <div class="register-container">
         <div class="register-image">
+            <a href="{{ url('/') }}" class="back-home">
+                <i class="fas fa-arrow-left"></i>
+            </a>
             <img src="{{ asset('images/LogoPNG.png') }}" alt="PESO Logo" class="logo-img">
             <h2>Join PESO!</h2>
             <p>Create your account to access employment opportunities and services in Manolo Fortich.</p>
@@ -300,7 +303,7 @@
             <h1>Create Account</h1>
             <p class="subtitle">Fill in your details to get started</p>
             
-<form method="POST" action="{{ route('register.post') }}">
+            <form method="POST" action="{{ route('register.post') }}">
                 @csrf
                 
                 <div class="form-group">
