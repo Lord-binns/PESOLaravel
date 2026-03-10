@@ -280,35 +280,42 @@
             background: #001a4d;
         }
         
-        /* Pending Jobs Cards */
-        .pending-jobs-grid {
+        /* Jobs Grid */
+        .jobs-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
         }
         
-        .pending-job-card {
+        .job-card {
             background: white;
             border-radius: 10px;
             padding: 15px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-left: 4px solid #ffc107;
             transition: transform 0.2s;
         }
         
-        .pending-job-card:hover { 
+        .job-card.active {
+            border-left: 4px solid #28a745;
+        }
+        
+        .job-card.pending {
+            border-left: 4px solid #ffc107;
+        }
+        
+        .job-card:hover { 
             transform: translateY(-3px); 
             box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
         
-        .pending-job-header {
+        .job-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 10px;
         }
         
-        .pending-job-title { 
+        .job-title { 
             font-size: 14px; 
             font-weight: 700; 
             color: #001a4d; 
@@ -316,29 +323,30 @@
             line-height: 1.3;
         }
         
-        .pending-job-status { 
+        .job-status { 
             padding: 2px 8px; 
             border-radius: 10px; 
             font-size: 9px; 
             font-weight: 600; 
             white-space: nowrap;
         }
-        .pending-job-status.pending { background: #fff3cd; color: #856404; }
+        .job-status.active { background: #d4edda; color: #155724; }
+        .job-status.pending { background: #fff3cd; color: #856404; }
         
-        .pending-job-salary { 
+        .job-salary { 
             font-size: 12px; 
             color: #28a745; 
             font-weight: 600; 
             margin-bottom: 8px;
         }
         
-        .pending-job-details { 
+        .job-details { 
             display: flex; 
             gap: 15px; 
             flex-wrap: wrap; 
             margin-bottom: 10px; 
         }
-        .pending-job-detail { 
+        .job-detail { 
             display: flex; 
             align-items: center; 
             gap: 5px; 
@@ -346,14 +354,14 @@
             font-size: 11px; 
         }
         
-        .pending-job-actions { 
+        .job-actions { 
             display: flex; 
             gap: 8px; 
             margin-top: 12px; 
             padding-top: 12px;
             border-top: 1px solid #eee;
         }
-        .pending-job-actions .btn-action { 
+        .job-actions .btn-action { 
             flex: 1;
             padding: 8px 12px; 
             border-radius: 6px; 
@@ -407,17 +415,8 @@
             border: none;
         }
         
-        /* Modal Styles */
-        .modal-header {
-            background: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
-            color: white;
-        }
-        .modal-header .btn-close {
-            filter: invert(1);
-        }
-        
         @media (max-width: 991px) {
-            .pending-jobs-grid { grid-template-columns: 1fr; }
+            .jobs-grid { grid-template-columns: 1fr; }
         }
         
         @media (max-width: 768px) {
@@ -438,8 +437,8 @@
     
     <!-- Sidebar -->
     <div class="dashboard-sidebar" id="dashboardSidebar">
-        <a href="{{ url('/admin/dashboard') }}" class="sidebar-icon-btn active"><i class="fas fa-th-large"></i><span>Home</span></a>
-        <a href="{{ route('dashboard') }}" class="sidebar-icon-btn">
+        <a href="{{ route('dashboard') }}" class="sidebar-icon-btn active"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="{{ route('admin.pending') }}" class="sidebar-icon-btn">
             <i class="fas fa-clock"></i><span>Pending</span>
             @if($pendingJobsCount > 0)
                 <span class="sidebar-badge">{{ $pendingJobsCount }}</span>
@@ -453,9 +452,9 @@
         <a href="#" class="sidebar-icon-btn"><i class="fas fa-chart-line"></i><span>Reports</span></a>
         <div class="sidebar-divider"></div>
         <a href="#" class="sidebar-icon-btn"><i class="fas fa-cog"></i><span>Settings</span></a>
-        <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+        <form action="{{ route('logout') }}" method="POST">
             @csrf
-            <button type="submit" class="sidebar-icon-btn" style="border: none; cursor: pointer;">
+            <button type="submit" class="sidebar-icon-btn" style="border: none; cursor: pointer; width: 55px;">
                 <i class="fas fa-sign-out-alt"></i><span>Logout</span>
             </button>
         </form>
@@ -526,29 +525,65 @@
             </div>
         </div>
         
-        <!-- Pending Jobs Section -->
+        <!-- Active Jobs Section -->
         <div class="section-title">
-            <i class="fas fa-clock"></i> Pending Job Approvals
+            <i class="fas fa-briefcase"></i> All Active Job Posts
         </div>
         
-        @if($pendingJobs->count() > 0)
-            <div class="pending-jobs-grid">
+        @if($activeJobs->count() > 0)
+            <div class="jobs-grid">
+                @foreach($activeJobs as $job)
+                    <div class="job-card active">
+                        <div class="job-header">
+                            <h5 class="job-title">{{ $job->position_title }}</h5>
+                            <span class="job-status active">Active</span>
+                        </div>
+                        <div class="job-salary">{{ $job->salary }}</div>
+                        <div class="job-details">
+                            <span class="job-detail"><i class="fas fa-map-marker-alt"></i> {{ $job->place_of_work }}</span>
+                            <span class="job-detail"><i class="fas fa-users"></i> {{ $job->vacancy_count }} position(s)</span>
+                        </div>
+                        <div class="job-details">
+                            <span class="job-detail"><i class="fas fa-calendar"></i> Posted: {{ \Carbon\Carbon::parse($job->posting_date)->format('M d, Y') }}</span>
+                            <span class="job-detail"><i class="fas fa-calendar-check"></i> Valid until: {{ \Carbon\Carbon::parse($job->valid_until)->format('M d, Y') }}</span>
+                        </div>
+                        <div class="job-actions">
+                            <button class="btn-action btn-view"><i class="fas fa-eye"></i> View Details</button>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <div class="empty-state">
+                <i class="fas fa-briefcase"></i>
+                <h5>No Active Jobs</h5>
+                <p>There are no active job postings yet.</p>
+            </div>
+        @endif
+        
+        <!-- Pending Jobs Section (if on pending page) -->
+        @if(isset($pendingJobs) && $pendingJobs->count() > 0)
+            <div class="section-title">
+                <i class="fas fa-clock"></i> Pending Job Approvals
+            </div>
+            
+            <div class="jobs-grid">
                 @foreach($pendingJobs as $job)
-                    <div class="pending-job-card">
-                        <div class="pending-job-header">
-                            <h5 class="pending-job-title">{{ $job->position_title }}</h5>
-                            <span class="pending-job-status pending">Pending</span>
+                    <div class="job-card pending">
+                        <div class="job-header">
+                            <h5 class="job-title">{{ $job->position_title }}</h5>
+                            <span class="job-status pending">Pending</span>
                         </div>
-                        <div class="pending-job-salary">{{ $job->salary }}</div>
-                        <div class="pending-job-details">
-                            <span class="pending-job-detail"><i class="fas fa-map-marker-alt"></i> {{ $job->place_of_work }}</span>
-                            <span class="pending-job-detail"><i class="fas fa-users"></i> {{ $job->vacancy_count }} position(s)</span>
+                        <div class="job-salary">{{ $job->salary }}</div>
+                        <div class="job-details">
+                            <span class="job-detail"><i class="fas fa-map-marker-alt"></i> {{ $job->place_of_work }}</span>
+                            <span class="job-detail"><i class="fas fa-users"></i> {{ $job->vacancy_count }} position(s)</span>
                         </div>
-                        <div class="pending-job-details">
-                            <span class="pending-job-detail"><i class="fas fa-calendar"></i> Posted: {{ \Carbon\Carbon::parse($job->posting_date)->format('M d, Y') }}</span>
-                            <span class="pending-job-detail"><i class="fas fa-calendar-check"></i> Valid until: {{ \Carbon\Carbon::parse($job->valid_until)->format('M d, Y') }}</span>
+                        <div class="job-details">
+                            <span class="job-detail"><i class="fas fa-calendar"></i> Posted: {{ \Carbon\Carbon::parse($job->posting_date)->format('M d, Y') }}</span>
+                            <span class="job-detail"><i class="fas fa-calendar-check"></i> Valid until: {{ \Carbon\Carbon::parse($job->valid_until)->format('M d, Y') }}</span>
                         </div>
-                        <div class="pending-job-actions">
+                        <div class="job-actions">
                             <form action="{{ route('admin.job.approve', $job->id) }}" method="POST" style="flex: 1;">
                                 @csrf
                                 <button type="submit" class="btn-action btn-approve"><i class="fas fa-check"></i> Approve</button>
@@ -560,12 +595,6 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
-        @else
-            <div class="empty-state">
-                <i class="fas fa-check-circle"></i>
-                <h5>No Pending Jobs</h5>
-                <p>All job postings have been reviewed</p>
             </div>
         @endif
     </div>
