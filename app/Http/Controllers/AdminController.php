@@ -70,6 +70,13 @@ class AdminController extends Controller
     // Show pending jobs page
     public function pendingJobs()
     {
+        // Get all active job posts (for display on pending page)
+        $activeJobs = DB::table('job_posts')
+            ->where('status', 'active')
+            ->where('valid_until', '>=', now()->toDateString())
+            ->orderBy('created_at', 'desc')
+            ->get();
+            
         // Get pending job posts
         $pendingJobs = DB::table('job_posts')
             ->where('status', 'pending')
@@ -102,8 +109,8 @@ class AdminController extends Controller
             ->get();
         
         return view('admin.dashboard', compact(
-            'pendingJobs',
             'activeJobs',
+            'pendingJobs',
             'activeJobsCount', 
             'pendingJobsCount', 
             'establishmentsCount', 
