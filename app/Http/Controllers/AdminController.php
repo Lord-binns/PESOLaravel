@@ -54,7 +54,7 @@ class AdminController extends Controller
                     'updated_at' => now()
                 ]);
             
-            return redirect()->route('admin.dashboard')->with('success', 'Job approved successfully!');
+            return redirect()->route('dashboard')->with('success', 'Job approved successfully!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error approving job: ' . $e->getMessage());
         }
@@ -77,49 +77,27 @@ class AdminController extends Controller
                     'updated_at' => now()
                 ]);
             
-            return redirect()->route('admin.dashboard')->with('success', 'Job rejected!');
+            return redirect()->route('dashboard')->with('success', 'Job rejected!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error rejecting job: ' . $e->getMessage());
         }
     }
     
-    // Show all job posts for management
+    // Show all job posts for management - redirect to dashboard
     public function manageJobs()
     {
-        $jobs = DB::table('job_posts')
-            ->orderBy('created_at', 'desc')
-            ->get();
-            
-        return view('admin.manage-jobs', compact('jobs'));
+        return redirect()->route('dashboard')->with('info', 'Job management is available on the dashboard.');
     }
     
-    // Show pending jobs page
+    // Show pending jobs page - redirect to dashboard
     public function pendingJobs()
     {
-        $pendingJobs = DB::table('job_posts')
-            ->where('status', 'pending')
-            ->orderBy('created_at', 'desc')
-            ->get();
-            
-        return view('admin.pending-jobs', compact('pendingJobs'));
+        return redirect()->route('dashboard');
     }
     
-    // View job details
+    // View job details - redirect to dashboard
     public function viewJob($id)
     {
-        $job = DB::table('job_posts')
-            ->where('id', $id)
-            ->first();
-            
-        if (!$job) {
-            return redirect()->back()->with('error', 'Job not found!');
-        }
-        
-        // Get establishment info
-        $establishment = DB::table('establishments')
-            ->where('id', $job->establishment_id)
-            ->first();
-        
-        return view('admin.view-job', compact('job', 'establishment'));
+        return redirect()->route('dashboard');
     }
 }

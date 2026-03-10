@@ -66,7 +66,7 @@ class EmployerController extends Controller
                 'updated_at' => now(),
             ]);
             
-            // Create job post
+            // Create job post - status set to 'pending' for admin approval
             DB::table('job_posts')->insert([
                 'establishment_id' => $establishmentId,
                 'position_title' => $request->position_title,
@@ -86,12 +86,12 @@ class EmployerController extends Controller
                 'accepts_ofw' => $request->accepts_ofw ?? 0,
                 'posting_date' => $request->posting_date,
                 'valid_until' => $request->valid_until,
-                'status' => 'active',
+                'status' => 'pending',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
             
-            return redirect()->route('employer.dashboard')->with('success', 'Job posted successfully!');
+            return redirect()->route('employer.dashboard')->with('success', 'Job posted successfully! Your job is pending approval from the admin.');
             
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error posting job: ' . $e->getMessage())->withInput();
@@ -108,6 +108,12 @@ class EmployerController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
             
+        // Get pending job posts
+        $pendingJobs = DB::table('job_posts')
+            ->where('status', 'pending')
+            ->orderBy('created_at', 'desc')
+            ->get();
+            
         // Get archived jobs (for display on dashboard)
         $archivedJobs = DB::table('job_archive')
             ->orderBy('archived_at', 'desc')
@@ -117,7 +123,7 @@ class EmployerController extends Controller
         // Get archived jobs count
         $archivedCount = DB::table('job_archive')->count();
         
-        return view('employer.dashboard', compact('activeJobs', 'archivedJobs', 'archivedCount'));
+        return view('employer.dashboard', compact('activeJobs', 'pendingJobs', 'archivedJobs', 'archivedCount'));
     }
     
     // Show archive page
@@ -226,7 +232,7 @@ class EmployerController extends Controller
                 'accepts_ofw' => $archivedJob->accepts_ofw ?? 0,
                 'posting_date' => $archivedJob->posting_date ?? now()->toDateString(),
                 'valid_until' => $archivedJob->valid_until ?? now()->addMonth()->toDateString(),
-                'status' => 'active',
+                'status' => 'pending',
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
@@ -241,7 +247,7 @@ class EmployerController extends Controller
             // Delete from archive table
             DB::table('job_archive')->where('id', $id)->delete();
                 
-            return redirect()->route('employer.archive')->with('success', 'Job restored successfully!');
+            return redirect()->route('employer.archive')->with('success', 'Job restored successfully! It is now pending admin approval.');
         } catch (\Illuminate\Database\QueryException $e) {
             // Handle foreign key constraint violations specifically
             if ($e->getCode() == '23000') {

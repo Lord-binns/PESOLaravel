@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('landing');
@@ -16,9 +17,14 @@ Route::get('/history', function () {
     return view('history');
 })->name('history');
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
+// Admin Routes - Dashboard is the main admin dashboard
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/admin/pending-jobs', [AdminController::class, 'pendingJobs'])->name('admin.pending.jobs');
+Route::post('/admin/job/{id}/approve', [AdminController::class, 'approveJob'])->name('admin.job.approve');
+Route::post('/admin/job/{id}/reject', [AdminController::class, 'rejectJob'])->name('admin.job.reject');
+Route::get('/admin/job/{id}', [AdminController::class, 'viewJob'])->name('admin.job.view');
+Route::get('/admin/manage-jobs', [AdminController::class, 'manageJobs'])->name('admin.manage.jobs');
 
 // Employer Routes
 Route::get('/employer/dashboard', [EmployerController::class, 'dashboard'])->name('employer.dashboard');

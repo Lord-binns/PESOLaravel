@@ -79,8 +79,8 @@
         
         /* Number Indicator Badge - Gold Color */
         .stat-number-badge {
-            position: absolute;
-            top: -5px;
+            position top: -5: absolute;
+           px;
             right: -5px;
             background: #ffd700;
             color: #001a4d;
@@ -214,6 +214,7 @@
             text-decoration: none;
             transition: all 0.3s;
             cursor: pointer;
+            position: relative;
         }
         
         .sidebar-icon-btn:hover {
@@ -231,6 +232,23 @@
         .sidebar-icon-btn span { font-size: 9px; font-weight: 500; text-transform: uppercase; }
         .sidebar-divider { width: 40px; height: 2px; background: rgba(255,255,255,0.2); margin: 5px 0; }
         
+        /* Pending badge on sidebar */
+        .sidebar-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ffc107;
+            color: #000;
+            font-size: 10px;
+            font-weight: bold;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
         .main-content {
             margin-left: 80px;
             padding: 100px 20px 20px 20px;
@@ -242,24 +260,24 @@
             margin-left: 0;
         }
         
-.section-title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-weight: 600;
-    font-size: 14px;
-    color: #001a4d;
-    margin: 20px 0;
-}
-
-.section-title::before,
-.section-title::after {
-    content: "";
-    flex: 1;
-    height: 2px;
-    background: #001a4d;
-}
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #001a4d;
+            margin: 20px 0;
+        }
+        
+        .section-title::before,
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background: #001a4d;
+        }
         
         /* Job Cards - Smaller & Grid */
         .jobs-grid {
@@ -278,6 +296,12 @@
         }
         
         .job-card:hover { transform: translateY(-3px); }
+        
+        /* Pending job card style */
+        .job-card.pending {
+            border-left-color: #ffc107;
+            background: #fffbf0;
+        }
         
         .job-card.expired {
             border-left-color: #6c757d;
@@ -307,6 +331,7 @@
             white-space: nowrap;
         }
         .job-status.active { background: #d4edda; color: #155724; }
+        .job-status.pending { background: #fff3cd; color: #856404; }
         .job-status.expired { background: #f8d7da; color: #721c24; }
         
         .job-salary { 
@@ -348,8 +373,14 @@
         .btn-archive { background: #6c757d; color: white; }
         .btn-archive:hover { background: #5a6268; }
         
-        .empty-state { text-align: center; padding: 30px; color: #666; }
+        .empty-state { text-align: center; padding: 30px; color: #666; background: white; border-radius: 10px; }
         .empty-state i { font-size: 48px; color: #ddd; margin-bottom: 15px; }
+        
+        /* Alert Messages */
+        .alert {
+            border-radius: 10px;
+            border: none;
+        }
         
         /* Modal Styles */
         .modal-header {
@@ -393,9 +424,11 @@
     
     <!-- Sidebar -->
     <div class="dashboard-sidebar" id="dashboardSidebar">
-        <a href="{{ url('/employer/dashboard') }}" class="sidebar-icon-btn active"><i class="fas fa-th-large"></i><span>Home</span></a>
+        <a href="{{ url('/employer/dashboard') }}" class="sidebar-icon class="fas fa-btn active"><i-th-large"></i><span>Home</span></a>
         <a href="{{ url('/employer/post-job') }}" class="sidebar-icon-btn"><i class="fas fa-plus-circle"></i><span>Post</span></a>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-briefcase"></i><span>Posts</span></a>
+        <a href="#" class="sidebar-icon-btn">
+            <i class="fas fa-briefcase"></i><span>Posts</span>
+        </a>
         <a href="#" class="sidebar-icon-btn"><i class="fas fa-users"></i><span>Applicants</span></a>
         <a href="#" class="sidebar-icon-btn"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
         <div class="sidebar-divider"></div>
@@ -435,7 +468,14 @@
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <span class="stat-number-badge">{{ $activeJobs->count() }}</span>
-                    <span class="stat-icon-label">Jobs</span>
+                    <span class="stat-icon-label">Active</span>
+                </div>
+                <div class="stat-icon-item">
+                    <div class="stat-icon-circle">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <span class="stat-number-badge">{{ $pendingJobs->count() }}</span>
+                    <span class="stat-icon-label">Pending</span>
                 </div>
                 <div class="stat-icon-item">
                     <div class="stat-icon-circle">
@@ -468,9 +508,94 @@
             </div>
         </div>
         
-  <div class="section-title">
-    <i class="fas fa-briefcase"></i> Active Job Posts
-</div>
+        <!-- Pending Jobs Section -->
+        @if($pendingJobs->count() > 0)
+        <div class="section-title">
+            <i class="fas fa-clock" style="color: #ffc107;"></i> Pending Approval
+        </div>
+        
+        <div class="jobs-grid">
+            @foreach($pendingJobs as $job)
+                <div class="job-card pending">
+                    <div class="job-card-header">
+                        <h5 class="job-title">{{ $job->position_title }}</h5>
+                        <span class="job-status pending">Pending</span>
+                    </div>
+                    <div class="job-salary">{{ $job->salary }}</div>
+                    <div class="job-details">
+                        <span class="job-detail"><i class="fas fa-map-marker-alt"></i> {{ $job->place_of_work }}</span>
+                        <span class="job-detail"><i class="fas fa-users"></i> {{ $job->vacancy_count }}</span>
+                    </div>
+                    <div class="job-details">
+                        <span class="job-detail"><i class="fas fa-calendar"></i> {{ \Carbon\Carbon::parse($job->posting_date)->format('M d, Y') }}</span>
+                    </div>
+                    <div class="job-actions">
+                        <button class="btn-action btn-view" data-bs-toggle="modal" data-bs-target="#pendingJobModal{{ $job->id }}">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Pending Job Detail Modal -->
+                <div class="modal fade" id="pendingJobModal{{ $job->id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">{{ $job->position_title }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body job-detail-modal">
+                                <div class="alert alert-warning">
+                                    <i class="fas fa-clock"></i> This job is pending approval from the admin.
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="detail-label">Position Title</div>
+                                        <div class="detail-value">{{ $job->position_title }}</div>
+                                        
+                                        <div class="detail-label">Salary</div>
+                                        <div class="detail-value">{{ $job->salary }}</div>
+                                        
+                                        <div class="detail-label">Place of Work</div>
+                                        <div class="detail-value">{{ $job->place_of_work }}</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="detail-label">Vacancy Count</div>
+                                        <div class="detail-value">{{ $job->vacancy_count }} position(s)</div>
+                                        
+                                        <div class="detail-label">Job Type</div>
+                                        <div class="detail-value">{{ ucfirst($job->nature_of_work) }}</div>
+                                        
+                                        <div class="detail-label">Valid Until</div>
+                                        <div class="detail-value">{{ \Carbon\Carbon::parse($job->valid_until)->format('F d, Y') }}</div>
+                                        
+                                        <div class="detail-label">Status</div>
+                                        <div class="detail-value">
+                                            <span class="job-status pending">Pending Approval</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                @if(!empty($job->job_description))
+                                <div class="mt-3">
+                                    <div class="detail-label">Job Description</div>
+                                    <div class="detail-value">{{ $job->job_description }}</div>
+                                </div>
+                                @endif
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        @endif
+        
+        <!-- Active Jobs Section -->
+        <div class="section-title">
+            <i class="fas fa-briefcase"></i> Active Job Posts
+        </div>
         
         @if($activeJobs->count() > 0)
             <div class="jobs-grid">
