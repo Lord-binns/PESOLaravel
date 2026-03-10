@@ -57,10 +57,38 @@ CREATE TABLE IF NOT EXISTS job_posts (
     accepts_ofw TINYINT(1) DEFAULT 0,
     posting_date DATE NOT NULL,
     valid_until DATE NOT NULL,
-    status ENUM('pending', 'active', 'closed', 'expired') DEFAULT 'pending',
+    status ENUM('pending', 'active', 'closed', 'expired', 'archived') DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (establishment_id) REFERENCES establishments(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Job Archive Table (for deleted/archived job posts)
+CREATE TABLE IF NOT EXISTS job_archive (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    original_job_id INT NOT NULL,
+    establishment_id INT NOT NULL,
+    position_title VARCHAR(255) NOT NULL,
+    job_description TEXT NOT NULL,
+    nature_of_work VARCHAR(50) NOT NULL,
+    place_of_work VARCHAR(255) NOT NULL,
+    salary VARCHAR(100) NOT NULL,
+    vacancy_count INT NOT NULL DEFAULT 1,
+    education_level VARCHAR(100),
+    course VARCHAR(255),
+    work_experience VARCHAR(100),
+    license_eligibility VARCHAR(255),
+    certification VARCHAR(255),
+    language_spoken VARCHAR(255),
+    other_qualifications TEXT,
+    accepts_pwd TINYINT(1) DEFAULT 0,
+    pwd_types TEXT,
+    accepts_ofw TINYINT(1) DEFAULT 0,
+    posting_date DATE NOT NULL,
+    valid_until DATE NOT NULL,
+    original_status VARCHAR(50) NOT NULL,
+    archived_reason ENUM('deleted', 'expired', 'manual') DEFAULT 'manual',
+    archived_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Job Applicants Table

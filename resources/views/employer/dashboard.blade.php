@@ -219,11 +219,15 @@
         <a href="#" class="sidebar-icon-btn"><i class="fas fa-users"></i><span>Applicants</span></a>
         <a href="#" class="sidebar-icon-btn"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
         <div class="sidebar-divider"></div>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-archive"></i><span>Archive</span></a>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-bell"></i><span>Alerts</span></a>
+        <a href="{{ url('/employer/archive') }}" class="sidebar-icon-btn"><i class="fas fa-archive"></i><span>Archive</span></a>
         <div class="sidebar-divider"></div>
         <a href="#" class="sidebar-icon-btn"><i class="fas fa-cog"></i><span>Settings</span></a>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-question-circle"></i><span>Help</span></a>
+        <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+            @csrf
+            <button type="submit" class="sidebar-icon-btn" style="border: none; cursor: pointer;">
+                <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+            </button>
+        </form>
     </div>
     
     <div class="main-content" id="mainContent">

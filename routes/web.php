@@ -24,7 +24,10 @@ Route::get('/dashboard', function () {
 Route::get('/employer/dashboard', [EmployerController::class, 'dashboard'])->name('employer.dashboard');
 Route::get('/employer/post-job', [EmployerController::class, 'showPostJob'])->name('employer.post-job');
 Route::post('/employer/post-job', [EmployerController::class, 'storeJobPost'])->name('employer.post-job.store');
+Route::get('/employer/archive', [EmployerController::class, 'showArchive'])->name('employer.archive');
 Route::post('/employer/job/{id}/archive', [EmployerController::class, 'archiveJob'])->name('employer.job.archive');
+Route::post('/employer/archive/{id}/restore', [EmployerController::class, 'restoreJob'])->name('employer.archive.restore');
+Route::post('/employer/archive/{id}/delete', [EmployerController::class, 'deleteArchivedJob'])->name('employer.archive.delete');
 
 Route::get('/employee/dashboard', function () {
     return view('employee.dashboard');

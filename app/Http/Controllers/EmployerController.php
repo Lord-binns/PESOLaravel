@@ -108,33 +108,122 @@ class EmployerController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
             
-        // Get expired/closed jobs for archive
-        $archivedJobs = DB::table('job_posts')
-            ->where(function($query) {
-                $query->where('status', 'closed')
-                      ->orWhere('status', 'expired')
-                      ->orWhere('valid_until', '<', now()->toDateString());
-            })
-            ->orderBy('valid_until', 'desc')
-            ->get();
+        // Get archived jobs count
+        $archivedCount = DB::table('job_archive')->count();
         
-        return view('employer.dashboard', compact('activeJobs', 'archivedJobs'));
+        return view('employer.dashboard', compact('activeJobs', 'archivedCount'));
     }
     
-    // Archive a job post
+    // Show archive page
+    public function showArchive()
+    {
+        // Get archived jobs from archive table
+        $archivedJobs = DB::table('job_archive')
+            ->orderBy('archived_at', 'desc')
+            ->get();
+        
+        return view('employer.archive', compact('archivedJobs'));
+    }
+    
+    // Archive a job post (move to archive table and delete from job_posts)
     public function archiveJob($id)
     {
         try {
-            DB::table('job_posts')
-                ->where('id', $id)
-                ->update([
-                    'status' => 'closed',
-                    'updated_at' => now()
-                ]);
+            // Get the job post first
+            $job = DB::table('job_posts')->where('id', $id)->first();
+            
+            if (!$job) {
+                return redirect()->back()->with('error', 'Job not found!');
+            }
+            
+            // Insert into archive table
+            DB::table('job_archive')->insert([
+                'original_job_id' => $job->id,
+                'establishment_id' => $job->establishment_id,
+                'position_title' => $job->position_title,
+                'job_description' => $job->job_description,
+                'nature_of_work' => $job->nature_of_work,
+                'place_of_work' => $job->place_of_work,
+                'salary' => $job->salary,
+                'vacancy_count' => $job->vacancy_count,
+                'education_level' => $job->education_level,
+                'course' => $job->course,
+                'work_experience' => $job->work_experience,
+                'license_eligibility' => $job->license_eligibility,
+                'certification' => $job->certification,
+                'language_spoken' => $job->language_spoken,
+                'other_qualifications' => $job->other_qualifications,
+                'accepts_pwd' => $job->accepts_pwd,
+                'accepts_ofw' => $job->accepts_ofw,
+                'posting_date' => $job->posting_date,
+                'valid_until' => $job->valid_until,
+                'original_status' => $job->status,
+                'archived_reason' => 'manual',
+                'archived_at' => now(),
+            ]);
+            
+            // Delete from job_posts table
+            DB::table('job_posts')->where('id', $id)->delete();
                 
-            return redirect()->route('employer.dashboard')->with('success', 'Job archived successfully!');
+            return redirect()->route('employer.archive')->with('success', 'Job archived successfully!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error archiving job: ' . $e->getMessage());
+        }
+    }
+    
+    // Restore a job from archive
+    public function restoreJob($id)
+    {
+        try {
+            // Get the archived job
+            $archivedJob = DB::table('job_archive')->where('id', $id)->first();
+            
+            if (!$archivedJob) {
+                return redirect()->back()->with('error', 'Archived job not found!');
+            }
+            
+            // Restore to job_posts table
+            DB::table('job_posts')->insert([
+                'establishment_id' => $archivedJob->establishment_id,
+                'position_title' => $archivedJob->position_title,
+                'job_description' => $archivedJob->job_description,
+                'nature_of_work' => $archivedJob->nature_of_work,
+                'place_of_work' => $archivedJob->place_of_work,
+                'salary' => $archivedJob->salary,
+                'vacancy_count' => $archivedJob->vacancy_count,
+                'education_level' => $archivedJob->education_level,
+                'course' => $archivedJob->course,
+                'work_experience' => $archivedJob->work_experience,
+                'license_eligibility' => $archivedJob->license_eligibility,
+                'certification' => $archivedJob->certification,
+                'language_spoken' => $archivedJob->language_spoken,
+                'other_qualifications' => $archivedJob->other_qualifications,
+                'accepts_pwd' => $archivedJob->accepts_pwd,
+                'accepts_ofw' => $archivedJob->accepts_ofw,
+                'posting_date' => $archivedJob->posting_date,
+                'valid_until' => $archivedJob->valid_until,
+                'status' => 'active',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+            
+            // Delete from archive table
+            DB::table('job_archive')->where('id', $id)->delete();
+                
+            return redirect()->route('employer.archive')->with('success', 'Job restored successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error restoring job: ' . $e->getMessage());
+        }
+    }
+    
+    // Permanently delete a job from archive
+    public function deleteArchivedJob($id)
+    {
+        try {
+            DB::table('job_archive')->where('id', $id)->delete();
+            return redirect()->route('employer.archive')->with('success', 'Job permanently deleted!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error deleting job: ' . $e->getMessage());
         }
     }
 }
