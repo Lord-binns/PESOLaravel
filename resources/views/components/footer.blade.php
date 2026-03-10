@@ -25,14 +25,22 @@
     ) !important;
     border-top: 3px solid #ffd700;
     color: #ffffff;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
+    width: 100%;
+    margin-top: auto;
+    margin-left: 80px;
+    box-sizing: border-box;
+}
+
+.site-footer.no-sidebar {
+    margin-left: 0;
 }
 
 .footer-container {
-    width: 100%;
-    max-width: 100% !important;
-    padding: 0 1.5rem;
+    width: calc(100% - 80px);
+    max-width: 1400px;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 
 .footer-inner {
@@ -41,7 +49,6 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
-    width: 100%;
 }
 
 .site-footer a {
@@ -58,7 +65,15 @@
     margin-left: 15px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
+    .site-footer {
+        margin-left: 0;
+    }
+    
+    .footer-container {
+        width: 100%;
+    }
+    
     .footer-inner {
         flex-direction: column;
         text-align: center;
@@ -69,3 +84,30 @@
     }
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('dashboardSidebar');
+    const footer = document.querySelector('.site-footer');
+    
+    if (sidebar && footer) {
+        if (sidebar.classList.contains('collapsed')) {
+            footer.classList.add('no-sidebar');
+        }
+        
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'class') {
+                    if (sidebar.classList.contains('collapsed')) {
+                        footer.classList.add('no-sidebar');
+                    } else {
+                        footer.classList.remove('no-sidebar');
+                    }
+                }
+            });
+        });
+        
+        observer.observe(sidebar, { attributes: true });
+    }
+});
+</script>

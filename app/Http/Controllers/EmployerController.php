@@ -108,10 +108,16 @@ class EmployerController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
             
+        // Get archived jobs (for display on dashboard)
+        $archivedJobs = DB::table('job_archive')
+            ->orderBy('archived_at', 'desc')
+            ->limit(5)
+            ->get();
+        
         // Get archived jobs count
         $archivedCount = DB::table('job_archive')->count();
         
-        return view('employer.dashboard', compact('activeJobs', 'archivedCount'));
+        return view('employer.dashboard', compact('activeJobs', 'archivedJobs', 'archivedCount'));
     }
     
     // Show archive page

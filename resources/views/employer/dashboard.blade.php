@@ -12,65 +12,110 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background-color: #ffffff; color: #333333; }
-        main { background: #ffffff; padding: 40px 20px; }
+        /* Sticky Footer Layout */
+        html, body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
         
+        body { 
+            background-color: #f8f9fa; 
+            color: #333333; 
+        }
+        
+        main {
+            flex: 1;
+            background: #f8f9fa; 
+            padding: 30px 20px;
+        }
+        
+        /* DateTime Bar - Clock Only */
         .datetime-bar {
             background: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
-            padding: 15px 25px;
+            padding: 20px 30px;
             border-radius: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
+            gap: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
-        .clock-section { display: flex; align-items: center; gap: 15px; }
+        .clock-section { 
+            display: flex; 
+            align-items: center; 
+            gap: 25px; 
+        }
         
+        /* Bigger Clock */
         .analog-clock {
-            width: 120px; height: 120px; border-radius: 50%;
+            width: 140px; 
+            height: 140px; 
+            border-radius: 50%;
             background: linear-gradient(145deg, #0a1f4d, #001a4d);
             border: 3px solid #ffd700;
             position: relative;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3), inset 0 0 15px rgba(0,0,0,0.5);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), inset 0 0 20px rgba(0,0,0,0.5);
         }
         
         .clock-center {
-            position: absolute; top: 50%; left: 50%;
-            width: 12px; height: 12px; background: #ffd700;
-            border-radius: 50%; transform: translate(-50%, -50%); z-index: 10;
+            position: absolute; 
+            top: 50%; 
+            left: 50%;
+            width: 14px; 
+            height: 14px; 
+            background: #ffd700;
+            border-radius: 50%; 
+            transform: translate(-50%, -50%); 
+            z-index: 10;
         }
         
-        .clock-hand { position: absolute; bottom: 50%; left: 50%; transform-origin: bottom center; }
-        
-        .hour-hand { width: 4px; height: 35px; background: #ffd700; transform: translateX(-50%); }
-        .minute-hand { width: 2px; height: 45px; background: #fff; transform: translateX(-50%); }
-        .second-hand { width: 1px; height: 50px; background: #ff4444; transform: translateX(-50%); }
-        
-        .digital-time { text-align: left; }
-        .digital-time .time-display { font-size: 32px; font-weight: 700; color: #ffd700; line-height: 1; font-family: 'Courier New', monospace; }
-        .digital-time .date-display { font-size: 14px; color: #fff; }
-        
-        .calendar-section { text-align: center; color: white; }
-        .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .calendar-header button { background: none; border: none; color: #ffd700; cursor: pointer; font-size: 18px; }
-        
-        .mini-calendar {
-            width: 180px; height: 180px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            padding: 10px;
+        .clock-hand { 
+            position: absolute; 
+            bottom: 50%; 
+            left: 50%; 
+            transform-origin: bottom center; 
+            border-radius: 3px;
         }
         
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; text-align: center; font-size: 11px; }
-        .calendar-day-header { font-weight: bold; color: #ffd700; padding: 2px; }
-        .calendar-day { padding: 4px; border-radius: 50%; }
-        .calendar-day:hover { background: rgba(255,215,0,0.3); }
-        .calendar-day.today { background: #ffd700; color: #001a4d; font-weight: bold; }
-        .calendar-day.other-month { opacity: 0.4; }
+        .hour-hand { 
+            width: 5px; 
+            height: 40px; 
+            background: #ffd700; 
+            transform: translateX(-50%); 
+        }
+        .minute-hand { 
+            width: 3px; 
+            height: 50px; 
+            background: #fff; 
+            transform: translateX(-50%); 
+        }
+        .second-hand { 
+            width: 2px; 
+            height: 55px; 
+            background: #ff4444; 
+            transform: translateX(-50%); 
+        }
+        
+        .digital-time { 
+            text-align: left; 
+        }
+        .digital-time .time-display { 
+            font-size: 42px; 
+            font-weight: 700; 
+            color: #ffd700; 
+            line-height: 1; 
+            font-family: 'Courier New', monospace; 
+        }
+        .digital-time .date-display { 
+            font-size: 16px; 
+            color: #fff; 
+            opacity: 0.9;
+            margin-top: 5px;
+        }
         
         /* Sidebar */
         .dashboard-sidebar {
@@ -132,6 +177,7 @@
             margin-left: 80px;
             padding: 20px;
             transition: margin-left 0.3s ease;
+            flex: 1;
         }
         
         .main-content.expanded {
@@ -143,32 +189,33 @@
         .stat-card {
             background: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
             border-radius: 15px;
-            padding: 25px;
+            padding: 20px;
             color: white;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             transition: transform 0.3s;
         }
         
         .stat-card:hover { transform: translateY(-5px); }
-        .stat-card .icon { font-size: 40px; color: #ffd700; margin-bottom: 15px; }
-        .stat-card .number { font-size: 36px; font-weight: bold; }
-        .stat-card .label { font-size: 14px; opacity: 0.9; }
+        .stat-card .icon { font-size: 32px; color: #ffd700; margin-bottom: 10px; }
+        .stat-card .number { font-size: 28px; font-weight: bold; }
+        .stat-card .label { font-size: 13px; opacity: 0.9; }
         
         /* Job Posts */
         .section-title {
             background: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
             color: white;
-            padding: 15px 20px;
+            padding: 12px 15px;
             border-radius: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 600;
+            font-size: 14px;
         }
         
         .job-card {
             background: white;
             border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
+            padding: 15px;
+            margin-bottom: 12px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-left: 4px solid #ffd700;
             transition: transform 0.2s;
@@ -181,30 +228,34 @@
             background: #f8f9fa;
         }
         
-        .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-        .job-title { font-size: 18px; font-weight: 700; color: #001a4d; margin: 0; }
-        .job-salary { font-size: 16px; color: #28a745; font-weight: 600; }
-        .job-details { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; }
-        .job-detail { display: flex; align-items: center; gap: 5px; color: #666; font-size: 14px; }
-        .job-status { padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+        .job-title { font-size: 16px; font-weight: 700; color: #001a4d; margin: 0; }
+        .job-salary { font-size: 14px; color: #28a745; font-weight: 600; }
+        .job-details { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 8px; }
+        .job-detail { display: flex; align-items: center; gap: 5px; color: #666; font-size: 12px; }
+        .job-status { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
         .job-status.active { background: #d4edda; color: #155724; }
         .job-status.expired, .job-status.closed { background: #f8d7da; color: #721c24; }
         
-        .job-actions { display: flex; gap: 10px; margin-top: 15px; }
-        .btn-action { padding: 8px 15px; border-radius: 5px; font-size: 13px; border: none; cursor: pointer; transition: all 0.3s; }
+        .job-actions { display: flex; gap: 8px; margin-top: 10px; }
+        .btn-action { padding: 6px 12px; border-radius: 5px; font-size: 12px; border: none; cursor: pointer; transition: all 0.3s; }
         .btn-view { background: #001a4d; color: white; }
         .btn-view:hover { background: #002d73; }
         .btn-archive { background: #6c757d; color: white; }
         .btn-archive:hover { background: #5a6268; }
         
-        .empty-state { text-align: center; padding: 40px; color: #666; }
-        .empty-state i { font-size: 60px; color: #ddd; margin-bottom: 20px; }
+        .empty-state { text-align: center; padding: 30px; color: #666; }
+        .empty-state i { font-size: 48px; color: #ddd; margin-bottom: 15px; }
         
         @media (max-width: 768px) {
             .dashboard-sidebar { display: none; }
             .main-content { margin-left: 0; }
-            .datetime-bar { flex-direction: column; gap: 20px; }
-            .calendar-section { width: 100%; }
+            .datetime-bar { flex-direction: row; gap: 20px; padding: 15px; }
+            .analog-clock { width: 100px; height: 100px; }
+            .hour-hand { height: 28px; }
+            .minute-hand { height: 35px; }
+            .second-hand { height: 40px; }
+            .digital-time .time-display { font-size: 28px; }
         }
     </style>
 </head>
@@ -246,6 +297,7 @@
             </div>
         @endif
         
+        <!-- Clock Only - No Calendar -->
         <div class="datetime-bar">
             <div class="clock-section">
                 <div class="analog-clock">
@@ -257,18 +309,6 @@
                 <div class="digital-time">
                     <div class="time-display"><span id="timeDisplay">00:00:00</span> <span id="timePeriod">AM</span></div>
                     <div class="date-display" id="dateDisplay">Loading...</div>
-                </div>
-            </div>
-            
-            <div class="calendar-section">
-                <div class="mini-calendar">
-                    <div class="calendar-header">
-                        <button onclick="changeMonth(-1)">&#8249;</button>
-                        <span id="monthName">JAN</span>
-                        <button onclick="changeMonth(1)">&#8250;</button>
-                    </div>
-                    <div style="font-weight: bold; margin-bottom: 5px;" id="yearName">2024</div>
-                    <div class="calendar-grid" id="calendarGrid"></div>
                 </div>
             </div>
         </div>
@@ -321,7 +361,7 @@
                         <span class="job-status active">{{ ucfirst($job->status) }}</span>
                     </div>
                     <div class="job-actions">
-                        <button class="btn-action btn-view"><i class="fas fa-eye"></i> View Details</button>
+                        <button class="btn-action btn-view"><i class="fas fa-eye"></i> View</button>
                         <form action="{{ route('employer.job.archive', $job->id) }}" method="POST" style="display:inline;">
                             @csrf
                             <button type="submit" class="btn-action btn-archive"><i class="fas fa-archive"></i> Archive</button>
@@ -340,8 +380,8 @@
         
         <!-- Archived Jobs Section -->
         @if($archivedJobs->count() > 0)
-            <div class="section-title" style="margin-top: 40px;">
-                <i class="fas fa-archive"></i> Archived / Expired Job Posts
+            <div class="section-title" style="margin-top: 25px;">
+                <i class="fas fa-archive"></i> Recent Archived Posts
             </div>
             
             @foreach($archivedJobs as $job)
@@ -352,13 +392,9 @@
                             <div class="job-details">
                                 <span class="job-detail"><i class="fas fa-money-bill-wave"></i> {{ $job->salary }}</span>
                                 <span class="job-detail"><i class="fas fa-map-marker-alt"></i> {{ $job->place_of_work }}</span>
-                                <span class="job-detail"><i class="fas fa-calendar"></i> Expired: {{ \Carbon\Carbon::parse($job->valid_until)->format('M d, Y') }}</span>
                             </div>
                         </div>
-                        <span class="job-status {{ $job->status == 'closed' ? 'closed' : 'expired' }}">{{ ucfirst($job->status) }}</span>
-                    </div>
-                    <div class="job-actions">
-                        <button class="btn-action btn-view"><i class="fas fa-eye"></i> View Details</button>
+                        <span class="job-status expired">Archived</span>
                     </div>
                 </div>
             @endforeach
@@ -384,10 +420,7 @@
             }
         });
         
-        // Clock & Calendar
-        let currentMonth = new Date().getMonth();
-        let currentYear = new Date().getFullYear();
-        
+        // Clock Only
         function updateClock() {
             const now = new Date();
             let hours = now.getHours();
@@ -407,47 +440,8 @@
             document.getElementById('secondHand').style.transform = `translateX(-50%) rotate(${seconds * 6}deg)`;
         }
         
-        function renderCalendar() {
-            const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-            document.getElementById('monthName').textContent = monthNames[currentMonth];
-            document.getElementById('yearName').textContent = currentYear;
-            
-            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-            const daysInPrevMonth = new Date(currentYear, currentMonth, 0).getDate();
-            const today = new Date();
-            const isCurrentMonth = today.getMonth() === currentMonth && today.getFullYear() === currentYear;
-            
-            let html = '';
-            const dayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-            dayNames.forEach(d => html += `<div class="calendar-day-header">${d}</div>`);
-            
-            for (let i = firstDay - 1; i >= 0; i--) 
-                html += `<div class="calendar-day other-month">${daysInPrevMonth - i}</div>`;
-            
-            for (let day = 1; day <= daysInMonth; day++) {
-                let cls = 'calendar-day';
-                if (isCurrentMonth && today.getDate() === day) cls += ' today';
-                html += `<div class="${cls}">${day}</div>`;
-            }
-            
-            const remaining = 42 - (firstDay + daysInMonth);
-            for (let i = 1; i <= remaining; i++) 
-                html += `<div class="calendar-day other-month">${i}</div>`;
-            
-            document.getElementById('calendarGrid').innerHTML = html;
-        }
-        
-        function changeMonth(delta) {
-            currentMonth += delta;
-            if (currentMonth > 11) { currentMonth = 0; currentYear++; }
-            if (currentMonth < 0) { currentMonth = 11; currentYear--; }
-            renderCalendar();
-        }
-        
         updateClock();
         setInterval(updateClock, 1000);
-        renderCalendar();
     </script>
 </body>
 </html>

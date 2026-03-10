@@ -12,7 +12,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background-color: #f5f5f5; color: #333333; padding-top: 80px; margin: 0; }
+        /* Sticky Footer Layout */
+        html, body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+        
+        body { 
+            background-color: #f5f5f5; 
+            color: #333333; 
+            padding-top: 80px;
+        }
         
         /* Fixed Sidebar */
         .dashboard-sidebar {
@@ -73,7 +85,7 @@
         .main-wrapper { 
             margin-left: 80px; 
             padding: 20px; 
-            min-height: calc(100vh - 80px);
+            flex: 1;
             transition: margin-left 0.3s ease;
         }
         
@@ -131,11 +143,15 @@
         <a href="#" class="sidebar-icon-btn"><i class="fas fa-users"></i><span>Applicants</span></a>
         <a href="#" class="sidebar-icon-btn"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
         <div class="sidebar-divider"></div>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-archive"></i><span>Archive</span></a>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-bell"></i><span>Alerts</span></a>
+        <a href="{{ url('/employer/archive') }}" class="sidebar-icon-btn"><i class="fas fa-archive"></i><span>Archive</span></a>
         <div class="sidebar-divider"></div>
         <a href="#" class="sidebar-icon-btn"><i class="fas fa-cog"></i><span>Settings</span></a>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-question-circle"></i><span>Help</span></a>
+        <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+            @csrf
+            <button type="submit" class="sidebar-icon-btn" style="border: none; cursor: pointer;">
+                <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+            </button>
+        </form>
     </div>
     
     <div class="main-wrapper" id="mainWrapper">
@@ -482,7 +498,7 @@
     <script>
         // Sidebar Toggle Functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const sidebarToggler = document.getElementById('sidebarToggleBtn');
+            const sidebarToggler = document.getElementById('sidebarToggler');
             const dashboardSidebar = document.getElementById('dashboardSidebar');
             const mainWrapper = document.getElementById('mainWrapper');
             
