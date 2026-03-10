@@ -31,29 +31,87 @@
             padding: 30px 20px;
         }
         
-        /* DateTime Bar - Clock Only */
-        .datetime-bar {
+        /* Clock and Stats Card */
+        .datetime-card {
             background: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
-            padding: 20px 30px;
             border-radius: 15px;
-            margin-bottom: 30px;
+            padding: 25px 30px;
+            margin-bottom: 25px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: 40px;
+            justify-content: space-between;
+            gap: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
+        /* Stats Icons - Left Side */
+        .stats-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .stat-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            color: white;
+            position: relative;
+        }
+        
+        .stat-icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #ffd700;
+            transition: all 0.3s;
+        }
+        
+        .stat-icon-item:hover .stat-icon-circle {
+            background: rgba(255,215,0,0.25);
+            transform: scale(1.1);
+        }
+        
+        /* Number Indicator Badge - Gold Color */
+        .stat-number-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ffd700;
+            color: #001a4d;
+            font-size: 11px;
+            font-weight: bold;
+            min-width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5px;
+            border: 2px solid #001a4d;
+        }
+        
+        .stat-icon-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        
+        /* Clock - Center */
         .clock-section { 
             display: flex; 
             align-items: center; 
-            gap: 25px; 
+            gap: 20px; 
         }
         
-        /* Bigger Clock */
         .analog-clock {
-            width: 140px; 
-            height: 140px; 
+            width: 120px; 
+            height: 120px; 
             border-radius: 50%;
             background: linear-gradient(145deg, #0a1f4d, #001a4d);
             border: 3px solid #ffd700;
@@ -65,8 +123,8 @@
             position: absolute; 
             top: 50%; 
             left: 50%;
-            width: 14px; 
-            height: 14px; 
+            width: 12px; 
+            height: 12px; 
             background: #ffd700;
             border-radius: 50%; 
             transform: translate(-50%, -50%); 
@@ -82,20 +140,20 @@
         }
         
         .hour-hand { 
-            width: 5px; 
-            height: 40px; 
+            width: 4px; 
+            height: 35px; 
             background: #ffd700; 
             transform: translateX(-50%); 
         }
         .minute-hand { 
             width: 3px; 
-            height: 50px; 
+            height: 42px; 
             background: #fff; 
             transform: translateX(-50%); 
         }
         .second-hand { 
-            width: 2px; 
-            height: 55px; 
+            width: 1px; 
+            height: 48px; 
             background: #ff4444; 
             transform: translateX(-50%); 
         }
@@ -104,17 +162,17 @@
             text-align: left; 
         }
         .digital-time .time-display { 
-            font-size: 42px; 
+            font-size: 36px; 
             font-weight: 700; 
             color: #ffd700; 
             line-height: 1; 
             font-family: 'Courier New', monospace; 
         }
         .digital-time .date-display { 
-            font-size: 16px; 
+            font-size: 14px; 
             color: #fff; 
             opacity: 0.9;
-            margin-top: 5px;
+            margin-top: 3px;
         }
         
         /* Sidebar */
@@ -175,7 +233,7 @@
         
         .main-content {
             margin-left: 80px;
-            padding: 20px;
+            padding: 100px 20px 20px 20px;
             transition: margin-left 0.3s ease;
             flex: 1;
         }
@@ -184,61 +242,107 @@
             margin-left: 0;
         }
         
-        /* Stats Cards */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        .stat-card {
-            background: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
-            border-radius: 15px;
-            padding: 20px;
-            color: white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-        }
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #001a4d;
+    margin: 20px 0;
+}
+
+.section-title::before,
+.section-title::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: #001a4d;
+}
         
-        .stat-card:hover { transform: translateY(-5px); }
-        .stat-card .icon { font-size: 32px; color: #ffd700; margin-bottom: 10px; }
-        .stat-card .number { font-size: 28px; font-weight: bold; }
-        .stat-card .label { font-size: 13px; opacity: 0.9; }
-        
-        /* Job Posts */
-        .section-title {
-            background: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
-            color: white;
-            padding: 12px 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            font-weight: 600;
-            font-size: 14px;
+        /* Job Cards - Smaller & Grid */
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
         }
         
         .job-card {
             background: white;
             border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 12px;
+            padding: 12px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-left: 4px solid #ffd700;
             transition: transform 0.2s;
         }
         
-        .job-card:hover { transform: translateX(5px); }
+        .job-card:hover { transform: translateY(-3px); }
         
         .job-card.expired {
             border-left-color: #6c757d;
             background: #f8f9fa;
         }
         
-        .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-        .job-title { font-size: 16px; font-weight: 700; color: #001a4d; margin: 0; }
-        .job-salary { font-size: 14px; color: #28a745; font-weight: 600; }
-        .job-details { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 8px; }
-        .job-detail { display: flex; align-items: center; gap: 5px; color: #666; font-size: 12px; }
-        .job-status { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
-        .job-status.active { background: #d4edda; color: #155724; }
-        .job-status.expired, .job-status.closed { background: #f8d7da; color: #721c24; }
+        .job-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
         
-        .job-actions { display: flex; gap: 8px; margin-top: 10px; }
-        .btn-action { padding: 6px 12px; border-radius: 5px; font-size: 12px; border: none; cursor: pointer; transition: all 0.3s; }
+        .job-title { 
+            font-size: 13px; 
+            font-weight: 700; 
+            color: #001a4d; 
+            margin: 0; 
+            line-height: 1.3;
+        }
+        
+        .job-status { 
+            padding: 2px 8px; 
+            border-radius: 10px; 
+            font-size: 9px; 
+            font-weight: 600; 
+            white-space: nowrap;
+        }
+        .job-status.active { background: #d4edda; color: #155724; }
+        .job-status.expired { background: #f8d7da; color: #721c24; }
+        
+        .job-salary { 
+            font-size: 12px; 
+            color: #28a745; 
+            font-weight: 600; 
+            margin-bottom: 5px;
+        }
+        
+        .job-details { 
+            display: flex; 
+            gap: 8px; 
+            flex-wrap: wrap; 
+            margin-bottom: 8px; 
+        }
+        .job-detail { 
+            display: flex; 
+            align-items: center; 
+            gap: 3px; 
+            color: #666; 
+            font-size: 10px; 
+        }
+        
+        .job-actions { 
+            display: flex; 
+            gap: 5px; 
+            margin-top: 8px; 
+        }
+        .btn-action { 
+            padding: 4px 8px; 
+            border-radius: 4px; 
+            font-size: 10px; 
+            border: none; 
+            cursor: pointer; 
+            transition: all 0.3s; 
+        }
         .btn-view { background: #001a4d; color: white; }
         .btn-view:hover { background: #002d73; }
         .btn-archive { background: #6c757d; color: white; }
@@ -247,15 +351,40 @@
         .empty-state { text-align: center; padding: 30px; color: #666; }
         .empty-state i { font-size: 48px; color: #ddd; margin-bottom: 15px; }
         
+        /* Modal Styles */
+        .modal-header {
+            background: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
+            color: white;
+        }
+        .modal-header .btn-close {
+            filter: invert(1);
+        }
+        .job-detail-modal .detail-label {
+            font-weight: 600;
+            color: #001a4d;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        .job-detail-modal .detail-value {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 991px) {
+            .jobs-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
         @media (max-width: 768px) {
             .dashboard-sidebar { display: none; }
-            .main-content { margin-left: 0; }
-            .datetime-bar { flex-direction: row; gap: 20px; padding: 15px; }
-            .analog-clock { width: 100px; height: 100px; }
-            .hour-hand { height: 28px; }
-            .minute-hand { height: 35px; }
-            .second-hand { height: 40px; }
+            .main-content { margin-left: 0; padding: 90px 15px 15px 15px; }
+            .datetime-card { flex-direction: column; gap: 20px; padding: 20px; }
+            .stats-icons { width: 100%; justify-content: center; flex-wrap: wrap; }
+            .analog-clock { width: 90px; height: 90px; }
+            .hour-hand { height: 25px; }
+            .minute-hand { height: 32px; }
+            .second-hand { height: 38px; }
             .digital-time .time-display { font-size: 28px; }
+            .jobs-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -297,8 +426,34 @@
             </div>
         @endif
         
-        <!-- Clock Only - No Calendar -->
-        <div class="datetime-bar">
+        <!-- Clock and Stats Card -->
+        <div class="datetime-card">
+            <!-- Stats Icons - Left Side -->
+            <div class="stats-icons">
+                <div class="stat-icon-item">
+                    <div class="stat-icon-circle">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <span class="stat-number-badge">{{ $activeJobs->count() }}</span>
+                    <span class="stat-icon-label">Jobs</span>
+                </div>
+                <div class="stat-icon-item">
+                    <div class="stat-icon-circle">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <span class="stat-number-badge">0</span>
+                    <span class="stat-icon-label">Applicants</span>
+                </div>
+                <div class="stat-icon-item">
+                    <div class="stat-icon-circle">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <span class="stat-number-badge">0</span>
+                    <span class="stat-icon-label">Hired</span>
+                </div>
+            </div>
+            
+            <!-- Clock - Center -->
             <div class="clock-section">
                 <div class="analog-clock">
                     <div class="clock-center"></div>
@@ -313,62 +468,101 @@
             </div>
         </div>
         
-        <!-- Stats -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <i class="fas fa-briefcase icon"></i>
-                <div class="number">{{ $activeJobs->count() }}</div>
-                <div class="label">Active Job Posts</div>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-users icon"></i>
-                <div class="number">0</div>
-                <div class="label">Total Applicants</div>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-check-circle icon"></i>
-                <div class="number">0</div>
-                <div class="label">Hired</div>
-            </div>
-            <div class="stat-card">
-                <i class="fas fa-archive icon"></i>
-                <div class="number">{{ $archivedJobs->count() }}</div>
-                <div class="label">Archived Posts</div>
-            </div>
-        </div>
-        
-        <!-- Active Jobs Section -->
-        <div class="section-title">
-            <i class="fas fa-briefcase"></i> Active Job Posts
-            <a href="{{ url('/employer/post-job') }}" class="btn btn-sm btn-warning float-end">
-                <i class="fas fa-plus"></i> Post New Job
-            </a>
-        </div>
+  <div class="section-title">
+    <i class="fas fa-briefcase"></i> Active Job Posts
+</div>
         
         @if($activeJobs->count() > 0)
-            @foreach($activeJobs as $job)
-                <div class="job-card">
-                    <div class="job-header">
-                        <div>
+            <div class="jobs-grid">
+                @foreach($activeJobs as $job)
+                    <div class="job-card">
+                        <div class="job-card-header">
                             <h5 class="job-title">{{ $job->position_title }}</h5>
-                            <div class="job-details">
-                                <span class="job-detail"><i class="fas fa-money-bill-wave"></i> {{ $job->salary }}</span>
-                                <span class="job-detail"><i class="fas fa-map-marker-alt"></i> {{ $job->place_of_work }}</span>
-                                <span class="job-detail"><i class="fas fa-users"></i> {{ $job->vacancy_count }} vacancy{{ $job->vacancy_count > 1 ? 'ies' : 'y' }}</span>
-                                <span class="job-detail"><i class="fas fa-calendar"></i> Expires: {{ \Carbon\Carbon::parse($job->valid_until)->format('M d, Y') }}</span>
+                            <span class="job-status active">{{ ucfirst($job->status) }}</span>
+                        </div>
+                        <div class="job-salary">{{ $job->salary }}</div>
+                        <div class="job-details">
+                            <span class="job-detail"><i class="fas fa-map-marker-alt"></i> {{ $job->place_of_work }}</span>
+                            <span class="job-detail"><i class="fas fa-users"></i> {{ $job->vacancy_count }}</span>
+                        </div>
+                        <div class="job-details">
+                            <span class="job-detail"><i class="fas fa-calendar"></i> {{ \Carbon\Carbon::parse($job->valid_until)->format('M d, Y') }}</span>
+                        </div>
+                        <div class="job-actions">
+                            <button class="btn-action btn-view" data-bs-toggle="modal" data-bs-target="#jobModal{{ $job->id }}">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                            <form action="{{ route('employer.job.archive', $job->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                <button type="submit" class="btn-action btn-archive"><i class="fas fa-archive"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Job Detail Modal -->
+                    <div class="modal fade" id="jobModal{{ $job->id }}" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">{{ $job->position_title }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body job-detail-modal">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="detail-label">Position Title</div>
+                                            <div class="detail-value">{{ $job->position_title }}</div>
+                                            
+                                            <div class="detail-label">Company</div>
+                                            <div class="detail-value">{{ $job->company_name ?? 'PESO Manolo Fortich' }}</div>
+                                            
+                                            <div class="detail-label">Salary</div>
+                                            <div class="detail-value">{{ $job->salary }}</div>
+                                            
+                                            <div class="detail-label">Place of Work</div>
+                                            <div class="detail-value">{{ $job->place_of_work }}</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="detail-label">Vacancy Count</div>
+                                            <div class="detail-value">{{ $job->vacancy_count }} position(s)</div>
+                                            
+                                            <div class="detail-label">Job Type</div>
+                                            <div class="detail-value">{{ $job->job_type ?? 'Full-time' }}</div>
+                                            
+                                            <div class="detail-label">Valid Until</div>
+                                            <div class="detail-value">{{ \Carbon\Carbon::parse($job->valid_until)->format('F d, Y') }}</div>
+                                            
+                                            <div class="detail-label">Status</div>
+                                            <div class="detail-value">
+                                                <span class="job-status active">{{ ucfirst($job->status) }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if(!empty($job->description))
+                                    <div class="mt-3">
+                                        <div class="detail-label">Job Description</div>
+                                        <div class="detail-value">{{ $job->description }}</div>
+                                    </div>
+                                    @endif
+                                    @if(!empty($job->requirements))
+                                    <div class="mt-3">
+                                        <div class="detail-label">Requirements</div>
+                                        <div class="detail-value">{{ $job->requirements }}</div>
+                                    </div>
+                                    @endif
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <form action="{{ route('employer.job.archive', $job->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-warning"><i class="fas fa-archive"></i> Archive Job</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                        <span class="job-status active">{{ ucfirst($job->status) }}</span>
                     </div>
-                    <div class="job-actions">
-                        <button class="btn-action btn-view"><i class="fas fa-eye"></i> View</button>
-                        <form action="{{ route('employer.job.archive', $job->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            <button type="submit" class="btn-action btn-archive"><i class="fas fa-archive"></i> Archive</button>
-                        </form>
-                    </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         @else
             <div class="empty-state">
                 <i class="fas fa-briefcase"></i>
@@ -376,28 +570,6 @@
                 <p>Start posting jobs to attract applicants</p>
                 <a href="{{ url('/employer/post-job') }}" class="btn btn-primary">Post Your First Job</a>
             </div>
-        @endif
-        
-        <!-- Archived Jobs Section -->
-        @if($archivedJobs->count() > 0)
-            <div class="section-title" style="margin-top: 25px;">
-                <i class="fas fa-archive"></i> Recent Archived Posts
-            </div>
-            
-            @foreach($archivedJobs as $job)
-                <div class="job-card expired">
-                    <div class="job-header">
-                        <div>
-                            <h5 class="job-title">{{ $job->position_title }}</h5>
-                            <div class="job-details">
-                                <span class="job-detail"><i class="fas fa-money-bill-wave"></i> {{ $job->salary }}</span>
-                                <span class="job-detail"><i class="fas fa-map-marker-alt"></i> {{ $job->place_of_work }}</span>
-                            </div>
-                        </div>
-                        <span class="job-status expired">Archived</span>
-                    </div>
-                </div>
-            @endforeach
         @endif
     </div>
     
@@ -420,7 +592,7 @@
             }
         });
         
-        // Clock Only
+        // Clock
         function updateClock() {
             const now = new Date();
             let hours = now.getHours();
