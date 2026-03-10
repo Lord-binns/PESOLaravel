@@ -28,7 +28,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
-        /* Clock - Bigger */
         .clock-section { display: flex; align-items: center; gap: 15px; }
         
         .analog-clock {
@@ -53,309 +52,351 @@
         
         .digital-time { text-align: left; }
         .digital-time .time-display { font-size: 32px; font-weight: 700; color: #ffd700; line-height: 1; font-family: 'Courier New', monospace; }
-        .digital-time .time-period { font-size: 12px; color: rgba(255, 255, 255, 0.8); text-transform: uppercase; }
+        .digital-time .date-display { font-size: 14px; color: #fff; }
         
-        /* Calendar - Shorter with side month */
-        .calendar-section {
+        .calendar-section { text-align: center; color: white; }
+        .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .calendar-header button { background: none; border: none; color: #ffd700; cursor: pointer; font-size: 18px; }
+        
+        .mini-calendar {
+            width: 180px; height: 180px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; text-align: center; font-size: 11px; }
+        .calendar-day-header { font-weight: bold; color: #ffd700; padding: 2px; }
+        .calendar-day { padding: 4px; border-radius: 50%; }
+        .calendar-day:hover { background: rgba(255,215,0,0.3); }
+        .calendar-day.today { background: #ffd700; color: #001a4d; font-weight: bold; }
+        .calendar-day.other-month { opacity: 0.4; }
+        
+        /* Sidebar */
+        .dashboard-sidebar {
+            position: fixed;
+            left: 0;
+            top: 80px;
+            width: 80px;
+            height: calc(100vh - 80px);
+            background: linear-gradient(to bottom, #001a4d, #000000);
+            border-right: 3px solid #ffd700;
+            z-index: 999;
+            padding: 20px 0;
             display: flex;
-            align-items: flex-start;
+            flex-direction: column;
+            align-items: center;
             gap: 15px;
+            transition: all 0.3s ease;
         }
         
-        .calendar-wrapper {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 8px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+        .dashboard-sidebar.collapsed {
+            width: 0;
+            padding: 20px 0;
+            overflow: hidden;
+            border-right: none;
         }
         
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
-        
-        .calendar-day-header { color: rgba(255, 255, 255, 0.5); font-size: 8px; font-weight: 600; text-align: center; padding: 2px 0; }
-        
-        .calendar-day {
-            width: 24px; height: 20px; display: flex; align-items: center; justify-content: center;
-            color: rgba(255,255,255,0.9); font-size: 9px; font-weight: 500; border-radius: 3px;
+        .sidebar-icon-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
         }
         
-        .calendar-day:hover { background: rgba(255,255,255,0.15); }
-        .calendar-day.other-month { color: rgba(255,255,255,0.25); }
-        .calendar-day.today { background: #ffd700; color: #001a4d; font-weight: 700; }
-        
-        .calendar-month-display {
-            text-align: center;
-            min-width: 80px;
+        .sidebar-icon-btn:hover {
+            background: rgba(255,215,0,0.2);
+            color: #ffd700;
+            transform: scale(1.05);
         }
         
-        .calendar-month-display .month-name {
-            font-size: 18px; font-weight: 700; color: #ffd700; line-height: 1.2;
+        .sidebar-icon-btn.active {
+            background: #ffd700;
+            color: #001a4d;
         }
         
-        .calendar-month-display .year-name {
-            font-size: 14px; color: rgba(255,255,255,0.7);
+        .sidebar-icon-btn i { font-size: 20px; margin-bottom: 2px; }
+        .sidebar-icon-btn span { font-size: 9px; font-weight: 500; text-transform: uppercase; }
+        .sidebar-divider { width: 40px; height: 2px; background: rgba(255,255,255,0.2); margin: 5px 0; }
+        
+        .main-content {
+            margin-left: 80px;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
         }
         
-        .calendar-nav { color: rgba(255,255,255,0.7); cursor: pointer; font-size: 14px; padding: 3px 8px; border-radius: 3px; display: block; margin: 3px 0; }
-        .calendar-nav:hover { color: white; background: rgba(255,255,255,0.1); }
+        .main-content.expanded {
+            margin-left: 0;
+        }
         
-        .action-card { background: #001a4d !important; color: white; border-radius: 10px; padding: 30px; text-align: center; height: 100%; transition: all 0.3s; }
-        .action-card:hover { background: #02205c !important; transform: translateY(-5px); }
-        .action-card h3 { color: #ffd700; font-weight: 600; margin-bottom: 15px; }
-        .action-card p { color: white; margin-bottom: 20px; }
-        .action-card .btn { background: linear-gradient(90deg, #ff4444, #cc0000); border: none; color: white; padding: 12px 25px; border-radius: 8px; font-weight: 600; }
+        /* Stats Cards */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card {
+            background: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
         
-        .table-container { background-color: rgba(255, 255, 255, 0.25); border-radius: 10px; padding: 20px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
-        .table { background: white; }
-        .table thead th { background: #001a4d; color: white; border: none; }
-        .table td { vertical-align: middle; }
+        .stat-card:hover { transform: translateY(-5px); }
+        .stat-card .icon { font-size: 40px; color: #ffd700; margin-bottom: 15px; }
+        .stat-card .number { font-size: 36px; font-weight: bold; }
+        .stat-card .label { font-size: 14px; opacity: 0.9; }
         
-        .status-badge { padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-        .status-interview { background: #dbeafe; color: #1e40af; }
-        .status-hired { background: #dcfce7; color: #166534; }
-        .status-pending { background: #fef3c7; color: #92400e; }
+        /* Job Posts */
+        .section-title {
+            background: linear-gradient(135deg, #001a4d 0%, #02205c 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
         
-        .btn-action { background: linear-gradient(90deg, #ff4444, #cc0000); border: none; color: white; padding: 8px 16px; border-radius: 6px; font-size: 14px; }
+        .job-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #ffd700;
+            transition: transform 0.2s;
+        }
         
-        .user-info { display: flex; align-items: center; gap: 10px; }
-        .user-avatar { width: 40px; height: 40px; border-radius: 50%; background: #001a4d; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; }
+        .job-card:hover { transform: translateX(5px); }
         
-        .datetime-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; background: #e8f4fd; border-radius: 15px; font-size: 12px; color: #001a4d; font-weight: 500; }
+        .job-card.expired {
+            border-left-color: #6c757d;
+            background: #f8f9fa;
+        }
         
-        .deadline-badge { background: #fee2e2; color: #991b1b; }
+        .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+        .job-title { font-size: 18px; font-weight: 700; color: #001a4d; margin: 0; }
+        .job-salary { font-size: 16px; color: #28a745; font-weight: 600; }
+        .job-details { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 10px; }
+        .job-detail { display: flex; align-items: center; gap: 5px; color: #666; font-size: 14px; }
+        .job-status { padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .job-status.active { background: #d4edda; color: #155724; }
+        .job-status.expired, .job-status.closed { background: #f8d7da; color: #721c24; }
         
-        .schedule-card { background: #f8f9fa; border-left: 4px solid #ffd700; border-radius: 8px; padding: 15px; margin-bottom: 15px; }
-        .schedule-card .date { font-size: 24px; font-weight: 700; color: #001a4d; line-height: 1; }
-        .schedule-card .month { font-size: 12px; color: #6b7280; text-transform: uppercase; }
-        .schedule-card .time { font-size: 14px; color: #001a4d; font-weight: 600; }
-        .schedule-card .event-title { font-size: 16px; font-weight: 600; color: #333; margin-top: 8px; }
+        .job-actions { display: flex; gap: 10px; margin-top: 15px; }
+        .btn-action { padding: 8px 15px; border-radius: 5px; font-size: 13px; border: none; cursor: pointer; transition: all 0.3s; }
+        .btn-view { background: #001a4d; color: white; }
+        .btn-view:hover { background: #002d73; }
+        .btn-archive { background: #6c757d; color: white; }
+        .btn-archive:hover { background: #5a6268; }
         
-        .job-post-card { background: white; border: 1px solid #e5e7eb; border-radius: 10px; padding: 20px; margin-bottom: 15px; transition: all 0.3s; }
-        .job-post-card:hover { border-color: #001a4d; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .job-post-card .job-title { font-size: 18px; font-weight: 600; color: #001a4d; }
-        .job-post-card .job-meta { font-size: 13px; color: #6b7280; display: flex; gap: 15px; margin-top: 8px; }
-        .job-post-card .applicant-count { background: #001a4d; color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-        
-        .section-header { display: flex; align-items: center; margin-bottom: 25px; }
-        .section-header::before, .section-header::after { content: ''; flex: 1; height: 3px; background: #FF2D2D; }
-        .section-header span { padding: 0 15px; font-weight: 700; color: #001a4d; font-size: 1.3rem; }
+        .empty-state { text-align: center; padding: 40px; color: #666; }
+        .empty-state i { font-size: 60px; color: #ddd; margin-bottom: 20px; }
         
         @media (max-width: 768px) {
-            .datetime-bar { flex-direction: column; text-align: center; gap: 20px; }
-            .calendar-section { flex-direction: column; align-items: center; }
+            .dashboard-sidebar { display: none; }
+            .main-content { margin-left: 0; }
+            .datetime-bar { flex-direction: column; gap: 20px; }
+            .calendar-section { width: 100%; }
         }
     </style>
 </head>
 <body>
     @include('components.employer-navbar')
-    <main>
-        <div class="container" style="max-width: 1200px;">
-            
-            <!-- Clock and Calendar Bar -->
-            <div class="datetime-bar">
-                <!-- Bigger Clock -->
-                <div class="clock-section">
-                    <div class="analog-clock">
-                        <div class="clock-hand hour-hand" id="hourHand"></div>
-                        <div class="clock-hand minute-hand" id="minuteHand"></div>
-                        <div class="clock-hand second-hand" id="secondHand"></div>
-                        <div class="clock-center"></div>
-                    </div>
-                    <div class="digital-time">
-                        <div class="time-display" id="digitalTime">00:00</div>
-                        <div class="time-period" id="timePeriod">AM</div>
-                    </div>
+    
+    <!-- Sidebar -->
+    <div class="dashboard-sidebar" id="dashboardSidebar">
+        <a href="{{ url('/employer/dashboard') }}" class="sidebar-icon-btn active"><i class="fas fa-th-large"></i><span>Home</span></a>
+        <a href="{{ url('/employer/post-job') }}" class="sidebar-icon-btn"><i class="fas fa-plus-circle"></i><span>Post</span></a>
+        <a href="#" class="sidebar-icon-btn"><i class="fas fa-briefcase"></i><span>Posts</span></a>
+        <a href="#" class="sidebar-icon-btn"><i class="fas fa-users"></i><span>Applicants</span></a>
+        <a href="#" class="sidebar-icon-btn"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
+        <div class="sidebar-divider"></div>
+        <a href="#" class="sidebar-icon-btn"><i class="fas fa-archive"></i><span>Archive</span></a>
+        <a href="#" class="sidebar-icon-btn"><i class="fas fa-bell"></i><span>Alerts</span></a>
+        <div class="sidebar-divider"></div>
+        <a href="#" class="sidebar-icon-btn"><i class="fas fa-cog"></i><span>Settings</span></a>
+        <a href="#" class="sidebar-icon-btn"><i class="fas fa-question-circle"></i><span>Help</span></a>
+    </div>
+    
+    <div class="main-content" id="mainContent">
+        <!-- Flash Messages -->
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fas fa-check-circle"></i> {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
+        
+        @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <i class="fas fa-exclamation-circle"></i> {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        @endif
+        
+        <div class="datetime-bar">
+            <div class="clock-section">
+                <div class="analog-clock">
+                    <div class="clock-center"></div>
+                    <div class="clock-hand hour-hand" id="hourHand"></div>
+                    <div class="clock-hand minute-hand" id="minuteHand"></div>
+                    <div class="clock-hand second-hand" id="secondHand"></div>
                 </div>
-                
-                <!-- Calendar - Side by side layout -->
-                <div class="calendar-section">
-                    <div class="calendar-wrapper">
-                        <div class="calendar-grid" id="calendarGrid"></div>
-                    </div>
-                    
-                    <div class="calendar-month-display">
-                        <span class="calendar-nav" onclick="changeMonth(-1)">&#8249;</span>
-                        <div class="month-name" id="monthName">JAN</div>
-                        <div class="year-name" id="yearName">2025</div>
-                        <span class="calendar-nav" onclick="changeMonth(1)">&#8250;</span>
-                    </div>
+                <div class="digital-time">
+                    <div class="time-display"><span id="timeDisplay">00:00:00</span> <span id="timePeriod">AM</span></div>
+                    <div class="date-display" id="dateDisplay">Loading...</div>
                 </div>
             </div>
             
-            <!-- Action Cards -->
-            <div class="row g-4 mb-5">
-                <div class="col-md-6">
-                    <div class="action-card">
-                        <h3><i class="fas fa-plus-circle me-2"></i>Post New Job</h3>
-                        <p>Create a new job vacancy and reach qualified candidates.</p>
-                        <button class="btn">Post Job Now</button>
+            <div class="calendar-section">
+                <div class="mini-calendar">
+                    <div class="calendar-header">
+                        <button onclick="changeMonth(-1)">&#8249;</button>
+                        <span id="monthName">JAN</span>
+                        <button onclick="changeMonth(1)">&#8250;</button>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="action-card">
-                        <h3><i class="fas fa-tasks me-2"></i>Manage Applicants</h3>
-                        <p>Review and manage all applicants for your job postings.</p>
-                        <button class="btn">View Applicants</button>
-                    </div>
+                    <div style="font-weight: bold; margin-bottom: 5px;" id="yearName">2024</div>
+                    <div class="calendar-grid" id="calendarGrid"></div>
                 </div>
             </div>
-            
-            <!-- Active Job Posts -->
-            <div class="section-header">
-                <span><i class="fas fa-list-alt me-2"></i>Active Job Posts</span>
-            </div>
-            
-            <div class="row g-4 mb-5">
-                <div class="col-md-6">
-                    <div class="job-post-card">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div>
-                                <div class="job-title">Senior Software Developer</div>
-                                <div class="job-meta">
-                                    <span><i class="fas fa-map-marker-alt"></i> Manolo Fortich</span>
-                                    <span><i class="fas fa-money-bill-wave"></i> ₱45,000 - ₱60,000</span>
-                                </div>
-                            </div>
-                            <span class="applicant-count"><i class="fas fa-users"></i> 12</span>
-                        </div>
-                        <hr>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div><div class="datetime-badge"><i class="fas fa-calendar-plus"></i> Posted: Jan 10</div></div>
-                            <div class="datetime-badge deadline-badge"><i class="fas fa-calendar-times"></i> Deadline: Jan 25</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="job-post-card">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div>
-                                <div class="job-title">Graphic Designer</div>
-                                <div class="job-meta">
-                                    <span><i class="fas fa-map-marker-alt"></i> Manolo Fortich</span>
-                                    <span><i class="fas fa-money-bill-wave"></i> ₱25,000 - ₱35,000</span>
-                                </div>
-                            </div>
-                            <span class="applicant-count"><i class="fas fa-users"></i> 8</span>
-                        </div>
-                        <hr>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div><div class="datetime-badge"><i class="fas fa-calendar-plus"></i> Posted: Jan 12</div></div>
-                            <div class="datetime-badge deadline-badge"><i class="fas fa-calendar-times"></i> Deadline: Jan 28</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Upcoming Interviews -->
-            <div class="section-header">
-                <span><i class="fas fa-calendar-alt me-2"></i>Upcoming Interviews</span>
-            </div>
-            
-            <div class="row g-4 mb-5">
-                <div class="col-md-4">
-                    <div class="schedule-card">
-                        <div class="d-flex">
-                            <div class="text-center" style="min-width: 50px;">
-                                <div class="date">20</div>
-                                <div class="month">Jan</div>
-                            </div>
-                            <div style="margin-left: 10px;">
-                                <div class="time"><i class="fas fa-clock me-1"></i> 9:00 AM</div>
-                                <div class="event-title">John Doe</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="schedule-card">
-                        <div class="d-flex">
-                            <div class="text-center" style="min-width: 50px;">
-                                <div class="date">21</div>
-                                <div class="month">Jan</div>
-                            </div>
-                            <div style="margin-left: 10px;">
-                                <div class="time"><i class="fas fa-clock me-1"></i> 2:00 PM</div>
-                                <div class="event-title">Jane Smith</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="schedule-card">
-                        <div class="d-flex">
-                            <div class="text-center" style="min-width: 50px;">
-                                <div class="date">22</div>
-                                <div class="month">Jan</div>
-                            </div>
-                            <div style="margin-left: 10px;">
-                                <div class="time"><i class="fas fa-clock me-1"></i> 10:30 AM</div>
-                                <div class="event-title">Mike Brown</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Recent Applicants -->
-            <div class="section-header">
-                <span><i class="fas fa-users me-2"></i>Recent Applicants</span>
-            </div>
-            
-            <div class="table-container">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Applicant Name</th>
-                            <th>Position</th>
-                            <th>Date Applied</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><div class="user-info"><div class="user-avatar">JD</div><span>John Doe</span></div></td>
-                            <td>Software Developer</td>
-                            <td><div class="datetime-badge"><i class="fas fa-calendar"></i> Jan 15, 2025</div></td>
-                            <td><span class="status-badge status-interview">Interview</span></td>
-                            <td>
-                                <button class="btn-action" title="Hire"><i class="fas fa-check"></i></button>
-                                <button class="btn-action" style="background: #6c757d;" title="View"><i class="fas fa-eye"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><div class="user-info"><div class="user-avatar">JS</div><span>Jane Smith</span></div></td>
-                            <td>Graphic Designer</td>
-                            <td><div class="datetime-badge"><i class="fas fa-calendar"></i> Jan 14, 2025</div></td>
-                            <td><span class="status-badge status-pending">Pending</span></td>
-                            <td>
-                                <button class="btn-action" title="Hire"><i class="fas fa-check"></i></button>
-                                <button class="btn-action" style="background: #6c757d;" title="View"><i class="fas fa-eye"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
         </div>
-    </main>
+        
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-briefcase icon"></i>
+                <div class="number">{{ $activeJobs->count() }}</div>
+                <div class="label">Active Job Posts</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-users icon"></i>
+                <div class="number">0</div>
+                <div class="label">Total Applicants</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-check-circle icon"></i>
+                <div class="number">0</div>
+                <div class="label">Hired</div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-archive icon"></i>
+                <div class="number">{{ $archivedJobs->count() }}</div>
+                <div class="label">Archived Posts</div>
+            </div>
+        </div>
+        
+        <!-- Active Jobs Section -->
+        <div class="section-title">
+            <i class="fas fa-briefcase"></i> Active Job Posts
+            <a href="{{ url('/employer/post-job') }}" class="btn btn-sm btn-warning float-end">
+                <i class="fas fa-plus"></i> Post New Job
+            </a>
+        </div>
+        
+        @if($activeJobs->count() > 0)
+            @foreach($activeJobs as $job)
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h5 class="job-title">{{ $job->position_title }}</h5>
+                            <div class="job-details">
+                                <span class="job-detail"><i class="fas fa-money-bill-wave"></i> {{ $job->salary }}</span>
+                                <span class="job-detail"><i class="fas fa-map-marker-alt"></i> {{ $job->place_of_work }}</span>
+                                <span class="job-detail"><i class="fas fa-users"></i> {{ $job->vacancy_count }} vacancy{{ $job->vacancy_count > 1 ? 'ies' : 'y' }}</span>
+                                <span class="job-detail"><i class="fas fa-calendar"></i> Expires: {{ \Carbon\Carbon::parse($job->valid_until)->format('M d, Y') }}</span>
+                            </div>
+                        </div>
+                        <span class="job-status active">{{ ucfirst($job->status) }}</span>
+                    </div>
+                    <div class="job-actions">
+                        <button class="btn-action btn-view"><i class="fas fa-eye"></i> View Details</button>
+                        <form action="{{ route('employer.job.archive', $job->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            <button type="submit" class="btn-action btn-archive"><i class="fas fa-archive"></i> Archive</button>
+                        </form>
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <div class="empty-state">
+                <i class="fas fa-briefcase"></i>
+                <h5>No Active Job Posts</h5>
+                <p>Start posting jobs to attract applicants</p>
+                <a href="{{ url('/employer/post-job') }}" class="btn btn-primary">Post Your First Job</a>
+            </div>
+        @endif
+        
+        <!-- Archived Jobs Section -->
+        @if($archivedJobs->count() > 0)
+            <div class="section-title" style="margin-top: 40px;">
+                <i class="fas fa-archive"></i> Archived / Expired Job Posts
+            </div>
+            
+            @foreach($archivedJobs as $job)
+                <div class="job-card expired">
+                    <div class="job-header">
+                        <div>
+                            <h5 class="job-title">{{ $job->position_title }}</h5>
+                            <div class="job-details">
+                                <span class="job-detail"><i class="fas fa-money-bill-wave"></i> {{ $job->salary }}</span>
+                                <span class="job-detail"><i class="fas fa-map-marker-alt"></i> {{ $job->place_of_work }}</span>
+                                <span class="job-detail"><i class="fas fa-calendar"></i> Expired: {{ \Carbon\Carbon::parse($job->valid_until)->format('M d, Y') }}</span>
+                            </div>
+                        </div>
+                        <span class="job-status {{ $job->status == 'closed' ? 'closed' : 'expired' }}">{{ ucfirst($job->status) }}</span>
+                    </div>
+                    <div class="job-actions">
+                        <button class="btn-action btn-view"><i class="fas fa-eye"></i> View Details</button>
+                    </div>
+                </div>
+            @endforeach
+        @endif
+    </div>
     
     @include('components.footer')
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Sidebar Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarToggler = document.getElementById('sidebarToggler');
+            const dashboardSidebar = document.getElementById('dashboardSidebar');
+            const mainContent = document.getElementById('mainContent');
+            
+            if (sidebarToggler && dashboardSidebar && mainContent) {
+                sidebarToggler.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dashboardSidebar.classList.toggle('collapsed');
+                    mainContent.classList.toggle('expanded');
+                });
+            }
+        });
+        
+        // Clock & Calendar
         let currentMonth = new Date().getMonth();
         let currentYear = new Date().getFullYear();
         
         function updateClock() {
             const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-            const seconds = now.getSeconds();
-            
-            const hours12 = hours % 12 || 12;
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
             const period = hours >= 12 ? 'PM' : 'AM';
-            document.getElementById('digitalTime').textContent = `${String(hours12).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+            
+            hours = hours % 12 || 12;
+            const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            document.getElementById('timeDisplay').textContent = timeString;
             document.getElementById('timePeriod').textContent = period;
+            document.getElementById('dateDisplay').textContent = now.toDateString();
             
             document.getElementById('hourHand').style.transform = `translateX(-50%) rotate(${(hours % 12) * 30 + minutes / 2}deg)`;
             document.getElementById('minuteHand').style.transform = `translateX(-50%) rotate(${minutes * 6}deg)`;

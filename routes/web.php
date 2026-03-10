@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmployerController;
 
 Route::get('/', function () {
     return view('landing');
@@ -19,9 +20,11 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
 
-Route::get('/employer/dashboard', function () {
-    return view('employer.dashboard');
-})->name('employer.dashboard');
+// Employer Routes
+Route::get('/employer/dashboard', [EmployerController::class, 'dashboard'])->name('employer.dashboard');
+Route::get('/employer/post-job', [EmployerController::class, 'showPostJob'])->name('employer.post-job');
+Route::post('/employer/post-job', [EmployerController::class, 'storeJobPost'])->name('employer.post-job.store');
+Route::post('/employer/job/{id}/archive', [EmployerController::class, 'archiveJob'])->name('employer.job.archive');
 
 Route::get('/employee/dashboard', function () {
     return view('employee.dashboard');
