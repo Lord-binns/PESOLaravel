@@ -188,35 +188,66 @@ class EmployerController extends Controller
                 return redirect()->back()->with('error', 'Archived job not found!');
             }
             
-            // Restore to job_posts table
-            DB::table('job_posts')->insert([
+            // Validate required fields before restore
+            if (empty($archivedJob->establishment_id)) {
+                return redirect()->back()->with('error', 'Cannot restore job: Missing establishment information. Please contact administrator.');
+            }
+            
+            // Check if establishment exists
+            $establishment = DB::table('establishments')->where('id', $archivedJob->establishment_id)->first();
+            if (!$establishment) {
+                return redirect()->back()->with('error', 'Cannot restore job: Associated establishment (ID: ' . $archivedJob->establishment_id . ') no longer exists. Please contact administrator to restore the establishment first.');
+            }
+            
+            // Validate nature_of_work enum - convert to valid value if needed
+            $validNatureOfWork = ['permanent', 'contractual', 'project', 'internship', 'parttime', 'workfromhome'];
+            $natureOfWork = $archivedJob->nature_of_work;
+            if (!in_array($natureOfWork, $validNatureOfWork)) {
+                $natureOfWork = 'contractual'; // Default to contractual for invalid values
+            }
+            
+            // Restore to job_posts table with fallback values for missing fields
+            $jobData = [
                 'establishment_id' => $archivedJob->establishment_id,
-                'position_title' => $archivedJob->position_title,
-                'job_description' => $archivedJob->job_description,
-                'nature_of_work' => $archivedJob->nature_of_work,
-                'place_of_work' => $archivedJob->place_of_work,
-                'salary' => $archivedJob->salary,
-                'vacancy_count' => $archivedJob->vacancy_count,
-                'education_level' => $archivedJob->education_level,
-                'course' => $archivedJob->course,
-                'work_experience' => $archivedJob->work_experience,
-                'license_eligibility' => $archivedJob->license_eligibility,
-                'certification' => $archivedJob->certification,
-                'language_spoken' => $archivedJob->language_spoken,
-                'other_qualifications' => $archivedJob->other_qualifications,
-                'accepts_pwd' => $archivedJob->accepts_pwd,
-                'accepts_ofw' => $archivedJob->accepts_ofw,
-                'posting_date' => $archivedJob->posting_date,
-                'valid_until' => $archivedJob->valid_until,
+                'position_title' => $archivedJob->position_title ?? 'Untitled Position',
+                'job_description' => $archivedJob->job_description ?? 'No description provided',
+                'nature_of_work' => $natureOfWork,
+                'place_of_work' => $archivedJob->place_of_work ?? 'Not specified',
+                'salary' => $archivedJob->salary ?? 'Negotiable',
+                'vacancy_count' => $archivedJob->vacancy_count ?? 1,
+                'education_level' => $archivedJob->education_level ?? null,
+                'course' => $archivedJob->course ?? null,
+                'work_experience' => $archivedJob->work_experience ?? null,
+                'license_eligibility' => $archivedJob->license_eligibility ?? null,
+                'certification' => $archivedJob->certification ?? null,
+                'language_spoken' => $archivedJob->language_spoken ?? null,
+                'other_qualifications' => $archivedJob->other_qualifications ?? null,
+                'accepts_pwd' => $archivedJob->accepts_pwd ?? 0,
+                'accepts_ofw' => $archivedJob->accepts_ofw ?? 0,
+                'posting_date' => $archivedJob->posting_date ?? now()->toDateString(),
+                'valid_until' => $archivedJob->valid_until ?? now()->addMonth()->toDateString(),
                 'status' => 'active',
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]);
+            ];
+            
+            // Add pwd_types if the column exists and has a value
+            if (isset($archivedJob->pwd_types)) {
+                $jobData['pwd_types'] = $archivedJob->pwd_types;
+            }
+            
+            DB::table('job_posts')->insert($jobData);
             
             // Delete from archive table
             DB::table('job_archive')->where('id', $id)->delete();
                 
             return redirect()->route('employer.archive')->with('success', 'Job restored successfully!');
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Handle foreign key constraint violations specifically
+            if ($e->getCode() == '23000') {
+                return redirect()->back()->with('error', 'Cannot restore job: Related establishment does not exist or has been deleted. Please contact administrator to restore the establishment first.');
+            }
+            return redirect()->back()->with('error', 'Database error restoring job: ' . $e->getMessage());
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error restoring job: ' . $e->getMessage());
         }
