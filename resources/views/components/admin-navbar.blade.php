@@ -43,7 +43,7 @@
                 </a>
                 <ul class="dropdown-menu notification-dropdown">
                     <li class="dropdown-header">Notifications</li>
-                    <li><a href="{{ route('admin.pending.jobs') }}"><i class="fas fa-clock"></i> {{ $pendingJobsCount ?? 0 }} pending job(s) for approval</a></li>
+                    <li><a href="{{ route('dashboard') }}"><i class="fas fa-clock"></i> {{ $pendingJobsCount ?? 0 }} pending job(s) for approval</a></li>
                     <li><a href="#"><i class="fas fa-user"></i> New employer registered</a></li>
                     <li class="divider"></li>
                     <li><a href="#" class="view-all">View All Notifications</a></li>

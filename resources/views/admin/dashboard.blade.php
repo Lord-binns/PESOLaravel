@@ -439,7 +439,7 @@
     <!-- Sidebar -->
     <div class="dashboard-sidebar" id="dashboardSidebar">
         <a href="{{ url('/admin/dashboard') }}" class="sidebar-icon-btn active"><i class="fas fa-th-large"></i><span>Home</span></a>
-        <a href="{{ route('admin.pending.jobs') }}" class="sidebar-icon-btn">
+        <a href="{{ route('dashboard') }}" class="sidebar-icon-btn">
             <i class="fas fa-clock"></i><span>Pending</span>
             @if($pendingJobsCount > 0)
                 <span class="sidebar-badge">{{ $pendingJobsCount }}</span>
