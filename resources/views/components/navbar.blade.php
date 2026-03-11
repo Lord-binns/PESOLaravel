@@ -45,21 +45,15 @@
             </div>
 
             <div class="nav-item">
-                <a class="btn" href="#">
+                <a class="btn" href="{{ url('/#skills-services') }}">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                     </svg>
                     SERVICES
-                    <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Job Placement</a></li>
-                    <li><a href="#">Skills Training</a></li>
-                    <li><a href="#">Career Counseling</a></li>
-                    <li><a href="#">Documentation</a></li>
-                </ul>
             </div>
+
 
         </nav>
 

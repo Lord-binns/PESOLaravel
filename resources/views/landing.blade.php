@@ -491,6 +491,94 @@
 
 </section>
 
+<!-- Skills Section -->
+<section id="skills-services" class="skills-section" style="background: linear-gradient(135deg, #001a4d 0%, #02205c 100%); padding: 60px 20px;">
+    <div class="container">
+        <h2 style="display: flex; align-items: center; text-align: center; width: 100%; margin-bottom: 40px; color: #ffd700; font-weight: 700;">
+            <span style="flex: 1; height: 3px; background: #ffd700;"></span>
+            <span style="padding: 0 20px; font-size: 2rem;">Our Skills & Services</span>
+            <span style="flex: 1; height: 3px; background: #ffd700;"></span>
+        </h2>
+        
+        <div class="row g-4 justify-content-center">
+            <!-- Skill Card 1 -->
+            <div class="col-md-4">
+                <div class="card h-100" style="background: rgba(255, 255, 255, 0.1); border: 2px solid #ffd700; border-radius: 15px; transition: transform 0.3s;">
+                    <div class="card-body text-center text-white" style="padding: 30px;">
+                        <img src="https://i.pinimg.com/originals/a9/a7/03/a9a7034c548a23df4e3e9e823a898998.gif" alt="Job Placement" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 20px; border: 3px solid #ffd700;">
+                        <h4 style="color: #ffd700; margin-bottom: 15px;">Job Placement</h4>
+                        <p style="color: #ffffff;">Connecting qualified job seekers with leading employers. We help bridge the gap between talent and opportunity.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skill Card 2 -->
+            <div class="col-md-4">
+                <div class="card h-100" style="background: rgba(255, 255, 255, 0.1); border: 2px solid #ffd700; border-radius: 15px; transition: transform 0.3s;">
+                    <div class="card-body text-center text-white" style="padding: 30px;">
+                        <div style="width: 80px; height: 80px; background: #ffd700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <img src="https://i.pinimg.com/originals/a9/a7/03/a9a7034c548a23df4e3e9e823a898998.gif" alt="Skills Training" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 20px; border: 3px solid #ffd700;">
+                        <h4 style="color: #ffd700; margin-bottom: 15px;">Skills Training</h4>
+                        <p style="color: #ffffff;">Comprehensive training programs to enhance employability and professional development skills.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skill Card 3 -->
+            <div class="col-md-4">
+                <div class="card h-100" style="background: rgba(255, 255, 255, 0.1); border: 2px solid #ffd700; border-radius: 15px; transition: transform 0.3s;">
+                    <div class="card-body text-center text-white" style="padding: 30px;">
+                        <div style="width: 80px; height: 80px; background: #ffd700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <i class="fas fa-user-tie" style="font-size: 36px; color: #001a4d;"></i>
+                        </div>
+                        <h4 style="color: #ffd700; margin-bottom: 15px;">Career Counseling</h4>
+                        <p style="color: #ffffff;">Professional guidance to help you make informed career decisions and achieve your goals.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skill Card 4 -->
+            <div class="col-md-4">
+                <div class="card h-100" style="background: rgba(255, 255, 255, 0.1); border: 2px solid #ffd700; border-radius: 15px; transition: transform 0.3s;">
+                    <div class="card-body text-center text-white" style="padding: 30px;">
+                        <div style="width: 80px; height: 80px; background: #ffd700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <i class="fas fa-search" style="font-size: 36px; color: #001a4d;"></i>
+                        </div>
+                        <h4 style="color: #ffd700; margin-bottom: 15px;">Job Matching</h4>
+                        <p style="color: #ffffff;">Advanced matching system to pair the right candidate with the right job position.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skill Card 5 -->
+            <div class="col-md-4">
+                <div class="card h-100" style="background: rgba(255, 255, 255, 0.1); border: 2px solid #ffd700; border-radius: 15px; transition: transform 0.3s;">
+                    <div class="card-body text-center text-white" style="padding: 30px;">
+                        <div style="width: 80px; height: 80px; background: #ffd700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <i class="fas fa-clipboard-check" style="font-size: 36px; color: #001a4d;"></i>
+                        </div>
+                        <h4 style="color: #ffd700; margin-bottom: 15px;">Interview Coaching</h4>
+                        <p style="color: #ffffff;">Prepare for interviews with our expert coaching and mock interview sessions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skill Card 6 -->
+            <div class="col-md-4">
+                <div class="card h-100" style="background: rgba(255, 255, 255, 0.1); border: 2px solid #ffd700; border-radius: 15px; transition: transform 0.3s;">
+                    <div class="card-body text-center text-white" style="padding: 30px;">
+                        <div style="width: 80px; height: 80px; background: #ffd700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <i class="fas fa-building" style="font-size: 36px; color: #001a4d;"></i>
+                        </div>
+                        <h4 style="color: #ffd700; margin-bottom: 15px;">Employer Services</h4>
+                        <p style="color: #ffffff;">Help employers find qualified candidates through our extensive recruitment network.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
 
     <!-- News & Updates Header with Lines -->
