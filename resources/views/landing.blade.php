@@ -500,79 +500,64 @@
             <span style="flex: 1; height: 3px; background: #ffd700;"></span>
         </h2>
         
-        <div class="row g-4 justify-content-center">
+        <div class="cards" style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
             <!-- Skill Card 1 -->
-            <div class="col-md-4">
-                <div class="card h-100" style="background: rgba(255, 255, 255, 0.1); border: 2px solid #ffd700; border-radius: 15px; transition: transform 0.3s;">
-                    <div class="card-body text-center text-white" style="padding: 30px;">
-                        <img src="https://i.pinimg.com/originals/a9/a7/03/a9a7034c548a23df4e3e9e823a898998.gif" alt="Job Placement" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 20px; border: 3px solid #ffd700;">
-                        <h4 style="color: #ffd700; margin-bottom: 15px;">Job Placement</h4>
-                        <p style="color: #ffffff;">Connecting qualified job seekers with leading employers. We help bridge the gap between talent and opportunity.</p>
-                    </div>
+            <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
+                <img src="https://i.pinimg.com/originals/a9/a7/03/a9a7034c548a23df4e3e9e823a898998.gif" class="card-img-top" alt="Job Placement" style="width:100%; height:200px; object-fit:cover;">
+                <div class="card-body" style="padding:15px;">
+                    <h5 class="card-title" style="color:#001a4d; font-weight:700;">Job Placement</h5>
+                    <p class="card-text" style="color:#333333;">Connecting qualified job seekers with leading employers. We help bridge the gap between talent and opportunity.</p>
+                    <a href="#" class="btn btn-danger">Learn More</a>
                 </div>
             </div>
             
             <!-- Skill Card 2 -->
-            <div class="col-md-4">
-                <div class="card h-100" style="background: rgba(255, 255, 255, 0.1); border: 2px solid #ffd700; border-radius: 15px; transition: transform 0.3s;">
-                    <div class="card-body text-center text-white" style="padding: 30px;">
-                        <div style="width: 80px; height: 80px; background: #ffd700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                        <img src="https://i.pinimg.com/originals/a9/a7/03/a9a7034c548a23df4e3e9e823a898998.gif" alt="Skills Training" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin: 0 auto 20px; border: 3px solid #ffd700;">
-                        <h4 style="color: #ffd700; margin-bottom: 15px;">Skills Training</h4>
-                        <p style="color: #ffffff;">Comprehensive training programs to enhance employability and professional development skills.</p>
-                    </div>
+            <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
+                <img src="https://i.pinimg.com/originals/64/03/cd/6403cd601259fdaa7ca8664283c3b563.gif" class="card-img-top" alt="Skills Training" style="width:100%; height:200px; object-fit:cover;">
+                <div class="card-body" style="padding:15px;">
+                    <h5 class="card-title" style="color:#001a4d; font-weight:700;">Skills Training</h5>
+                    <p class="card-text" style="color:#333333;">Comprehensive training programs to enhance employability and professional development skills.</p>
+                    <a href="#" class="btn btn-danger">Learn More</a>
                 </div>
             </div>
             
             <!-- Skill Card 3 -->
-            <div class="col-md-4">
-                <div class="card h-100" style="background: rgba(255, 255, 255, 0.1); border: 2px solid #ffd700; border-radius: 15px; transition: transform 0.3s;">
-                    <div class="card-body text-center text-white" style="padding: 30px;">
-                        <div style="width: 80px; height: 80px; background: #ffd700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                            <i class="fas fa-user-tie" style="font-size: 36px; color: #001a4d;"></i>
-                        </div>
-                        <h4 style="color: #ffd700; margin-bottom: 15px;">Career Counseling</h4>
-                        <p style="color: #ffffff;">Professional guidance to help you make informed career decisions and achieve your goals.</p>
-                    </div>
+            <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
+                <img src="https://i.pinimg.com/originals/e3/1b/75/e31b752875679b64fce009922f9f0dda.gif" class="card-img-top" alt="Career Counseling" style="width:100%; height:200px; object-fit:cover;">
+                <div class="card-body" style="padding:15px;">
+                    <h5 class="card-title" style="color:#001a4d; font-weight:700;">Career Counseling</h5>
+                    <p class="card-text" style="color:#333333;">Professional guidance to help you make informed career decisions and achieve your goals.</p>
+                    <a href="#" class="btn btn-danger">Learn More</a>
                 </div>
             </div>
-            
+
             <!-- Skill Card 4 -->
-            <div class="col-md-4">
-                <div class="card h-100" style="background: rgba(255, 255, 255, 0.1); border: 2px solid #ffd700; border-radius: 15px; transition: transform 0.3s;">
-                    <div class="card-body text-center text-white" style="padding: 30px;">
-                        <div style="width: 80px; height: 80px; background: #ffd700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                            <i class="fas fa-search" style="font-size: 36px; color: #001a4d;"></i>
-                        </div>
-                        <h4 style="color: #ffd700; margin-bottom: 15px;">Job Matching</h4>
-                        <p style="color: #ffffff;">Advanced matching system to pair the right candidate with the right job position.</p>
-                    </div>
+            <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
+                <img src="https://i.pinimg.com/originals/17/78/18/1778180ab18a432d192c16aba4bbe51f.gif" class="card-img-top" alt="Job Matching" style="width:100%; height:200px; object-fit:cover;">
+                <div class="card-body" style="padding:15px;">
+                    <h5 class="card-title" style="color:#001a4d; font-weight:700;">Job Matching</h5>
+                    <p class="card-text" style="color:#333333;">Advanced matching system to pair the right candidate with the right job position.</p>
+                    <a href="#" class="btn btn-danger">Learn More</a>
                 </div>
             </div>
             
             <!-- Skill Card 5 -->
-            <div class="col-md-4">
-                <div class="card h-100" style="background: rgba(255, 255, 255, 0.1); border: 2px solid #ffd700; border-radius: 15px; transition: transform 0.3s;">
-                    <div class="card-body text-center text-white" style="padding: 30px;">
-                        <div style="width: 80px; height: 80px; background: #ffd700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                            <i class="fas fa-clipboard-check" style="font-size: 36px; color: #001a4d;"></i>
-                        </div>
-                        <h4 style="color: #ffd700; margin-bottom: 15px;">Interview Coaching</h4>
-                        <p style="color: #ffffff;">Prepare for interviews with our expert coaching and mock interview sessions.</p>
-                    </div>
+            <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
+                <img src="https://i.pinimg.com/originals/1c/91/25/1c91250424a728f4ea55cb0494e9716b.gif" class="card-img-top" alt="Interview Coaching" style="width:100%; height:200px; object-fit:cover;">
+                <div class="card-body" style="padding:15px;">
+                    <h5 class="card-title" style="color:#001a4d; font-weight:700;">Interview Coaching</h5>
+                    <p class="card-text" style="color:#333333;">Prepare for interviews with our expert coaching and mock interview sessions.</p>
+                    <a href="#" class="btn btn-danger">Learn More</a>
                 </div>
             </div>
             
             <!-- Skill Card 6 -->
-            <div class="col-md-4">
-                <div class="card h-100" style="background: rgba(255, 255, 255, 0.1); border: 2px solid #ffd700; border-radius: 15px; transition: transform 0.3s;">
-                    <div class="card-body text-center text-white" style="padding: 30px;">
-                        <div style="width: 80px; height: 80px; background: #ffd700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                            <i class="fas fa-building" style="font-size: 36px; color: #001a4d;"></i>
-                        </div>
-                        <h4 style="color: #ffd700; margin-bottom: 15px;">Employer Services</h4>
-                        <p style="color: #ffffff;">Help employers find qualified candidates through our extensive recruitment network.</p>
-                    </div>
+            <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
+                <img src="https://i.pinimg.com/originals/e2/93/99/e29399a80c780b68929cd57c6ec792ae.gif" class="card-img-top" alt="Employer Services" style="width:100%; height:200px; object-fit:cover;">
+                <div class="card-body" style="padding:15px;">
+                    <h5 class="card-title" style="color:#001a4d; font-weight:700;">Employer Services</h5>
+                    <p class="card-text" style="color:#333333;">Help employers find qualified candidates through our extensive recruitment network.</p>
+                    <a href="#" class="btn btn-danger">Learn More</a>
                 </div>
             </div>
         </div>
