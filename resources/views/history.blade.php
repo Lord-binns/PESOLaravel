@@ -13,6 +13,8 @@
     @endif
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     @if (file_exists(public_path('build/manifest.json')))
         @vite(['resources/css/app.css'])
@@ -35,62 +37,58 @@
         .btn-primary:hover {
             background-color: #cc0000;
         }
-        .btn-outline {
-            color: #ffd700;
-            border-color: #ffd700;
-        }
-        .btn-outline:hover {
-            background-color: #ffd700;
-            color: #001a4d;
-        }
-        .section-title {
-            color: #001a4d;
-        }
         .site-footer {
-            background: linear-gradient(to right, 
-                #FF0000 0%, 
-                #FF0000 10%, 
-                #000000 20%, 
-                #030112 30%, 
-                #03010f 40%, 
-                #09012a 50%, 
-                #010135 60%, 
-                #02256a 100%
-            ) !important;
+            background: linear-gradient(to right, #FF0000 0%, #FF0000 10%, #000000 20%, #030112 30%, #03010f 40%, #09012a 50%, #010135 60%, #02256a 100%) !important;
             border-top: 3px solid #ffd700;
             color: #ffffff;
         }
-        h1, h2, h3 {
-            color: #001a4d;
-        }
+        h1, h2, h3 { color: #001a4d; }
         
-        
-        /* History Page Styles */
-        .history-hero {
-            background: linear-gradient(rgba(0, 26, 77, 0.85), rgba(2, 32, 92, 0.85)), url('{{ asset("images/history.png") }}');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: white;
-            padding: 4rem 0;
-        
-        }
-        
-        .history-hero h1 {
-            color: #ffd700;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .timeline {
+        /* Clean Header - White Background with Red Side Lines */
+        .page-header {
+            background: #ffffff;
+            padding: 60px 0;
             position: relative;
-            padding: 2rem 0;
-            background: linear-gradient(rgba(255, 255, 255, 0.60), rgba(255, 255, 255, 0.60)), url('{{ asset("images/LogoPNG.png") }}');
-            background-size: 700px;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            border-left: 5px solid #ff4444;
+            border-right: 5px solid #ff4444;
         }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #ff4444;
+        }
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #ff4444;
+        }
+        .page-title {
+            color: #001a4d;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        .page-subtitle {
+            color: #666666;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        /* Timeline Section */
+        .timeline-section { padding: 4rem 0; background: #ffffff; }
+        
+        .timeline { position: relative; padding: 2rem 0; }
         
         .timeline::before {
             content: '';
@@ -99,81 +97,204 @@
             transform: translateX(-50%);
             width: 4px;
             height: 100%;
-            background: #ffd700;
-            top: 0;
+            background: linear-gradient(to bottom, #ffd700, #ff4444);
+            border-radius: 2px;
         }
         
+        /* Timeline item base state - hidden */
         .timeline-item {
             position: relative;
             margin-bottom: 3rem;
             display: flex;
             justify-content: flex-end;
-            padding-right: calc(50% + 30px);
+            padding-right: calc(50% + 40px);
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
+        /* Timeline item alternate - from other side */
         .timeline-item:nth-child(even) {
             justify-content: flex-start;
             padding-right: 0;
-            padding-left: calc(50% + 30px);
+            padding-left: calc(50% + 40px);
+            transform: translateX(100px);
         }
         
-        .timeline-item::before {
-            content: '';
+        /* Visible state */
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Stagger delays */
+        .timeline-item:nth-child(1) { transition-delay: 0.1s; }
+        .timeline-item:nth-child(2) { transition-delay: 0.2s; }
+        .timeline-item:nth-child(3) { transition-delay: 0.3s; }
+        .timeline-item:nth-child(4) { transition-delay: 0.4s; }
+        .timeline-item:nth-child(5) { transition-delay: 0.5s; }
+        
+        .timeline-item:nth-child(even) { transition-delay: 0.15s; }
+        
+        .timeline-dot {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             background: #ffd700;
             border-radius: 50%;
             border: 4px solid #001a4d;
+            z-index: 2;
+            box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.5s ease 0.3s, transform 0.3s ease;
+        }
+        
+        .timeline-item.visible .timeline-dot {
+            opacity: 1;
+        }
+        
+        .timeline-dot:hover {
+            transform: translateX(-50%) scale(1.3);
+            background: #ff4444;
+        }
+        
+        .timeline-card {
+            background: #ffffff;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 450px;
+            width: 100%;
+        }
+        
+        /* Card appears with scale */
+        .timeline-item.visible .timeline-card {
+            animation: cardPopIn 0.5s ease forwards;
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+        
+        @keyframes cardPopIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .timeline-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+        
+        .timeline-card .card-img-wrapper { 
+            position: relative; 
+            overflow: hidden;
+        }
+        
+        .timeline-card .card-img-top {
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .timeline-card:hover .card-img-top { 
+            transform: scale(1.1); 
+        }
+        
+        /* Image overlay effect */
+        .timeline-card .card-img-wrapper::after {
+            content: '';
+            position: absolute;
             top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
-        .timeline-content {
-            background: rgba(248, 249, 250, 0.85);
-            padding: 2rem;
-            border-radius: 10px;
-            border-left: 5px solid #ffd700;
-            max-width: 500px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        .timeline-card:hover .card-img-wrapper::after {
+            opacity: 1;
         }
         
-        .timeline-content h3 {
+        .timeline-card .card-date {
+            color: #ff4444;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .timeline-card .card-body { padding: 1.5rem; }
+        .timeline-card .card-title {
             color: #001a4d;
-            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            transition: color 0.3s ease;
         }
         
-        .timeline-content .date {
+        .timeline-card:hover .card-title {
             color: #ff4444;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            display: block;
         }
         
-        .timeline-content p {
-            color: #333333;
-            line-height: 1.8;
+        .timeline-card .card-title i { 
+            color: #ff4444;
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-card:hover .card-title i {
+            transform: rotate(360deg);
+        }
+        
+        .timeline-card .card-text { 
+            color: #555555; 
+            line-height: 1.7; 
+            font-size: 0.95rem; 
+        }
+        
+        /* Section Header Animation */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-header h2 { 
+            color: #001a4d; 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            margin-bottom: 1rem; 
+        }
+        .section-header .title-line { 
+            width: 80px; 
+            height: 3px; 
+            background: linear-gradient(90deg, #ff4444, #ffd700); 
+            margin: 0 auto;
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+        
+        .section-header.visible .title-line {
+            transform: scaleX(1);
         }
         
         @media (max-width: 768px) {
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-item,
-            .timeline-item:nth-child(even) {
+            .page-title { font-size: 2rem; }
+            .timeline::before { left: 20px; }
+            .timeline-item, .timeline-item:nth-child(even) {
                 padding-left: 60px;
                 padding-right: 0;
                 justify-content: flex-start;
+                transform: translateX(50px);
             }
-            
-            .timeline-item::before {
-                left: 20px;
+            .timeline-item.visible {
+                transform: translateX(0);
             }
+            .timeline-dot { left: 20px; }
         }
     </style>
 </head>
@@ -181,166 +302,128 @@
     <x-navbar />
 
     <main>
-        <!-- Hero Section -->
-        <section class="history-hero">
+        <section class="timeline-section">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto text-center">
-                        <h1>THE HISTORY OF EXCELLENCE</h1>
-                        <p class="lead">A journey of commitment to employment services and community development</p>
+                <div class="section-header">
+                    <h1 class="page-title">THE HISTORY OF EXCELLENCE</h1>
+                    <p class="page-subtitle">A journey of commitment to employment services and community development</p>
+                    <div class="title-line"></div>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="card-img-wrapper">
+                                <img src="{{ asset('images/PESO.png') }}" class="card-img-top" alt="PESO Commencement">
+                            </div>
+                            <div class="card-body">
+                                <div class="card-date">April 13, 2005</div>
+                                <h3 class="card-title"><i class="fas fa-building"></i> PESO Commencement</h3>
+                                <p class="card-text">The Public Employment Service Office (PESO) of Manolo Fortich officially commenced operations on April 13, 2005, following the approval of Resolution No. 2005-08. This marked a significant milestone in the municipality's commitment to providing employment services to its constituents, establishing a bridge between job seekers and potential employers within the local community and beyond.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="card-img-wrapper">
+                                <img src="{{ asset('images/LGU.png') }}" class="card-img-top" alt="Institutionalization">
+                            </div>
+                            <div class="card-body">
+                                <div class="card-date">July 2005</div>
+                                <h3 class="card-title"><i class="fas fa-landmark"></i> Institutionalization</h3>
+                                <p class="card-text">PESO was formally institutionalized through Sangguniang Bayan Ordinance No. 2005-94, providing it with a legal framework and ensuring sustainable funding from the local government. This ordinance mandated the integration of PESO into the municipal government's organizational structure, guaranteeing its long-term operation and commitment to serving the employment needs of Manolo Fortich's residents.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="card-img-wrapper">
+                                <img src="{{ asset('images/logo.png') }}" class="card-img-top" alt="DOLE Accreditation">
+                            </div>
+                            <div class="card-body">
+                                <div class="card-date">October 2005</div>
+                                <h3 class="card-title"><i class="fas fa-award"></i> DOLE Accreditation</h3>
+                                <p class="card-text">PESO Manolo Fortich received official accreditation from the Department of Labor and Employment (DOLE) on October 26, 2005. This accreditation recognized the office's compliance with national standards for public employment service offices, enabling it to participate in DOLE programs and access additional resources for job placement, skills training, and livelihood development initiatives.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="card-img-wrapper">
+                                <img src="{{ asset('images/Pic1.jpg') }}" class="card-img-top" alt="Skills Registration">
+                            </div>
+                            <div class="card-body">
+                                <div class="card-date">January 2013</div>
+                                <h3 class="card-title"><i class="fas fa-clipboard-list"></i> Skills Registration</h3>
+                                <p class="card-text">Under the leadership of Mayor Rogelio N. Quiño, PESO established the Manpower Skills Registration System, a comprehensive database of skilled workers in Manolo Fortich. This initiative enabled better matching of local talent with employment opportunities, facilitated skills mapping of the workforce, and provided valuable data for planning training programs and economic development strategies.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="card-img-wrapper">
+                                <img src="{{ asset('images/LogoLGU.png') }}" class="card-img-top" alt="Present Day">
+                            </div>
+                            <div class="card-body">
+                                <div class="card-date">Present</div>
+                                <h3 class="card-title"><i class="fas fa-heart"></i> Continuing Our Mission</h3>
+                                <p class="card-text">Today, PESO Manolo Fortich continues its unwavering commitment to serving the community through comprehensive employment services, including job matching, career counseling, skills development training, job fair organization, and livelihood program assistance. The office has facilitated thousands of successful job placements and continues to forge partnerships with local businesses and national agencies to create more opportunities for the people of Manolo Fortich.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Timeline Section -->
-        <section class="container">
-            <div class="timeline">
-                <!-- 2005 - PESO Commencement -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="date">April 13, 2005</span>
-                        <h3>
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#001a4d" stroke-width="2" style="flex-shrink: 0;">
-                                <path d="M3 21h18"/>
-                                <path d="M5 21V7l8-4v18"/>
-                                <path d="M19 21V11l-6-4"/>
-                                <path d="M9 9v.01"/>
-                                <path d="M9 12v.01"/>
-                                <path d="M9 15v.01"/>
-                                <path d="M9 18v.01"/>
-                            </svg>
-                            PESO Commencement of Operations
-                        </h3>
-                        <p>The Public Employment Service Office (PESO) of Manolo Fortich commenced its dynamic operations on April 13, 2005, following the approval of Resolution No. 2005-08, which sanctioned the creation of Plantilla positions under the PESO of the Local Government Unit.</p>
-                    </div>
-                </div>
-
-                <!-- 2005 - Institutionalization -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="date">July 2005</span>
-                        <h3>
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#001a4d" stroke-width="2" style="flex-shrink: 0;">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14 2 14 8 20 8"/>
-                                <line x1="12" y1="18" x2="12" y2="12"/>
-                                <line x1="9" y1="15" x2="15" y2="15"/>
-                            </svg>
-                            Institutionalization through Ordinance
-                        </h3>
-                        <p>The PESO was institutionalized through an ordinance under the office of the Municipal Mayor, as per Sangguniang Bayan Resolution No. 2005-94. Recognizing the need for a dedicated institution to address employment challenges, the Manolo Fortich Municipal Mayor's office formalized the PESO's role under the leadership of Mayor Soccoro O. Acosta.</p>
-                    </div>
-                </div>
-
-                <!-- 2005 - DOLE Agreement -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="date">October 2005</span>
-                        <h3>
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#001a4d" stroke-width="2" style="flex-shrink: 0;">
-                                <circle cx="12" cy="8" r="7"/>
-                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
-                            </svg>
-                            DOLE Accreditation
-                        </h3>
-                        <p>Three months later, a resolution empowering then Municipal Mayor Hon. Soccoro O. Acosta to enter into an agreement with the Department of Labor and Employment (DOLE) was passed, culminating in the accreditation of the PESO on October 26, 2005. This accreditation opened doors for collaboration with DOLE and other government agencies, enhancing the office's capacity to serve the community.</p>
-                    </div>
-                </div>
-
-                <!-- 2013 - Skills Registration -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="date">January 2013</span>
-                        <h3>
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#001a4d" stroke-width="2" style="flex-shrink: 0;">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                <line x1="16" y1="2" x2="16" y2="6"/>
-                                <line x1="8" y1="2" x2="8" y2="6"/>
-                                <line x1="3" y1="10" x2="21" y2="10"/>
-                                <path d="M8 14h.01"/>
-                                <path d="M12 14h.01"/>
-                                <path d="M16 14h.01"/>
-                                <path d="M8 18h.01"/>
-                                <path d="M12 18h.01"/>
-                                <path d="M16 18h.01"/>
-                            </svg>
-                            Manpower Skills Registration System
-                        </h3>
-                        <p>As leadership transitioned to Hon. Rogelio N. Quiño, the PESO continued its mission to provide quality employment services. In January 2013, a resolution supporting the establishment of the Manpower Skills Registration System underscored the office's commitment to addressing the evolving needs of job seekers.</p>
-                    </div>
-                </div>
-
-                <!-- Present -->
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="date">Present</span>
-                        <h3>
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#001a4d" stroke-width="2" style="flex-shrink: 0;">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                            </svg>
-                            Continuing Our Mission
-                        </h3>
-                        <p>PESO Manolo Fortich continues to serve the community by providing employment services, job matching, skills development, and career guidance. The office remains committed to connecting jobseekers with employers and supporting the economic development of Manolo Fortich.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
- <!-- Contact Footer -->
-<section id="contact-footer" style="background-color: #03153b; color: white; padding: 40px 20px; font-family: Arial, sans-serif;">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between;">
-
-        <!-- Contact Info -->
-        <div style="flex: 1 1 250px; min-width: 220px;">
-<h2 style="margin-bottom: 15px; font-size: 1.5rem; color: #ffffff; font-weight: 700; display: flex; align-items: center;">
-    Contact Us
-    <span style="flex: 1; height: 2px; background-color: #FF2D2D; margin-left: 10px;"></span>
-</h2>
-
-
-            <p style="margin: 4px 0;">PESO Manolo Fortich</p>
-            <p style="margin: 4px 0;">Manolo Fortich, Bukidnon</p>
-            <p style="margin: 4px 0;">Phone: (XXX) XXX-XXXX</p>
-            <p style="margin: 4px 0;">Email: <a href="mailto:peso@manolofortich.gov.ph" style="color: #ffd700; text-decoration: none;">peso@manolofortich.gov.ph</a></p>
-        </div>
-
-        <!-- Categories -->
-        <div style="flex: 1 1 200px; min-width: 200px;">
-<h2 style="margin-bottom: 15px; font-size: 1.5rem; color: #ffffff; font-weight: 700; display: flex; align-items: center;">
-    Categories
-    <span style="flex: 1; height: 2px; background-color: #FF2D2D; margin-left: 10px;"></span>
-</h2>
-
-            <ul style="list-style: none; padding: 0; margin: 0;">
-                <li style="margin-bottom: 6px;">Employment Services</li>
-                <li style="margin-bottom: 6px;">Training Programs</li>
-                <li style="margin-bottom: 6px;">Job Fairs</li>
-                <li style="margin-bottom: 6px;">Career Counseling</li>
-            </ul>
-        </div>
-
-        <!-- Useful Pages -->
-        <div style="flex: 1 1 200px; min-width: 200px;">
-<h2 style="margin-bottom: 15px; font-size: 1.5rem; color: #ffffff; font-weight: 700; display: flex; align-items: center;">
-    Useful Pages
-    <span style="flex: 1; height: 2px; background-color: #FF2D2D; margin-left: 10px;"></span>
-</h2>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-                <li style="margin-bottom: 6px;"><a href="#" style="color: #ffd700; text-decoration: none;">Home</a></li>
-                <li style="margin-bottom: 6px;"><a href="#" style="color: #ffd700; text-decoration: none;">About Us</a></li>
-                <li style="margin-bottom: 6px;"><a href="#" style="color: #ffd700; text-decoration: none;">Services</a></li>
-                <li style="margin-bottom: 6px;"><a href="#" style="color: #ffd700; text-decoration: none;">Contact</a></li>
-            </ul>
-        </div>
-
-    </div>
-</section>
     </main>
 
     <x-footer />
-    
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all timeline items
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
+            });
+            
+            // Observe section header
+            const headerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            const sectionHeader = document.querySelector('.section-header');
+            if (sectionHeader) {
+                headerObserver.observe(sectionHeader);
+            }
+        });
+    </script>
 </body>
 </html>
