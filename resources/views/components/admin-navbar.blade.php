@@ -52,7 +52,7 @@
                             <i class="fas fa-clock"></i> Pending Approval ({{ $pendingJobsCount ?? 0 }})
                         </li>
                         <li>
-                            <a href="{{ route('dashboard') }}">
+                            <a href="{{ route('admin.pending') }}">
                                 <i class="fas fa-hourglass-half text-warning"></i> 
                                 {{ $pendingJobsCount ?? 0 }} job(s) waiting for review
                             </a>
@@ -84,7 +84,7 @@
                         </li>
                         @foreach($rejectedNotifications as $rejected)
                             <li>
-                                <a href="{{ route('employer.archive') }}">
+                            <a href="{{ route('admin.archive') }}">
                                     <i class="fas fa-times-circle text-danger"></i> 
                                     <div class="notification-content">
                                         <strong>"{{ $rejected->position_title }}"</strong> has been rejected

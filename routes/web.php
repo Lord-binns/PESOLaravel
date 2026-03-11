@@ -21,6 +21,7 @@ Route::get('/history', function () {
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/admin/pending', [AdminController::class, 'pendingJobs'])->name('admin.pending');
+Route::get('/admin/archive', [AdminController::class, 'archive'])->name('admin.archive');
 Route::post('/admin/job/{id}/approve', [AdminController::class, 'approveJob'])->name('admin.job.approve');
 Route::post('/admin/job/{id}/reject', [AdminController::class, 'rejectJob'])->name('admin.job.reject');
 

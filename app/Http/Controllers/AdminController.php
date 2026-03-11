@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    // Show admin dashboard - shows all active jobs
+    // Show admin dashboard - shows all active jobs (NO pending jobs)
     public function dashboard()
     {
         // Get all active job posts
@@ -18,19 +18,13 @@ class AdminController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
             
-        // Get pending job posts (status = 'pending')
-        $pendingJobs = DB::table('job_posts')
-            ->where('status', 'pending')
-            ->orderBy('created_at', 'desc')
-            ->get();
-            
         // Get active job posts count
         $activeJobsCount = DB::table('job_posts')
             ->where('status', 'active')
             ->where('valid_until', '>=', now()->toDateString())
             ->count();
             
-        // Get pending job posts count
+        // Get pending job posts count (for notifications only)
         $pendingJobsCount = DB::table('job_posts')
             ->where('status', 'pending')
             ->count();
@@ -40,6 +34,11 @@ class AdminController extends Controller
             
         // Get archived jobs count (includes rejected)
         $archivedCount = DB::table('job_archive')->count();
+        
+        // Get rejected jobs count
+        $rejectedCount = DB::table('job_archive')
+            ->where('archived_reason', 'rejected_by_admin')
+            ->count();
         
         // Get recent notifications - approved jobs (last 5)
         $approvedNotifications = DB::table('job_posts')
@@ -57,27 +56,27 @@ class AdminController extends Controller
         
         return view('admin.dashboard', compact(
             'activeJobs',
-            'pendingJobs', 
             'activeJobsCount', 
             'pendingJobsCount', 
             'establishmentsCount', 
             'archivedCount',
+            'rejectedCount',
             'approvedNotifications',
             'rejectedNotifications'
         ));
     }
     
-    // Show pending jobs page
+    // Show pending jobs page - ALL pending jobs displayed here
     public function pendingJobs()
     {
-        // Get all active job posts (for display on pending page)
+        // Get all active job posts (for stats display)
         $activeJobs = DB::table('job_posts')
             ->where('status', 'active')
             ->where('valid_until', '>=', now()->toDateString())
             ->orderBy('created_at', 'desc')
             ->get();
             
-        // Get pending job posts
+        // Get ALL pending job posts
         $pendingJobs = DB::table('job_posts')
             ->where('status', 'pending')
             ->orderBy('created_at', 'desc')
@@ -90,6 +89,59 @@ class AdminController extends Controller
         $activeJobsCount = DB::table('job_posts')
             ->where('status', 'active')
             ->where('valid_until', '>=', now()->toDateString())
+            ->count();
+            
+        $establishmentsCount = DB::table('establishments')->count();
+        $archivedCount = DB::table('job_archive')->count();
+        $rejectedCount = DB::table('job_archive')
+            ->where('archived_reason', 'rejected_by_admin')
+            ->count();
+        
+        // Get notifications
+        $approvedNotifications = DB::table('job_posts')
+            ->where('status', 'active')
+            ->orderBy('updated_at', 'desc')
+            ->limit(5)
+            ->get();
+            
+        $rejectedNotifications = DB::table('job_archive')
+            ->where('archived_reason', 'rejected_by_admin')
+            ->orderBy('archived_at', 'desc')
+            ->limit(5)
+            ->get();
+        
+        return view('admin.pending', compact(
+            'activeJobs',
+            'pendingJobs',
+            'activeJobsCount', 
+            'pendingJobsCount', 
+            'establishmentsCount', 
+            'archivedCount',
+            'rejectedCount',
+            'approvedNotifications',
+            'rejectedNotifications'
+        ));
+    }
+    
+    // Show archive/rejected jobs page
+    public function archive()
+    {
+        // Get all rejected job posts from archive
+        $rejectedJobs = DB::table('job_archive')
+            ->where('archived_reason', 'rejected_by_admin')
+            ->orderBy('archived_at', 'desc')
+            ->get();
+            
+        $rejectedCount = $rejectedJobs->count();
+            
+        // Get stats
+        $activeJobsCount = DB::table('job_posts')
+            ->where('status', 'active')
+            ->where('valid_until', '>=', now()->toDateString())
+            ->count();
+            
+        $pendingJobsCount = DB::table('job_posts')
+            ->where('status', 'pending')
             ->count();
             
         $establishmentsCount = DB::table('establishments')->count();
@@ -108,9 +160,9 @@ class AdminController extends Controller
             ->limit(5)
             ->get();
         
-        return view('admin.dashboard', compact(
-            'activeJobs',
-            'pendingJobs',
+        return view('admin.archive', compact(
+            'rejectedJobs',
+            'rejectedCount',
             'activeJobsCount', 
             'pendingJobsCount', 
             'establishmentsCount', 
