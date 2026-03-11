@@ -28,8 +28,13 @@
     padding: 1rem 0;
     width: 100%;
     margin-top: auto;
-    margin-left: 80px;
+    margin-left: 0;
     box-sizing: border-box;
+    position: relative;
+    clear: both;
+    float: none;
+    left: 0;
+    right: 0;
 }
 
 .site-footer.no-sidebar {
@@ -37,7 +42,7 @@
 }
 
 .footer-container {
-    width: calc(100% - 80px);
+    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 1rem;

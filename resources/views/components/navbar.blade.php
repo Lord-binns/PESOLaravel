@@ -39,6 +39,7 @@
                     <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </a>
                 <ul class="dropdown-menu">
+                    <li><a href="{{ url('/accomplishments') }}">Accomplishments</a></li>
                     <li><a href="{{ url('/history') }}">Our History</a></li>
                     <li><a href="{{ url('/about') }}">Our Team</a></li>
                 </ul>

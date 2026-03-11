@@ -365,6 +365,306 @@
 
             }
         }
+        
+        /* ============================================
+           PESO ACCOMPLISHMENTS SECTION - ANIMATED CARDS
+           ============================================ */
+
+        /* Accomplishments Section Base */
+        .accomplishments-section {
+            background: linear-gradient(135deg, #001a4d 0%, #02205c 50%, #03157a 100%);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background decorative elements */
+        .accomplishments-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 50%);
+            animation: rotateBg 30s linear infinite;
+        }
+
+        .accomplishments-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff4444, #ffd700, #ff4444);
+        }
+
+        @keyframes rotateBg {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Section Title */
+        .accomplishments-section .section-title {
+            color: #ffd700;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .accomplishments-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Title decorative line */
+        .accomplishments-title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .accomplishments-title-wrapper .title-line {
+            height: 3px;
+            width: 80px;
+            background: linear-gradient(90deg, transparent, #ffd700);
+        }
+
+        .accomplishments-title-wrapper .title-line:last-child {
+            background: linear-gradient(90deg, #ffd700, transparent);
+        }
+
+        /* Accomplishment Cards Container */
+        .accomplishments-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Individual Card */
+        .accomplishment-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        /* Card Animation - Slide In */
+        .accomplishment-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animation delays */
+        .accomplishment-card:nth-child(1) { animation-delay: 0.1s; }
+        .accomplishment-card:nth-child(2) { animation-delay: 0.2s; }
+        .accomplishment-card:nth-child(3) { animation-delay: 0.3s; }
+        .accomplishment-card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* Card hover effect */
+        .accomplishment-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: #ffd700;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                        0 0 30px rgba(255, 215, 0, 0.2);
+            background: linear-gradient(145deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+        }
+
+        /* Card glow effect on hover */
+        .accomplishment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .accomplishment-card:hover::before {
+            left: 100%;
+        }
+
+        /* Icon Container */
+        .accomplishment-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .accomplishment-icon i {
+            font-size: 2rem;
+            color: #001a4d;
+            transition: all 0.4s ease;
+        }
+
+        /* Icon animation on card hover */
+        .accomplishment-card:hover .accomplishment-icon {
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
+        }
+
+        .accomplishment-card:hover .accomplishment-icon i {
+            transform: scale(1.2);
+        }
+
+        /* Number Counter */
+        .accomplishment-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1;
+        }
+
+        .accomplishment-card:nth-child(1) .accomplishment-number {
+            background: linear-gradient(135deg, #ff4444, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .accomplishment-card:nth-child(2) .accomplishment-number {
+            background: linear-gradient(135deg, #ffd700, #ffed4a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .accomplishment-card:nth-child(3) .accomplishment-number {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .accomplishment-card:nth-child(4) .accomplishment-number {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Label */
+        .accomplishment-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Decorative corner elements */
+        .accomplishment-card::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border-top: 2px solid rgba(255, 215, 0, 0.5);
+            border-right: 2px solid rgba(255, 215, 0, 0.5);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .accomplishment-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Floating animation for icons */
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .accomplishment-icon {
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 991px) {
+            .accomplishments-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .accomplishments-section .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .accomplishments-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .accomplishments-section {
+                padding: 3rem 0;
+            }
+            
+            .accomplishments-section .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .accomplishment-number {
+                font-size: 2.5rem;
+            }
+            
+            .accomplishment-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .accomplishment-icon i {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Pulse animation for numbers */
+        @keyframes pulseIn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .accomplishment-card:hover .accomplishment-number {
+            animation: pulseIn 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -655,9 +955,290 @@
     
 
 
+    <!-- Modals for Learn More buttons -->
+    
+    <!-- Job Placement Modal -->
+    <div class="modal fade" id="jobPlacementModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #001a4d; color: white;">
+                    <h5 class="modal-title"><i class="fas fa-briefcase me-2"></i>Job Placement Services</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>PESO Manolo Fortich provides comprehensive job placement services to connect qualified job seekers with leading employers in the municipality and beyond.</p>
+                    <h6>Our Job Placement Services Include:</h6>
+                    <ul>
+                        <li>Job matching and referral system</li>
+                        <li>Pre-employment orientation</li>
+                        <li>Resume building assistance</li>
+                        <li>Direct referral to employers</li>
+                        <li>Follow-up and monitoring</li>
+                    </ul>
+                    <p class="mt-3">Visit our office or register online to access these services.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Register Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Training Modal -->
+    <div class="modal fade" id="skillsTrainingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #001a4d; color: white;">
+                    <h5 class="modal-title"><i class="fas fa-graduation-cap me-2"></i>Skills Training Programs</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>We offer comprehensive training programs designed to enhance your employability and professional skills.</p>
+                    <h6>Available Training Programs:</h6>
+                    <ul>
+                        <li>Computer Literacy Training</li>
+                        <li>Customer Service Skills</li>
+                        <li>Technical and Vocational Courses</li>
+                        <li>Entrepreneurship Development</li>
+                        <li>Resume Writing Workshop</li>
+                        <li>Communication Skills</li>
+                    </ul>
+                    <p class="mt-3">Training schedules vary. Please contact our office for the latest program offerings.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Register Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Career Counseling Modal -->
+    <div class="modal fade" id="careerCounselingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #001a4d; color: white;">
+                    <h5 class="modal-title"><i class="fas fa-user-tie me-2"></i>Career Counseling</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Our professional career counselors provide guidance to help you make informed decisions about your career path.</p>
+                    <h6>Career Counseling Services:</h6>
+                    <ul>
+                        <li>Career assessment and testing</li>
+                        <li>Career path planning</li>
+                        <li>Job search strategy development</li>
+                        <li>Interview preparation</li>
+                        <li>Work-life balance guidance</li>
+                    </ul>
+                    <p class="mt-3">Schedule an appointment with our career counselors today.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Register Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Matching Modal -->
+    <div class="modal fade" id="jobMatchingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #001a4d; color: white;">
+                    <h5 class="modal-title"><i class="fas fa-handshake me-2"></i>Job Matching System</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Our advanced job matching system pairs the right candidate with the right job position based on skills, qualifications, and employer requirements.</p>
+                    <h6>How It Works:</h6>
+                    <ul>
+                        <li>Create your profile in our system</li>
+                        <li>Upload your resume and credentials</li>
+                        <li>Our system matches you with suitable positions</li>
+                        <li>Receive personalized job alerts</li>
+                        <li>Direct referral to hiring employers</li>
+                    </ul>
+                    <p class="mt-3">Register online or visit our office to get started.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Register Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interview Coaching Modal -->
+    <div class="modal fade" id="interviewCoachingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #001a4d; color: white;">
+                    <h5 class="modal-title"><i class="fas fa-comments me-2"></i>Interview Coaching</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Prepare for success with our expert interview coaching and mock interview sessions.</p>
+                    <h6>Interview Coaching Services:</h6>
+                    <ul>
+                        <li>Mock interview sessions</li>
+                        <li>Interview tips and techniques</li>
+                        <li>Common interview questions practice</li>
+                        <li>Body language guidance</li>
+                        <li>Dressing for success</li>
+                        <li>Follow-up strategies</li>
+                    </ul>
+                    <p class="mt-3">Book a session with our career coaches to boost your interview skills.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Register Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Employer Services Modal -->
+    <div class="modal fade" id="employerServicesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #001a4d; color: white;">
+                    <h5 class="modal-title"><i class="fas fa-building me-2"></i>Employer Services</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>We help employers find qualified candidates through our extensive recruitment network.</p>
+                    <h6>Services for Employers:</h6>
+                    <ul>
+                        <li>Free job posting services</li>
+                        <li>Pre-screening of applicants</li>
+                        <li>Reference checking assistance</li>
+                        <li>Interview scheduling</li>
+                        <li>On-site recruitment assistance</li>
+                        <li>Labor market information</li>
+                    </ul>
+                    <p class="mt-3">Partner with PESO Manolo Fortich for your recruitment needs.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{{ route('login') }}" class="btn btn-primary">Employer Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- News Modals -->
+    <!-- Fast Setup Modal -->
+    <div class="modal fade" id="fastSetupModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #ff4444; color: white;">
+                    <h5 class="modal-title"><i class="fas fa-rocket me-2"></i>Quick & Easy Process</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Our streamlined registration process gets you started quickly:</p>
+                    <ol>
+                        <li>Create your account online or visit our office</li>
+                        <li>Complete your profile with your skills and experience</li>
+                        <li>Browse available job listings</li>
+                        <li>Apply with just a few clicks</li>
+                        <li>Track your application status in real-time</li>
+                    </ol>
+                    <p class="mt-3">Get started today and land your dream job tomorrow!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Register Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reliable Modal -->
+    <div class="modal fade" id="reliableModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #ff4444; color: white;">
+                    <h5 class="modal-title"><i class="fas fa-shield-alt me-2"></i>Trusted & Reliable</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>PESO Manolo Fortich is a government-accredited employment service office dedicated to serving our community.</p>
+                    <h6>Why Trust Us:</h6>
+                    <ul>
+                        <li>DOLE Accredited since 2005</li>
+                        <li>Verified employer partnerships</li>
+                        <li>Secure data handling</li>
+                        <li>Professional career guidance</li>
+                        <li>Free services for job seekers</li>
+                    </ul>
+                    <p class="mt-3">Your career success is our priority.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flexible Modal -->
+    <div class="modal fade" id="flexibleModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background: #ff4444; color: white;">
+                    <h5 class="modal-title"><i class="fas fa-expand me-2"></i>Flexible Services</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>We offer flexible services tailored to your needs:</p>
+                    <h6>Our Flexible Options:</h6>
+                    <ul>
+                        <li>Online and offline registration</li>
+                        <li>Part-time and full-time job listings</li>
+                        <li>Local and overseas opportunities</li>
+                        <li>Various skill levels accommodated</li>
+                        <li>Multiple job applications</li>
+                    </ul>
+                    <p class="mt-3">Find the perfect job that fits your schedule and goals.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Explore Jobs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <x-footer />
     
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Update Learn More buttons to open modals -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // News & Updates - Learn More buttons
+            document.querySelectorAll('#features .card .btn').forEach(function(btn, index) {
+                btn.setAttribute('data-bs-toggle', 'modal');
+                if (index === 0) btn.setAttribute('data-bs-target', '#fastSetupModal');
+                if (index === 1) btn.setAttribute('data-bs-target', '#reliableModal');
+                if (index === 2) btn.setAttribute('data-bs-target', '#flexibleModal');
+            });
+            
+            // Skills & Services - Learn More buttons
+            const skillButtons = document.querySelectorAll('#skills-services .card .btn');
+            const modalIds = ['#jobPlacementModal', '#skillsTrainingModal', '#careerCounselingModal', '#jobMatchingModal', '#interviewCoachingModal', '#employerServicesModal'];
+            
+            skillButtons.forEach(function(btn, index) {
+                if (modalIds[index]) {
+                    btn.setAttribute('data-bs-toggle', 'modal');
+                    btn.setAttribute('data-bs-target', modalIds[index]);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

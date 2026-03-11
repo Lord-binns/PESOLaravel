@@ -17,6 +17,10 @@ Route::get('/history', function () {
     return view('history');
 })->name('history');
 
+Route::get('/accomplishments', function () {
+    return view('accomplishments');
+})->name('accomplishments');
+
 // Admin Routes - Dashboard is the main admin dashboard
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
