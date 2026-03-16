@@ -673,31 +673,14 @@
     
 
     
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="{{ asset('images/Pic1.jpg') }}" class="d-block w-100" alt="Slide 1">
-        </div>
-        <div class="carousel-item">
-            <img src="https://web.manolofortich.gov.ph/web/img_lgu/carousel-8.jpg" class="d-block w-100" alt="Slide 2">
-        </div>
-        <div class="carousel-item">
-            <img src="https://www.web.manolofortich.gov.ph/storage/content_image/22f8936a010d95ee468d5be23f72ab16.jpg" class="d-block w-100" alt="Slide 3">
+<div class="hero-hero" style="position: relative; height: 70vh; overflow: hidden;">
+    <img src="{{ asset('images/Landing.png') }}" class="d-block w-100 h-100" style="object-fit: cover; object-position: center;" alt="PESO Landing">
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center;">
+        <div class="text-center">
+            <h1 style="font-size: 4rem; font-weight: 800; color: white; text-shadow: 0 4px 10px rgba(0,0,0,0.8); margin-bottom: 1rem;">PESO Manolo Fortich</h1>
+            <p style="font-size: 1.5rem; color: white; margin-bottom: 2rem; text-shadow: 0 2px 5px rgba(0,0,0,0.5);">Your Gateway to Employment Opportunities</p>
         </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
 </div>
 
 
@@ -922,12 +905,21 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body p-0 d-flex flex-column h-100">
-                <div id="chat-messages" class="chat-messages flex-grow-1 p-4 overflow-auto" style="background: #f8f9fa;">
+<div id="chat-messages" class="chat-messages flex-grow-1 p-4 overflow-auto" style="background: #f8f9fa;">
                     <div class="message bot-message mb-3">
                         <div class="message-bubble">
-                            <strong>PESO Bot:</strong> Hello! I'm here to help you with PESO services. How can I assist you today? 
-                            <br><small class="text-muted">Ask about jobs, training, registration, or type 'menu' for options.</small>
+                            <strong>PESO Bot:</strong> Hello! I'm here to help with PESO services.<br>Type <strong>"faq"</strong> for Frequently Asked Questions, "menu" for options, or ask anything!
                         </div>
+                    </div>
+                    <div class="faq-preview mb-3 p-3" style="background: white; border-radius: 15px; border-left: 4px solid #ff4444; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                        <h6 style="margin: 0 0 10px 0; color: #001a4d;"><i class="fas fa-question-circle me-2"></i>Quick FAQ:</h6>
+                        <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem;">
+                            <li><strong>How to apply?</strong> Register → Apply online.</li>
+                            <li><strong>Free?</strong> Yes, all services free.</li>
+                            <li><strong>Office hours?</strong> Mon-Fri 8AM-5PM.</li>
+                            <li><strong>Training?</strong> TESDA accredited - type "training".</li>
+                        </ul>
+                        <small class="text-muted">Type "faq" for full list</small>
                     </div>
                 </div>
                 <div class="chat-input-container p-3 border-top" style="background: white;">
