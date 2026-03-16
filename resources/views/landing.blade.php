@@ -672,23 +672,73 @@
 
     
 
-    
-<div class="hero-hero" style="position: relative; height: 70vh; overflow: hidden;">
-    <img src="{{ asset('images/Landing.png') }}" class="d-block w-100 h-100" style="object-fit: cover; object-position: center;" alt="PESO Landing">
-    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center;">
-        <div class="text-center">
-            <h1 style="font-size: 4rem; font-weight: 800; color: white; text-shadow: 0 4px 10px rgba(0,0,0,0.8); margin-bottom: 1rem;">PESO Manolo Fortich</h1>
-            <p style="font-size: 1.5rem; color: white; margin-bottom: 2rem; text-shadow: 0 2px 5px rgba(0,0,0,0.5);">Your Gateway to Employment Opportunities</p>
+  
+<div class="hero-hero" style="position: relative; min-height: 80vh; overflow: hidden;">
+
+    <img src="{{ asset('images/Landing.png') }}" 
+         class="d-block w-100"
+         style="height: 90vh; object-fit: contain; object-position: center top;"
+         alt="PESO Landing">
+
+    <div style="
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        text-align:center;
+        width:100%;
+        padding:20px;
+    ">
+
+        <h1 style="font-size:3.5rem; font-weight:800; margin-bottom:10px;">
+            <span style="color:#1f4e79;">Welcome to</span>
+            <span style="color:#ff0000;">PESO</span>
+        </h1>
+
+        <h2 style="font-size:3rem; font-weight:800; color:#ff0000; margin-bottom:20px;">
+            Manolo Fortich
+        </h2>
+
+        <p style="
+            font-size:1.3rem;
+            color:#1f4e79;
+            margin-bottom:30px;
+        ">
+            Your gateway to employment, livelihood, and skills development
+        </p>
+
+        <div>
+            <button style="
+                padding:12px 28px;
+                border-radius:30px;
+                border:2px solid red;
+                background:white;
+                color:red;
+                font-weight:600;
+                margin-right:10px;
+            ">
+                Learn More
+            </button>
+
+            <button style="
+                padding:12px 28px;
+                border-radius:30px;
+                border:2px solid #1f4e79;
+                background:white;
+                color:#1f4e79;
+                font-weight:600;
+            ">
+                Our Services
+            </button>
         </div>
+
     </div>
+
 </div>
 
-
 <!-- Hero / Call to Action Section -->
-<section class="hero-cta" style="background: linear-gradient(135deg, #001a4d 0%, #02205c 100%); padding: 60px 20px; text-align: center;">
+section class="hero-cta" style="background: #ffffff; padding: 60px 20px; text-align: center;">
     <div class="container">
-        <h2 style="color: #ffffff; font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">Ready to Get Started?</h2>
-        <p style="color: #ffffff; font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Sign Up to access job listings, apply for positions, and track your applications. New users can register to create an account.</p>
         <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
 <a href="{{ route('register') }}" class="btn btn-lg" style="background: linear-gradient(90deg, #ff4444, #cc0000); color: white; border: none; padding: 15px 40px; border-radius: 10px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s;">
                 <i class="fas fa-rocket"></i> Click here
