@@ -782,7 +782,7 @@
     <span style="flex:1; height:3px; background:#FF2D2D;"></span>
 
 </h2>
-<div class="cards" style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+<div class="cards" style="display:flex; gap:90px; justify-content:center; flex-wrap:wrap;">
 
     <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
         <img src="https://i.pinimg.com/originals/8a/6a/a5/8a6aa5562f75eaf051bc1dcba7a097f1.gif" class="card-img-top" alt="Feature 1" style="width:100%; height:200px; object-fit:cover;">
@@ -794,9 +794,9 @@
     </div>
 
     <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
-        <img src="https://i.pinimg.com/originals/e8/c8/1b/e8c81be301355d927d75fbb273a94267.gif" class="card-img-top" alt="Feature 2" style="width:100%; height:200px; object-fit:cover;">
+        <img src="https://i.pinimg.com/originals/b5/93/f5/b593f5754e1baec730f9b37e4accc90b.gif" class="card-img-top" alt="Feature 2" style="width:100%; height:200px; object-fit:cover;">
         <div class="card-body" style="padding:15px;">
-        <h5 class="card-title">Reliable</h5>
+        <h5 class="card-title">Job Lists</h5>
             <p class="card-text">Designed for production — performance, security, and stability.</p>
             <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#reliableModal">Learn More</a>
         </div>
@@ -938,6 +938,9 @@
         </div>
     </div>
 </div>
+
+
+
 
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
 
