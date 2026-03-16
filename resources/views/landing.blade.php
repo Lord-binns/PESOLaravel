@@ -673,7 +673,7 @@
     
 
   
-<div class="hero-hero" style="position: relative; min-height: 80vh; overflow: hidden;">
+<div class="hero-hero" style="position: relative; min-height: 85vh; overflow: hidden;">
 
     <img src="{{ asset('images/Landing.png') }}" 
          class="d-block w-100"
@@ -708,7 +708,7 @@
         </p>
 
         <div>
-            <button style="
+<button onclick="openServicesModal()" style="
                 padding:12px 28px;
                 border-radius:30px;
                 border:2px solid red;
@@ -716,17 +716,19 @@
                 color:red;
                 font-weight:600;
                 margin-right:10px;
+                cursor:pointer;
             ">
                 Learn More
             </button>
 
-            <button style="
+<button onclick="openServicesModal()" style="
                 padding:12px 28px;
                 border-radius:30px;
                 border:2px solid #1f4e79;
                 background:white;
                 color:#1f4e79;
                 font-weight:600;
+                cursor:pointer;
             ">
                 Our Services
             </button>
@@ -736,15 +738,7 @@
 
 </div>
 
-<!-- Hero / Call to Action Section -->
-section class="hero-cta" style="background: #ffffff; padding: 60px 20px; text-align: center;">
-    <div class="container">
-        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-<a href="{{ route('register') }}" class="btn btn-lg" style="background: linear-gradient(90deg, #ff4444, #cc0000); color: white; border: none; padding: 15px 40px; border-radius: 10px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s;">
-                <i class="fas fa-rocket"></i> Click here
-            </a>
-        </div>
-    </div>
+
 </section>
 
 
@@ -793,27 +787,27 @@ section class="hero-cta" style="background: #ffffff; padding: 60px 20px; text-al
     <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
         <img src="https://i.pinimg.com/originals/8a/6a/a5/8a6aa5562f75eaf051bc1dcba7a097f1.gif" class="card-img-top" alt="Feature 1" style="width:100%; height:200px; object-fit:cover;">
         <div class="card-body" style="padding:15px;">
-            <h5 class="card-title">Fast Setup</h5>
+        <h5 class="card-title">Fast Setup</h5>
             <p class="card-text">Get started quickly with sensible defaults and clear documentation.</p>
-            <a href="#" class="btn btn-danger">Learn More</a>
+            <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#fastSetupModal">Learn More</a>
         </div>
     </div>
 
     <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
         <img src="https://i.pinimg.com/originals/e8/c8/1b/e8c81be301355d927d75fbb273a94267.gif" class="card-img-top" alt="Feature 2" style="width:100%; height:200px; object-fit:cover;">
         <div class="card-body" style="padding:15px;">
-            <h5 class="card-title">Reliable</h5>
+        <h5 class="card-title">Reliable</h5>
             <p class="card-text">Designed for production — performance, security, and stability.</p>
-            <a href="#" class="btn btn-danger">Learn More</a>
+            <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#reliableModal">Learn More</a>
         </div>
     </div>
 
     <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
         <img src="https://i.pinimg.com/originals/f0/cd/8d/f0cd8d9c038e3d477e9435863e924932.gif" class="card-img-top" alt="Feature 3" style="width:100%; height:200px; object-fit:cover;">
         <div class="card-body" style="padding:15px;">
-            <h5 class="card-title">Flexible</h5>
+        <h5 class="card-title">Flexible</h5>
             <p class="card-text">Integrates easily with your existing stack and workflows.</p>
-            <a href="#" class="btn btn-danger">Learn More</a>
+            <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#flexibleModal">Learn More</a>
         </div>
     </div>
 
@@ -1249,8 +1243,56 @@ section class="hero-cta" style="background: #ffffff; padding: 60px 20px; text-al
         </div>
     </div>
 
+    <!-- NEW: Comprehensive Services Overview Modal -->
+    <div class="modal fade" id="servicesOverviewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(135deg, #001a4d, #ff4444); color: white;">
+                    <h4 class="modal-title mb-0"><i class="fas fa-concierge-bell me-2"></i>Complete PESO Services Overview</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-briefcase text-primary me-2"></i>Core Employment Services</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-handshake me-1 text-success"></i>Job Placement & Matching</li>
+                                <li><i class="fas fa-graduation-cap me-1 text-warning"></i>Skills Training Programs</li>
+                                <li><i class="fas fa-user-tie me-1 text-info"></i>Career Counseling</li>
+                                <li><i class="fas fa-comments me-1 text-danger"></i>Interview Coaching</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><i class="fas fa-users-cog text-primary me-2"></i>Special Programs</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-users me-1 text-success"></i>Job Fairs & Recruitment Events</li>
+                                <li><i class="fas fa-building me-1 text-warning"></i>Employer Recruitment Services</li>
+                                <li><i class="fas fa-chart-line me-1 text-info"></i>Labor Market Information</li>
+                                <li><i class="fas fa-shield-alt me-1 text-danger"></i>Worker Rights Protection</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-center mt-4">
+                        <h5 class="text-primary mb-3">Ready to Get Started?</h5>
+                        <p class="lead mb-4">All services are <strong>FREE</strong> for Manolo Fortich residents!</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <button class="btn btn-lg btn-success" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#jobPlacementModal">
+                                <i class="fas fa-play me-2"></i>Explore Job Placement
+                            </button>
+                            <a href="{{ route('register') }}" class="btn btn-lg btn-primary">
+                                <i class="fas fa-user-plus me-2"></i>Register Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- News Modals -->
     <!-- Fast Setup Modal -->
+
     <div class="modal fade" id="fastSetupModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
