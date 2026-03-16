@@ -1332,14 +1332,20 @@
         // Chatbot Logic
         const chatbotResponses = {
             'hello': 'Hi there! Welcome to PESO Manolo Fortich. How can I help you today?',
+            'hi': 'Hello! What PESO service can I help you with?',
             'jobs': 'We have exciting job opportunities! Register at <a href="{{ route("register") }}">our portal</a> or visit our office.',
+            'job': 'Check current openings via our <a href="{{ route("register") }}">registration portal</a>. New jobs posted weekly!',
             'training': 'We offer skills training programs. Check our services section or contact us for schedule.',
+            'tesda': 'TESDA accredited courses available. Free training for eligible residents. Type "training" for more.',
             'register': 'Click <a href="{{ route("register") }}">here to register</a> and create your account.',
-            'contact': 'You can reach us at (088) 232-3232 or email peso@manolofortich.gov.ph',
-            'menu': 'Available options: jobs, training, register, contact, services, about',
-            'services': 'Our services include job placement, career counseling, skills training, and more!',
-            'about': 'PESO Manolo Fortich helps connect job seekers with employers. Learn more <a href="/about">about us</a>.',
-            'default': 'I can help with jobs, training, registration, or general PESO info. Type your question or "menu" for options.'
+            'account': 'Create your free account at <a href="{{ route("register") }}">registration page</a> to apply for jobs.',
+            'contact': 'Office: (088) 232-3232 | Email: peso@manolofortich.gov.ph | Mon-Fri 8AM-5PM',
+            'jobfair': 'Next job fair: May 15, 2025 at Manolo Fortich Plaza. Pre-register now!',
+            'menu': 'Menu: jobs, jobfair, training, tesda, register, account, contact, services, about, help',
+            'services': 'PESO Services: Job placement, career counseling, skills training, job fairs, employer assistance.',
+            'about': 'PESO Manolo Fortich connects job seekers and employers. Government-run employment service.',
+            'help': 'Commands: jobs, training, register, contact, jobfair, menu. Type keyword for info.',
+            'default': 'Sorry, I don\'t know that. Try: jobs, training, register, jobfair, tesda, menu, help. What else can I assist?'
         };
 
         document.getElementById('send-chat').addEventListener('click', sendChatMessage);
