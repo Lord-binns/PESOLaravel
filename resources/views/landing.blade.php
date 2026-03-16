@@ -861,8 +861,87 @@
                 </div>
             </div>
         </div>
+</div>
+</section>
+
+<!-- Message Us Section - Direct to Chatbot -->
+<section id="message-us" class="message-us-section py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);">
+    <div class="container text-center">
+        <h2 style="color: #001a4d; font-weight: 700; font-size: 2.5rem; margin-bottom: 2rem;">
+            <i class="fas fa-comments text-warning me-3"></i>Message Us Instantly
+        </h2>
+        <p class="lead mb-5" style="color: #666; font-size: 1.3rem;">Have a question? Chat with our PESO assistant right now for instant help!</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-lg h-100" style="border-bottom: 5px solid #ff4444;">
+                    <div class="card-body p-5">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="icon-box text-center p-4">
+                                    <div class="icon-circle mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #ff4444, #ffd700); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 8px 25px rgba(255,68,68,0.3);">
+                                        <i class="fas fa-robot fs-2 text-white"></i>
+                                    </div>
+                                    <h5 style="color: #001a4d;">AI Chat Assistant</h5>
+                                    <p class="text-muted">Get instant answers about jobs, training, registration 24/7</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="icon-box text-center p-4">
+                                    <div class="icon-circle mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #001a4d, #02205c); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 8px 25px rgba(0,26,77,0.3);">
+                                        <i class="fas fa-users fs-2 text-white"></i>
+                                    </div>
+                                    <h5 style="color: #001a4d;">Live Support</h5>
+                                    <p class="text-muted">Connect to PESO staff during office hours</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button onclick="openChatbot()" class="btn btn-lg px-5 py-3" style="background: linear-gradient(135deg, #ff4444, #cc0000); color: white; border: none; font-weight: 600; font-size: 1.2rem; box-shadow: 0 10px 30px rgba(255,68,68,0.4);">
+                                <i class="fas fa-comments me-2"></i>Start Chat Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+
+<!-- CHATBOT FLOATING BUTTON & MODAL -->
+<div id="chatbot-toggle" class="chatbot-toggle">
+    <i class="fas fa-comments"></i>
+</div>
+
+<div class="modal fade" id="chatbotModal" tabindex="-1" data-bs-backdrop="true" data-bs-keyboard="true">
+    <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-centered modal-lg">
+        <div class="modal-content border-0" style="height: 80vh; max-height: 600px; border-radius: 20px; overflow: hidden;">
+            <div class="modal-header bg-gradient" style="background: linear-gradient(135deg, #001a4d 0%, #ff4444 100%); color: white; border: none;">
+                <h5 class="modal-title mb-0">
+                    <i class="fas fa-robot me-2"></i>PESO Chat Assistant
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-0 d-flex flex-column h-100">
+                <div id="chat-messages" class="chat-messages flex-grow-1 p-4 overflow-auto" style="background: #f8f9fa;">
+                    <div class="message bot-message mb-3">
+                        <div class="message-bubble">
+                            <strong>PESO Bot:</strong> Hello! I'm here to help you with PESO services. How can I assist you today? 
+                            <br><small class="text-muted">Ask about jobs, training, registration, or type 'menu' for options.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-container p-3 border-top" style="background: white;">
+                    <div class="input-group">
+                        <input type="text" id="chat-input" class="form-control border-0" placeholder="Type your message..." autocomplete="off">
+                        <button class="btn btn-primary" id="send-chat" style="background: linear-gradient(135deg, #ff4444, #cc0000); border: none;">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
 
@@ -1217,6 +1296,107 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
+    <!-- Contact Form Handler -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('button[type=\"submit\"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                alert('Thank you for your message! We will get back to you within 24-48 hours.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+    </script>
+
+    <!-- Chatbot Functionality -->
+    <script>
+        // Chatbot Toggle
+        document.getElementById('chatbot-toggle').addEventListener('click', function() {
+            const modal = new bootstrap.Modal(document.getElementById('chatbotModal'));
+            modal.show();
+        });
+
+        function openChatbot() {
+            document.getElementById('chatbot-toggle').click();
+        }
+
+        // Chatbot Logic
+        const chatbotResponses = {
+            'hello': 'Hi there! Welcome to PESO Manolo Fortich. How can I help you today?',
+            'jobs': 'We have exciting job opportunities! Register at <a href="{{ route("register") }}">our portal</a> or visit our office.',
+            'training': 'We offer skills training programs. Check our services section or contact us for schedule.',
+            'register': 'Click <a href="{{ route("register") }}">here to register</a> and create your account.',
+            'contact': 'You can reach us at (088) 232-3232 or email peso@manolofortich.gov.ph',
+            'menu': 'Available options: jobs, training, register, contact, services, about',
+            'services': 'Our services include job placement, career counseling, skills training, and more!',
+            'about': 'PESO Manolo Fortich helps connect job seekers with employers. Learn more <a href="/about">about us</a>.',
+            'default': 'I can help with jobs, training, registration, or general PESO info. Type your question or "menu" for options.'
+        };
+
+        document.getElementById('send-chat').addEventListener('click', sendChatMessage);
+        document.getElementById('chat-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendChatMessage();
+        });
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim().toLowerCase();
+            if (!message) return;
+
+            addMessage(message, 'user');
+            input.value = '';
+
+            setTimeout(() => {
+                const response = getChatbotResponse(message);
+                addMessage(response, 'bot');
+            }, 1000);
+        }
+
+        function getChatbotResponse(message) {
+            for (let key in chatbotResponses) {
+                if (message.includes(key)) {
+                    return chatbotResponses[key];
+                }
+            }
+            return chatbotResponses.default;
+        }
+
+        function addMessage(text, sender) {
+            const messages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message mb-3`;
+            
+            if (sender === 'user') {
+                messageDiv.innerHTML = `<div class="message-bubble ms-auto text-end" style="max-width: 70%; background: linear-gradient(135deg, #ff4444, #cc0000); color: white; padding: 12px 16px; border-radius: 20px 20px 5px 20px; margin-left: auto;"><strong>You:</strong> ${text}</div>`;
+            } else {
+                messageDiv.innerHTML = `<div class="message-bubble" style="max-width: 70%; background: white; color: #333; padding: 12px 16px; border-radius: 20px 20px 20px 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"><strong>PESO Bot:</strong> ${text}</div>`;
+            }
+            
+            messages.appendChild(messageDiv);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        // Smooth scrolling for nav links
+        document.querySelectorAll('a[href^=\"#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
     <!-- Update Learn More buttons to open modals -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1240,5 +1420,52 @@
             });
         });
     </script>
+
+    <!-- Chatbot Toggle Styles -->
+    <style>
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255,68,68,0.4);
+            z-index: 1060;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+        }
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(255,68,68,0.6);
+        }
+        .chatbot-toggle i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        .chat-messages {
+            background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grain\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><circle cx=\"25\" cy=\"25\" r=\"1\" fill=\"%23f0f0f0\" opacity=\"0.1\"/><circle cx=\"75\" cy=\"75\" r=\"1\" fill=\"%23f0f0f0\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grain)\"/></svg>');
+        }
+        .message-bubble {
+            animation: messageSlide 0.3s ease-out;
+            user-select: none;
+            pointer-events: none;
+        }
+        @keyframes messageSlide {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            .chatbot-toggle { bottom: 20px; right: 20px; width: 55px; height: 55px; }
+        }
+        .contact-us-section { border-top: 5px solid #ff4444; }
+        .contact-icon { transition: all 0.3s ease; }
+        .contact-icon:hover { transform: rotate(10deg) scale(1.05); }
+    </style>
 </body>
 </html>

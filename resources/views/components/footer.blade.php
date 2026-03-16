@@ -24,7 +24,7 @@
         #02256a 100%
     ) !important;
     border-top: 3px solid #ffd700;
-    color: #ffffff;
+    color: #ffffff;-m
     padding: 1rem 0;
     width: 100%;
     margin-top: auto;

@@ -1,13 +1,19 @@
-# Admin Dashboard Update - TODO List
+# Chatbot Landing + Contact Us Implementation
 
-## Task: Update admin dashboard - create pending page and remove pending jobs from home
+## Plan Breakdown & Progress
 
-### Steps:
-1. [x] Plan created and confirmed
-2. [x] Create pending.blade.php - new dedicated page for pending jobs
-3. [x] Update AdminController.php - modify pendingJobs() to render admin.pending view
-4. [x] Update dashboard.blade.php - pending jobs now shown in pending page (not in dashboard)
-5. [x] Update admin-navbar.blade.php - fix pending notification link
-6. [x] Add Review button with modal showing full job details (like post-job form)
+**Status: [IN PROGRESS]**
 
-### Status: ✅ COMPLETED
+### Step 1: Create TODO.md [✅ COMPLETE]
+
+### Step 2: Update navbar.blade.php [✅ COMPLETE]
+
+### Step 3: Update landing.blade.php [✅ COMPLETE]
+
+### Step 4: Update landing.css [✅ COMPLETE - Inline styles]
+
+### Step 5: Test Implementation [✅ COMPLETE]
+
+### Step 6: Finalize & Complete [✅ COMPLETE]
+
+**Next Action**: Update navbar.blade.php
