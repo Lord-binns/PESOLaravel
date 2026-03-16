@@ -891,48 +891,8 @@
 </div>
 </section>
 
-<!-- Message Us Section - Direct to Chatbot -->
-<section id="message-us" class="message-us-section py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);">
-    <div class="container text-center">
-        <h2 style="color: #001a4d; font-weight: 700; font-size: 2.5rem; margin-bottom: 2rem;">
-            <i class="fas fa-comments text-warning me-3"></i>Message Us Instantly
-        </h2>
-        <p class="lead mb-5" style="color: #666; font-size: 1.3rem;">Have a question? Chat with our PESO assistant right now for instant help!</p>
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="card border-0 shadow-lg h-100" style="border-bottom: 5px solid #ff4444;">
-                    <div class="card-body p-5">
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <div class="icon-box text-center p-4">
-                                    <div class="icon-circle mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #ff4444, #ffd700); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 8px 25px rgba(255,68,68,0.3);">
-                                        <i class="fas fa-robot fs-2 text-white"></i>
-                                    </div>
-                                    <h5 style="color: #001a4d;">AI Chat Assistant</h5>
-                                    <p class="text-muted">Get instant answers about jobs, training, registration 24/7</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="icon-box text-center p-4">
-                                    <div class="icon-circle mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #001a4d, #02205c); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 8px 25px rgba(0,26,77,0.3);">
-                                        <i class="fas fa-users fs-2 text-white"></i>
-                                    </div>
-                                    <h5 style="color: #001a4d;">Live Support</h5>
-                                    <p class="text-muted">Connect to PESO staff during office hours</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-5 text-center">
-                            <button onclick="openChatbot()" class="btn btn-lg px-5 py-3" style="background: linear-gradient(135deg, #ff4444, #cc0000); color: white; border: none; font-weight: 600; font-size: 1.2rem; box-shadow: 0 10px 30px rgba(255,68,68,0.4);">
-                                <i class="fas fa-comments me-2"></i>Start Chat Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+
 
 <!-- CHATBOT FLOATING BUTTON & MODAL -->
 <div id="chatbot-toggle" class="chatbot-toggle">
@@ -1376,6 +1336,12 @@
     </div>
 
     <x-footer />
+
+    <script>
+function openServicesModal() {
+    alert("PESO Manolo Fortich provides employment services, job matching, livelihood assistance, and skills development programs.");
+}
+</script>
     
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
