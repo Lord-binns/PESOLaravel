@@ -8,6 +8,7 @@
 - [x] Step 3: Edit landing.blade.php - Added CSS to center News & Updates card titles
 - [x] Step 4: Verify changes and test responsive view
 - [x] Step 6: Updated News & Updates card <p> texts to reference card titles (per feedback)
+- [x] Step 7: Map experiments (satellite, GPS, interactive) - removed final version
 - [x] Step 5: Task completed
 
 **Status:** Completed

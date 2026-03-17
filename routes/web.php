@@ -9,6 +9,17 @@ Route::get('/', function () {
     return view('landing');
 })->name('landing');
 
+Route::get('/jobs', function () {
+    $totalJobs = 127;
+    $newJobs = 23;
+    $jobs = collect([
+        (object)['id' => 1, 'title' => 'Software Developer', 'company' => 'ABC Tech', 'location' => 'Manolo Fortich', 'salary_min' => 25000, 'salary_max' => 35000, 'employment_type' => 'full_time', 'created_at' => now()],
+        (object)['id' => 2, 'title' => 'Customer Service Rep', 'company' => 'CallCenter Pro', 'location' => 'Manolo Fortich', 'salary_min' => 15000, 'salary_max' => 20000, 'employment_type' => 'full_time', 'created_at' => now()->subDay()],
+        // Add 10 more sample jobs...
+    ])->forPage(\Illuminate\Pagination\Paginator::resolveCurrentPage() ?: 1, 12);
+    return view('jobs', compact('jobs', 'totalJobs', 'newJobs'));
+})->name('jobs');
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');
@@ -17,9 +28,9 @@ Route::get('/history', function () {
     return view('history');
 })->name('history');
 
-Route::get('/accomplishments', function () {
-    return view('accomplishments');
-})->name('accomplishments');
+Route::get('/republic-acts', function () {
+    return view('republic-acts');
+})->name('republic-acts');
 
 // Admin Routes - Dashboard is the main admin dashboard
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
