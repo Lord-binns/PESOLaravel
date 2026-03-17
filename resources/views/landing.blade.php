@@ -671,6 +671,12 @@
     #skills-services .card .card-body { 
         text-align: center !important; 
     }
+    #features .btn.btn-danger,
+    #skills-services .btn.btn-danger {
+        padding: 12px 24px !important;
+        margin-top: 10px;
+        display: inline-block;
+    }
     
     </style>
 </head>
@@ -795,7 +801,7 @@
         <img src="https://i.pinimg.com/originals/80/9a/3d/809a3de812b7389316cc4c4edb0a3c05.gif" class="card-img-top" alt="Feature 1" style="width:100%; height:200px; object-fit:cover;">
         <div class="card-body" style="padding:15px;">
         <h5 class="card-title">Events</h5>
-            <p class="card-text">Get started quickly with sensible defaults and clear documentation.</p>
+            <p class="card-text">Upcoming PESO events and job fairs.</p>
             <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#fastSetupModal">Learn More</a>
         </div>
     </div>
@@ -804,7 +810,7 @@
         <img src="https://i.pinimg.com/originals/5c/87/17/5c871720baf04c9bb0330801f0101137.gif" class="card-img-top" alt="Feature 2" style="width:100%; height:200px; object-fit:cover;">
         <div class="card-body" style="padding:15px;">
         <h5 class="card-title">Announcements</h5>
-            <p class="card-text">Designed for production — performance, security, and stability.</p>
+            <p class="card-text">Latest Announcements.</p>
             <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#reliableModal">Learn More</a>
         </div>
     </div>
@@ -813,7 +819,7 @@
         <img src="https://i.pinimg.com/originals/d6/74/e7/d674e764a10d6b4f8cdd011f030c886f.gif" class="card-img-top" alt="Feature 3" style="width:100%; height:200px; object-fit:cover;">
         <div class="card-body" style="padding:15px;">
         <h5 class="card-title">Community</h5>
-            <p class="card-text">Integrates easily with your existing stack and workflows.</p>
+            <p class="card-text">Community initiatives.</p>
             <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#flexibleModal">Learn More</a>
         </div>
     </div>

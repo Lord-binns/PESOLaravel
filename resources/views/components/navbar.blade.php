@@ -35,7 +35,7 @@
                         <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                     </svg>
-                    JOB LIST
+                    JOBS
                 </a>
             </div>
 
@@ -45,18 +45,18 @@
                         <circle cx="12" cy="12" r="1"/>
                         <path d="M12 1v6m0 6v6M4.22 4.22l4.24m2.12 4.24 2.12l4.24 4.24M1 12h6m6 0h6m-15.78 7.78l4.24-4.24m2.12-2.12l4.24-4.24"/>
                     </svg>
-                    GET TO KNOW US
+                    ABOUT
                     <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </a>
                 <ul class="dropdown-menu">
+                    <li><a href="{{ url('/about') }}">About</a></li>
+                    <li><a href="{{ url('/history') }}">History</a></li>
                     <li><a href="{{ url('/accomplishments') }}">Accomplishments</a></li>
-                    <li><a href="{{ url('/history') }}">Our History</a></li>
-                    <li><a href="{{ url('/about') }}">Our Team</a></li>
                 </ul>
             </div>
 
             <div class="nav-item">
-                <a class="btn" href="{{ url('/#skills-services') }}">
+                <a class="btn" href="#skills-services">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
@@ -67,31 +67,37 @@
 
         </nav>
 
-        <!-- Right Section -->
+        <!-- Right Section - Login/Register -->
         <div class="nav-right">
             <div class="nav-item">
-                <a class="btn search-btn" href="#" onclick="toggleSearch()" title="Search">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffd700" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"/>
-                        <path d="m21 21-4.35-4.35"/>
+                <a class="btn auth-btn" href="{{ route('login') }}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 7v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1z"/>
+                        <path d="M17 7v12a1 1 0 0 0 2 0V7a1 1 0 0 0-2 0z"/>
                     </svg>
+                    Login
                 </a>
             </div>
-    </div>
-
-    <!-- Search Overlay -->
-    <div id="search-overlay">
-        <form action="#" method="GET">
-            <input type="text" name="search" placeholder="Search..." autofocus>
-            <button type="submit">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"/>
-                    <path d="m21 21-4.35-4.35"/>
-                </svg>
-            </button>
-        </form>
-    </div>
+            <div class="nav-item">
+                <a class="btn auth-btn" href="{{ route('register') }}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="10" x2="19" y2="14"/>
+                        <line x1="5" y1="10" x2="5" y2="14"/>
+                        <circle cx="12" cy="12" r="8"/>
+                        <polyline points="12,2 12,4 16,8 20,8 20,12 20,16 16,20 12,20 12,18"/>
+                    </svg>
+                    Register
+                </a>
+            </div>
+        </div>
 </header>
+
+<script>
+document.getElementById('navbarToggler').addEventListener('click', function() {
+    document.getElementById('mainNav').classList.toggle('active');
+    document.querySelector('.nav-right').classList.toggle('active');
+});
+</script>
 
 <script>
 function toggleSearch() {
@@ -272,7 +278,19 @@ document.getElementById('navbarToggler').addEventListener('click', function() {
     color: white !important;
     background: transparent !important;
     border: none !important;
-    padding: 8px 12px;
+    padding: 6px 10px;
+    font-size: 14px;
+}
+
+.nav-right .auth-btn {
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    margin-left: 5px;
+}
+
+.nav-right .auth-btn:hover {
+    background: rgba(255,215,0,0.2);
+    transform: translateY(-1px);
 }
 
 .search-btn {

@@ -6,7 +6,8 @@
 - [x] Step 1: Create TODO.md 
 - [x] Step 2: Edit landing.blade.php - Added CSS styles to center Learn More buttons in all relevant cards (News & Updates + Skills & Services)
 - [x] Step 3: Edit landing.blade.php - Added CSS to center News & Updates card titles
-- [ ] Step 4: Verify changes and test responsive view
+- [x] Step 4: Verify changes and test responsive view
+- [x] Step 6: Updated News & Updates card <p> texts to reference card titles (per feedback)
 - [x] Step 5: Task completed
 
 **Status:** Completed
