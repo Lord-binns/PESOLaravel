@@ -828,56 +828,22 @@
 
 </div>
 
-<!-- Map Toggle Button -->
-<div class="text-center mb-4 pt-4">
-    <button id="mapToggle" class="btn btn-outline-primary btn-lg rounded-pill px-4 py-2" style="border-color: #001a4d; color: #001a4d;">
-        <i class="fas fa-map-marker-alt me-2"></i>View Our Location
-    </button>
-</div>
 
-<!-- Map Section - Hidden Initially -->
-<div id="mapSection" class="map-dropdown" style="display: none;">
-    <x-leaflet-map />
-</div>
 
-<style>
-.map-dropdown {
-    animation: slideDown 0.4s ease-out;
-}
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-#mapToggle:hover {
-    background-color: #001a4d;
-    color: white;
-    transform: translateY(-2px);
-    transition: all 0.3s ease;
-}
-</style>
 
-<script>
-document.getElementById('mapToggle').addEventListener('click', function() {
-    var mapSection = document.getElementById('mapSection');
-    if (mapSection.style.display === 'none' || mapSection.style.display === '') {
-        mapSection.style.display = 'block';
-        this.innerHTML = '<i class="fas fa-map-marker-alt me-2"></i>Hide Location';
-    } else {
-        mapSection.style.display = 'none';
-        this.innerHTML = '<i class="fas fa-map-marker-alt me-2"></i>View Our Location';
-    }
-});
-</script>
-{{--  
-<!-- PESO Location Map Section --><section class="py-5" style="background-color: #fffffb;">
+<section class="py-5" style="background-color: #ffffff;padding-bottom: 10%;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <x-leaflet-map />
+
+                <div style="width:100%; height:500px;">
+                    <x-leaflet-map />
+                </div>
+
             </div>
         </div>
     </div>
-</section>  --}}
+</section>
  
 <section id="features" class="hero white-section">
     <div class="container">
