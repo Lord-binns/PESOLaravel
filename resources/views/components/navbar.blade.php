@@ -30,6 +30,16 @@
             </div>
 
             <div class="nav-item">
+                <a class="btn" href="/jobs">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                    JOB LIST
+                </a>
+            </div>
+
+            <div class="nav-item">
                 <a class="btn" href="#">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <circle cx="12" cy="12" r="1"/>
@@ -54,18 +64,6 @@
                     SERVICES
                 </a>
             </div>
-
-
-
-            <div class="nav-item">
-                <a class="btn" href="#" onclick="openChatbot()">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                    </svg>
-                    CHAT
-                </a>
-            </div>
-
 
         </nav>
 
