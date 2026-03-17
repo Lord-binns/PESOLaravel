@@ -184,12 +184,59 @@
         }
 
         /* Mission/Vision/Logo section responsive */
-        .mvo-section {
-            display: flex;
-            width: 100%;
-            min-height: 40vh;
-            margin-bottom: 0;
+    .mvo-section {
+        display: flex;
+        width: 100%;
+        min-height: 40vh;
+        margin-bottom: 0;
+        overflow: hidden;
+    }
+
+    /* Fade In Animation for Mission Vision */
+    .mvo-section .mission {
+        animation: fadeInLeft 1s ease-out 0.3s both;
+    }
+
+    .mvo-section .logo-section {
+        animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .mvo-section .vision {
+        animation: fadeInRight 1s ease-out 0.9s both;
+    }
+
+    @keyframes fadeInLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-30px);
         }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInRight {
+        0% {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
         
         .mvo-section + .legal-section {
             margin-top: 3rem;
