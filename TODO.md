@@ -1,13 +1,15 @@
-# Admin Dashboard Update - TODO List
+# Task: Add functionality to "Learn More" and "Our Services" buttons on landing.blade.php
 
-## Task: Update admin dashboard - create pending page and remove pending jobs from home
+## Plan Breakdown & Progress Tracker
 
-### Steps:
-1. [x] Plan created and confirmed
-2. [x] Create pending.blade.php - new dedicated page for pending jobs
-3. [x] Update AdminController.php - modify pendingJobs() to render admin.pending view
-4. [x] Update dashboard.blade.php - pending jobs now shown in pending page (not in dashboard)
-5. [x] Update admin-navbar.blade.php - fix pending notification link
-6. [x] Add Review button with modal showing full job details (like post-job form)
+### [x] Step 1: Create TODO.md (Completed)
+### [x] Step 2: Create new comprehensive Services Overview Modal in landing.blade.php
+### [ ] Step 3: Update Hero section buttons (Learn More & Our Services) with onclick handlers
+### [ ] Step 4: Update News & Updates card "Learn More" buttons to trigger existing modals
+### [ ] Step 5: Add JS function openServicesModal() to existing script section
+### [ ] Step 6: Test modal functionality (php artisan serve && visit landing page)
+### [x] Step 7: Update TODO.md with progress after each step
+### [ ] Step 8: Final testing & attempt_completion
 
-### Status: ✅ COMPLETED
+**Next Step**: Implement new Services modal and button updates.
+
