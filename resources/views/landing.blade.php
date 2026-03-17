@@ -665,6 +665,13 @@
         .accomplishment-card:hover .accomplishment-number {
             animation: pulseIn 0.5s ease-in-out;
         }
+    /* Center Learn More buttons and News titles */
+    #features .card-title { text-align: center !important; }
+    #features .card .card-body,
+    #skills-services .card .card-body { 
+        text-align: center !important; 
+    }
+    
     </style>
 </head>
 <body>
