@@ -184,12 +184,59 @@
         }
 
         /* Mission/Vision/Logo section responsive */
-        .mvo-section {
-            display: flex;
-            width: 100%;
-            min-height: 40vh;
-            margin-bottom: 0;
+    .mvo-section {
+        display: flex;
+        width: 100%;
+        min-height: 40vh;
+        margin-bottom: 0;
+        overflow: hidden;
+    }
+
+    /* Fade In Animation for Mission Vision */
+    .mvo-section .mission {
+        animation: fadeInLeft 1s ease-out 0.3s both;
+    }
+
+    .mvo-section .logo-section {
+        animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .mvo-section .vision {
+        animation: fadeInRight 1s ease-out 0.9s both;
+    }
+
+    @keyframes fadeInLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-30px);
         }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInRight {
+        0% {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
         
         .mvo-section + .legal-section {
             margin-top: 3rem;
@@ -665,6 +712,19 @@
         .accomplishment-card:hover .accomplishment-number {
             animation: pulseIn 0.5s ease-in-out;
         }
+    /* Center Learn More buttons and News titles */
+    #features .card-title { text-align: center !important; }
+    #features .card .card-body,
+    #skills-services .card .card-body { 
+        text-align: center !important; 
+    }
+    #features .btn.btn-danger,
+    #skills-services .btn.btn-danger {
+        padding: 12px 24px !important;
+        margin-top: 10px;
+        display: inline-block;
+    }
+    
     </style>
 </head>
 <body>
@@ -785,28 +845,28 @@
 <div class="cards" style="display:flex; gap:90px; justify-content:center; flex-wrap:wrap;">
 
     <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
-        <img src="https://i.pinimg.com/originals/8a/6a/a5/8a6aa5562f75eaf051bc1dcba7a097f1.gif" class="card-img-top" alt="Feature 1" style="width:100%; height:200px; object-fit:cover;">
+        <img src="https://i.pinimg.com/originals/80/9a/3d/809a3de812b7389316cc4c4edb0a3c05.gif" class="card-img-top" alt="Feature 1" style="width:100%; height:200px; object-fit:cover;">
         <div class="card-body" style="padding:15px;">
-        <h5 class="card-title">Fast Setup</h5>
-            <p class="card-text">Get started quickly with sensible defaults and clear documentation.</p>
+        <h5 class="card-title">Events</h5>
+            <p class="card-text">Upcoming PESO events and job fairs.</p>
             <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#fastSetupModal">Learn More</a>
         </div>
     </div>
 
     <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
-        <img src="https://i.pinimg.com/originals/b5/93/f5/b593f5754e1baec730f9b37e4accc90b.gif" class="card-img-top" alt="Feature 2" style="width:100%; height:200px; object-fit:cover;">
+        <img src="https://i.pinimg.com/originals/5c/87/17/5c871720baf04c9bb0330801f0101137.gif" class="card-img-top" alt="Feature 2" style="width:100%; height:200px; object-fit:cover;">
         <div class="card-body" style="padding:15px;">
-        <h5 class="card-title">Job Lists</h5>
-            <p class="card-text">Designed for production — performance, security, and stability.</p>
+        <h5 class="card-title">Announcements</h5>
+            <p class="card-text">Latest Announcements.</p>
             <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#reliableModal">Learn More</a>
         </div>
     </div>
 
     <div class="card" style="width:18rem; border-bottom:4px solid #FF2D2D;">
-        <img src="https://i.pinimg.com/originals/f0/cd/8d/f0cd8d9c038e3d477e9435863e924932.gif" class="card-img-top" alt="Feature 3" style="width:100%; height:200px; object-fit:cover;">
+        <img src="https://i.pinimg.com/originals/d6/74/e7/d674e764a10d6b4f8cdd011f030c886f.gif" class="card-img-top" alt="Feature 3" style="width:100%; height:200px; object-fit:cover;">
         <div class="card-body" style="padding:15px;">
-        <h5 class="card-title">Flexible</h5>
-            <p class="card-text">Integrates easily with your existing stack and workflows.</p>
+        <h5 class="card-title">Community</h5>
+            <p class="card-text">Community initiatives.</p>
             <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#flexibleModal">Learn More</a>
         </div>
     </div>
