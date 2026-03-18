@@ -28,8 +28,8 @@ RUN composer install --no-dev --optimize-autoloader
 # Install Node dependencies (for Vite)
 RUN npm install && npm run build
 
-# Expose port for Render
+# Expose port (optional)
 EXPOSE 9000
 
-# Start PHP-FPM
-CMD ["php", "-S", "0.0.0.0:10000", "-t", "public"]
+# Start PHP built-in server on Render's $PORT
+CMD php -S 0.0.0.0:${PORT:-9000} -t public
