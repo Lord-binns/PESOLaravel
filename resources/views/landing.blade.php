@@ -831,19 +831,19 @@
 
 
 
-<section class="py-5" style="background-color: #ffffff;padding-bottom: 10%;">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-
-                <div style="width:100%; height:500px;">
-                    <x-leaflet-map />
+    <section class="py-5 py-lg-5" style="background-color: #ffffff; padding-bottom: 6rem !important;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div style="width:100%; height:800px;">
+                        <x-leaflet-map />
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
 </section>
+ 
  
 <section id="features" class="hero white-section">
     <div class="container">
