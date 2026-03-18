@@ -32,4 +32,4 @@ RUN npm install && npm run build
 EXPOSE 9000
 
 # Start PHP-FPM
-CMD ["php-fpm"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
