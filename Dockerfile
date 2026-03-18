@@ -32,4 +32,4 @@ RUN npm install && npm run build
 EXPOSE 9000
 
 # Start PHP built-in server on Render's $PORT
-CMD php -S 0.0.0.0:${PORT:-9000} -t public
+CMD php -S 0.0.0.0:$PORT -t public
