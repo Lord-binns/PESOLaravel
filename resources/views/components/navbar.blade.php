@@ -51,6 +51,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="{{ url('/about') }}">About</a></li>
                     <li><a href="{{ url('/history') }}">History</a></li>
+<li><a href="{{ route('republic-acts') }}">Republic Acts</a></li>
                     <li><a href="{{ url('/accomplishments') }}">Accomplishments</a></li>
                 </ul>
             </div>

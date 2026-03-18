@@ -192,17 +192,17 @@
         overflow: hidden;
     }
 
-    /* Fade In Animation for Mission Vision */
+    /* Delayed Fade In Animation for Mission Vision */
     .mvo-section .mission {
-        animation: fadeInLeft 1s ease-out 0.3s both;
+        animation: fadeInLeft 1.5s ease-out 1s both;
     }
 
     .mvo-section .logo-section {
-        animation: fadeInUp 1s ease-out 0.6s both;
+        animation: fadeInUp 1.5s ease-out 1.8s both;
     }
 
     .mvo-section .vision {
-        animation: fadeInRight 1s ease-out 0.9s both;
+        animation: fadeInRight 1.5s ease-out 2.6s both;
     }
 
     @keyframes fadeInLeft {
@@ -802,7 +802,7 @@
 </section>
 
 
- 
+
 <div class="mvo-section">
 
     <!-- Mission -->
@@ -828,14 +828,30 @@
 
 </div>
 
+
+
+
+<section class="py-5" style="background-color: #ffffff;padding-bottom: 10%;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+
+                <div style="width:100%; height:500px;">
+                    <x-leaflet-map />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
  
 <section id="features" class="hero white-section">
     <div class="container">
       <h2 style="display:flex; align-items:center; text-align:center; width:100%;">
     
-    <span style="flex:1; height:3px; background:#FF2D2D;"></span>
+    <span style="flex:1; height:1px; background:#FF2D2D;"></span>
     
-    <span style="padding:0 15px; font-weight:700;">
+    <span style="padding:0 5px; font-weight:700;">
         News & Updates
     </span>
     
@@ -1002,43 +1018,7 @@
 
 
 
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
-
-    <!-- News & Updates Header with Lines -->
-    <h2 style="display:flex; align-items:center; text-align:center; width:100%; margin-bottom: 40px;">
-        <span style="flex:1; height:3px; background:#FF2D2D;"></span>
-        <span style="padding:0 15px; font-weight:700; color: #190278;">
-            Republic Acts
-        </span>
-        <span style="flex:1; height:3px; background:#FF2D2D;"></span>
-    </h2>
-
-    <!-- Republic Act Information -->
-    <section class="legal-section">
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="section-title">REPUBLIC ACT No. 10691</h2>
-                        <p><strong>AN ACT DEFINING THE ROLE OF THE DEPARTMENT OF LABOR AND EMPLOYMENT (DOLE), THE LOCAL GOVERNMENT UNITS (LGUs), AND ACCREDITED NONGOVERNMENT ORGANIZATIONS (NGOs) IN THE ESTABLISHMENT AND OPERATION OF THE PUBLIC EMPLOYMENT SERVICE OFFICE (PESO), AND THE OPERATION OF JOB PLACEMENT OFFICES IN EDUCATIONAL INSTITUTIONs (Els), AMENDING FOR THE PURPOSE SECTIONS 3, 5, 6, 7 AND 9 OF REPUBLIC ACT NO. 8759, OTHERWISE KNOWN AS THE "PUBLIC EMPLOYMENT SERVICE OFFICE ACT OF 1999"</strong></p>
-                        <p>This Act aims to strengthen the Public Employment Service Office (PESO) system in the Philippines by clearly defining the roles of DOLE, LGUs, and accredited NGOs in establishing and operating PESOs. It also addresses job placement services in educational institutions, ensuring better coordination between government agencies and local communities in promoting employment opportunities and workforce development.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="section-title">REPUBLIC ACT No. 8759</h2>
-                        <p><strong>February 14, 2000</strong></p>
-                        <p><strong>AN ACT INSTITUTIONALIZING A NATIONAL FACILITATION SERVICE NETWORK THROUGH THE ESTABLISHMENT OF A PUBLIC EMPLOYMENT SERVICE OFFICE IN EVERY PROVINCE, KEY CITY AND OTHER STRATEGIC AREAS THROUGHOUT THE COUNTRY</strong></p>
-                        <p>This Act institutionalizes a national facilitation service network through the establishment of a Public Employment Service Office (PESO) in every province, key city, and other strategic areas throughout the country. The PESO serves as a linkage between jobseekers and employers, providing employment services such as job matching, career guidance, and information dissemination on labor market trends. This law aims to devolve employment services to the local government level to ensure more accessible and efficient delivery of employment assistance to the Filipino workforce.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</div>
+  
        
 
  <!-- Contact Footer -->
@@ -1406,8 +1386,14 @@ function openServicesModal() {
 }
 </script>
     
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     
     <!-- Contact Form Handler -->
     <script>
