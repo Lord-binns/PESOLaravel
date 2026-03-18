@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('job_archive', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('original_job_id')->nullable();
-            $table->unsignedBigInteger('establishment_id');
+            $table->unsignedBigInteger('establishment_id')->index();
             $table->string('position_title');
             $table->text('job_description')->nullable();
             $table->string('nature_of_work')->nullable();
@@ -34,11 +34,8 @@ return new class extends Migration
             $table->date('valid_until')->nullable();
             $table->string('original_status')->default('archived');
             $table->string('archived_reason')->default('manual');
-            $table->timestamp('archived_at')->useCurrent();
+            $table->timestamp('archived_at')->useCurrent()->index();
             $table->timestamps();
-            
-            $table->index('establishment_id');
-            $table->index('archived_at');
         });
     }
 
