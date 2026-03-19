@@ -5,7 +5,7 @@
 
         <!-- Image -->
         <div class="col-md-3">
-            <img src="https://i.pinimg.com/originals/2c/c5/da/2cc5da0643af4cee2053f7b82f99aefa.gif"
+            <img src="https://i.pinimg.com/originals/f0/43/f7/f043f7472c62b49fee750ab0ded6ce40.gif"
                  class="img-fluid rounded shadow-sm w-100"
                  alt="PESO Announcement"
                  style="height:250px; object-fit:cover;">
