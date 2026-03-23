@@ -209,28 +209,7 @@
 <body>
     @include('components.admin-navbar')
     
-    <!-- Sidebar -->
-    <div class="dashboard-sidebar" id="dashboardSidebar">
-        <a href="{{ route('dashboard') }}" class="sidebar-icon-btn active"><i class="fas fa-home"></i><span>Home</span></a>
-        <a href="{{ route('admin.pending') }}" class="sidebar-icon-btn">
-            <i class="fas fa-list"></i><span>All Jobs</span>
-            @if($pendingJobsCount > 0)
-                <span class="sidebar-badge">{{ $pendingJobsCount }}</span>
-            @endif
-        </a>
-        <a href="{{ route('admin.archive') }}" class="sidebar-icon-btn"><i class="fas fa-archive"></i><span>Archive</span></a>
-        <div class="sidebar-divider"></div>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-file-alt"></i><span>Clearances</span></a>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-chart-line"></i><span>Reports</span></a>
-        <div class="sidebar-divider"></div>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-cog"></i><span>Settings</span></a>
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit" class="sidebar-icon-btn" style="border: none; cursor: pointer; width: 55px;">
-                <i class="fas fa-sign-out-alt"></i><span>Logout</span>
-            </button>
-        </form>
-    </div>
+@include('components.admin-sidebar')
     
     <div class="main-content" id="mainContent">
         @if(session('success'))
@@ -329,16 +308,7 @@
                 <p>There are no active job postings yet.</p>
             </div>
         @endif
-        
-        <!-- Link to view all jobs -->
-        <div class="text-center mt-4">
-            <a href="{{ route('admin.pending') }}" class="btn btn-primary">
-                <i class="fas fa-list"></i> View All Jobs (Active & Pending)
-            </a>
-            <a href="{{ route('admin.archive') }}" class="btn btn-secondary ms-2">
-                <i class="fas fa-archive"></i> View Archived Jobs
-            </a>
-        </div>
+
     </div>
     
     <!-- Job Detail Modals -->
@@ -465,6 +435,60 @@
         
         updateClock();
         setInterval(updateClock, 1000);
+
+        // Search Filter Functionality
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                const query = this.value.toLowerCase().trim();
+                const jobCards = document.querySelectorAll('.job-card');
+                let visibleCount = 0;
+
+                jobCards.forEach(card => {
+                    // Get searchable text from the card
+                    const title = card.querySelector('.job-title').textContent.toLowerCase();
+                    const details = card.querySelector('.job-details').textContent.toLowerCase();
+                    const salary = card.querySelector('.job-salary').textContent.toLowerCase();
+                    
+                    // Check if query matches any search field
+                    if (title.includes(query) || details.includes(query) || salary.includes(query)) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show/hide empty state if no results
+                const jobsGrid = document.querySelector('.jobs-grid');
+                const emptyState = document.querySelector('.empty-state');
+                
+                if (visibleCount === 0 && query.length > 0) {
+                    if (jobsGrid && emptyState) {
+                        jobsGrid.style.display = 'none';
+                        // Create custom no results message if needed
+                        if (!document.querySelector('.no-search-results')) {
+                            const noResults = document.createElement('div');
+                            noResults.className = 'empty-state no-search-results';
+                            noResults.innerHTML = `
+                                <i class="fas fa-search"></i>
+                                <h5>No Results Found</h5>
+                                <p>No jobs match your search for "<strong>${this.value}</strong>"</p>
+                            `;
+                            jobsGrid.parentElement.insertBefore(noResults, jobsGrid);
+                        }
+                    }
+                } else {
+                    if (jobsGrid) {
+                        jobsGrid.style.display = 'grid';
+                    }
+                    const noResults = document.querySelector('.no-search-results');
+                    if (noResults) {
+                        noResults.remove();
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>

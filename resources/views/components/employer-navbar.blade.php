@@ -59,7 +59,7 @@
                     <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </a>
                 <ul class="dropdown-menu user-dropdown">
-                    <li><a href="{{ url('/profile') }}"><i class="fas fa-user"></i> My Profile</a></li>
+<li><a href="{{ url('/employer/profile') }}"><i class="fas fa-user"></i> My Profile</a></li>
                     <li><a href="{{ url('/settings') }}"><i class="fas fa-cog"></i> Settings</a></li>
                     <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
                     <li class="divider"></li>

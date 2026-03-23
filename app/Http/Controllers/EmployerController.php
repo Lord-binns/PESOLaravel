@@ -266,7 +266,28 @@ class EmployerController extends Controller
             DB::table('job_archive')->where('id', $id)->delete();
             return redirect()->route('employer.archive')->with('success', 'Job permanently deleted!');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error deleting job: ' . $e->getMessage());
+        return redirect()->back()->with('error', 'Error deleting job: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * Display the employer profile.
+     */
+    public function profile()
+    {
+        $user = Auth::user();
+        if (!$user || $user->role !== 'employer') {
+            abort(403, 'Unauthorized');
+        }
+
+        $pendingJobsCount = DB::table('job_posts')->where('status', 'pending')->count();
+        $activeJobsCount = DB::table('job_posts')
+            ->where('status', 'active')
+            ->where('valid_until', '>=', now()->toDateString())
+            ->count();
+        $archivedCount = DB::table('job_archive')->count();
+        $establishmentsCount = DB::table('establishments')->count();
+
+        return view('employer.profile', compact('user', 'pendingJobsCount', 'activeJobsCount', 'archivedCount', 'establishmentsCount'));
     }
 }

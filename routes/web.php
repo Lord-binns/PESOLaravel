@@ -39,6 +39,8 @@ Route::get('/admin/pending', [AdminController::class, 'pendingJobs'])->name('adm
 Route::get('/admin/archive', [AdminController::class, 'archive'])->name('admin.archive');
 Route::post('/admin/job/{id}/approve', [AdminController::class, 'approveJob'])->name('admin.job.approve');
 Route::post('/admin/job/{id}/reject', [AdminController::class, 'rejectJob'])->name('admin.job.reject');
+Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
+Route::get('/employer/profile', [EmployerController::class, 'profile'])->name('employer.profile');
 
 // Employer Routes
 Route::get('/employer/dashboard', [EmployerController::class, 'dashboard'])->name('employer.dashboard');
@@ -52,6 +54,8 @@ Route::post('/employer/archive/{id}/delete', [EmployerController::class, 'delete
 Route::get('/employee/dashboard', function () {
     return view('employee.dashboard');
 })->name('employee.dashboard');
+
+Route::get('/admin/settings', [AdminController::class, 'showSettings'])->name('admin.settings');
 
 Route::get('/settings', function () {
     return view('settings');
@@ -68,5 +72,5 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/logout', function () {
-    return redirect()->route('login');
+    return redirect()->route('landing');
 })->name('logout.get');

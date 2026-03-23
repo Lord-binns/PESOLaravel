@@ -977,15 +977,15 @@
 
 <div class="modal fade" id="chatbotModal" tabindex="-1" data-bs-backdrop="true" data-bs-keyboard="true">
     <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-centered modal-lg">
-        <div class="modal-content border-0" style="height: 80vh; max-height: 600px; border-radius: 20px; overflow: hidden;">
-            <div class="modal-header bg-gradient" style="background: linear-gradient(135deg, #001a4d 0%, #ff4444 100%); color: white; border: none;">
+        <div class="modal-content border-0 d-flex flex-column" style="height: 80vh; max-height: 600px; border-radius: 20px;">
+            <div class="modal-header bg-gradient" style="background: linear-gradient(135deg, #001a4d 0%, #ff4444 100%); color: white; border: none; flex-shrink: 0;">
                 <h5 class="modal-title mb-0">
                     <i class="fas fa-robot me-2"></i>PESO Chat Assistant
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-            <div class="modal-body p-0 d-flex flex-column h-100">
-<div id="chat-messages" class="chat-messages flex-grow-1 p-4 overflow-auto" style="background: #f8f9fa;">
+            <div class="modal-body p-0 d-flex flex-column" style="flex: 1; min-height: 0;">
+<div id="chat-messages" class="chat-messages flex-grow-1 p-4 overflow-y-auto" style="background: #f8f9fa; min-height: 0;">
                     <div class="message bot-message mb-3">
                         <div class="message-bubble">
                             <strong>PESO Bot:</strong> Hello! I'm here to help with PESO services.<br>Type <strong>"faq"</strong> for Frequently Asked Questions, "menu" for options, or ask anything!
@@ -1002,7 +1002,7 @@
                         <small class="text-muted">Type "faq" for full list</small>
                     </div>
                 </div>
-                <div class="chat-input-container p-3 border-top" style="background: white;">
+                <div class="chat-input-container p-3 border-top" style="background: white; flex-shrink: 0;">
                     <div class="input-group">
                         <input type="text" id="chat-input" class="form-control border-0" placeholder="Type your message..." autocomplete="off">
                         <button class="btn btn-primary" id="send-chat" style="background: linear-gradient(135deg, #ff4444, #cc0000); border: none;">
@@ -1424,6 +1424,10 @@ function openServicesModal() {
             modal.show();
         });
 
+        document.getElementById('chatbotModal').addEventListener('shown.bs.modal', function() {
+            scrollChatToBottom();
+        });
+
         function openChatbot() {
             document.getElementById('chatbot-toggle').click();
         }
@@ -1444,7 +1448,31 @@ function openServicesModal() {
             'services': 'PESO Services: Job placement, career counseling, skills training, job fairs, employer assistance.',
             'about': 'PESO Manolo Fortich connects job seekers and employers. Government-run employment service.',
             'help': 'Commands: jobs, training, register, contact, jobfair, menu. Type keyword for info.',
-            'default': 'Sorry, I don\'t know that. Try: jobs, training, register, jobfair, tesda, menu, help. What else can I assist?'
+            'faq': '<strong>Frequently Asked Questions:</strong><br>❓ How to apply? Register online at our portal or visit office.<br>❓ Is it free? Yes! All PESO services are free for locals.<br>❓ Office hours? Monday-Friday, 8AM-5PM<br>❓ What training available? TESDA-accredited skills training<br>❓ How to get job updates? Register to receive notifications<br>Type "training", "jobs", or "register" for more details!',
+            'okay': 'Great! What would you like to know? Try: jobs, training, register, jobfair, or type "menu" for all options.',
+            'ok': 'Great! What would you like to know? Try: jobs, training, register, jobfair, or type "menu" for all options.',
+            'sure': 'Wonderful! How can I assist you further? Ask about jobs, training, registration, or type "menu".',
+            'yes': 'Excellent! What service interests you? Choose from: jobs, training, career counseling, or type "menu".',
+            'no': 'No problem! Is there anything else I can help you with? Try: jobs, training, register, or "menu".',
+            'thanks': 'You\'re welcome! Feel free to ask about jobs, training, registration, or anything else. Type "menu" for options.',
+            'thank': 'You\'re welcome! Feel free to ask about jobs, training, registration, or anything else. Type "menu" for options.',
+            'thanks!': 'You\'re welcome! Feel free to ask about jobs, training, registration, or anything else. Type "menu" for options.',
+            'bye': 'Thank you for chatting! Feel free to reach out anytime. Type "menu" to explore more services!',
+            'goodbye': 'Thank you for chatting! Feel free to reach out anytime. Type "menu" to explore more services!',
+            'how': 'Good question! What would you like to know how to do? Ask about: jobs, training, register, applying, or anything else!',
+            'what': 'Great question! What would you like to know about? Try: jobs, training, services, contact, or type "menu".',
+            'when': 'Good timing question! Our office hours: Mon-Fri 8AM-5PM. Next job fair: May 15, 2025. Need more info?',
+            'where': 'We\'re located in Manolo Fortich, Bukidnon. Phone: (088) 232-3232 | Email: peso@manolofortich.gov.ph',
+            'why': 'PESO Manolo Fortich helps job seekers find employment and employers find qualified candidates. Free services for all!',
+            'interview': 'We offer expert interview coaching! Mock interviews, tips, common questions, body language guidance. Ask us for schedule!',
+            'coaching': 'Yes! We provide interview coaching & career counseling. Contact us or type "training" to learn more.',
+            'counseling': 'We offer professional career counseling services including career assessment, job search strategy, and interview prep!',
+            'overseas': 'Great question! We have opportunities for overseas employment. Register to explore international job listings!',
+            'application': 'Applying is easy! Register → Complete profile → Browse jobs → Apply. Visit our portal or office for assistance.',
+            'apply': 'Good! <a href="{{ route("register") }}">Register here</a> and you can start applying for jobs immediately!',
+            'resume': 'We help with resume building! Visit our office for assistance or register online to upload your resume.',
+            'skills': 'Building skills is important! We offer TESDA-accredited training programs. Type "training" to learn more!',
+            'default': 'I\'m here to help! Try asking about: jobs, training, register, contact, or type "menu" for all options. 😊'
         };
 
         document.getElementById('send-chat').addEventListener('click', sendChatMessage);
@@ -1475,6 +1503,21 @@ function openServicesModal() {
             return chatbotResponses.default;
         }
 
+        function scrollChatToBottom() {
+            const messages = document.getElementById('chat-messages');
+            if (!messages) return;
+
+            messages.scrollTop = messages.scrollHeight;
+
+            requestAnimationFrame(() => {
+                messages.scrollTop = messages.scrollHeight;
+            });
+
+            setTimeout(() => {
+                messages.scrollTop = messages.scrollHeight;
+            }, 120);
+        }
+
         function addMessage(text, sender) {
             const messages = document.getElementById('chat-messages');
             const messageDiv = document.createElement('div');
@@ -1487,7 +1530,8 @@ function openServicesModal() {
             }
             
             messages.appendChild(messageDiv);
-            messages.scrollTop = messages.scrollHeight;
+            messageDiv.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            scrollChatToBottom();
         }
 
         // Smooth scrolling for nav links
@@ -1554,6 +1598,7 @@ function openServicesModal() {
             color: white;
         }
         .chat-messages {
+            min-height: 0;
             background-image: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grain\" width=\"100\" height=\"100\" patternUnits=\"userSpaceOnUse\"><circle cx=\"25\" cy=\"25\" r=\"1\" fill=\"%23f0f0f0\" opacity=\"0.1\"/><circle cx=\"75\" cy=\"75\" r=\"1\" fill=\"%23f0f0f0\" opacity=\"0.1\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grain)\"/></svg>');
         }
         .message-bubble {

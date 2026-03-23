@@ -246,4 +246,57 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'Error rejecting job: ' . $e->getMessage());
         }
     }
+
+    /**
+     * Display the admin profile.
+     */
+    public function profile()
+    {
+        $user = Auth::user();
+        if (!$user || $user->role !== 'admin') {
+            abort(403, 'Unauthorized');
+        }
+
+        $pendingJobsCount = DB::table('job_posts')->where('status', 'pending')->count();
+        $activeJobsCount = DB::table('job_posts')
+            ->where('status', 'active')
+            ->where('valid_until', '>=', now()->toDateString())
+            ->count();
+        $establishmentsCount = DB::table('establishments')->count();
+
+        $approvedNotifications = DB::table('job_posts')
+            ->where('status', 'active')
+            ->orderBy('updated_at', 'desc')
+            ->limit(5)
+            ->get();
+            
+        $rejectedNotifications = DB::table('job_archive')
+            ->where('archived_reason', 'rejected_by_admin')
+            ->orderBy('archived_at', 'desc')
+            ->limit(5)
+            ->get();
+            
+        return view('admin.profile', compact('user', 'pendingJobsCount', 'activeJobsCount', 'establishmentsCount', 'approvedNotifications', 'rejectedNotifications'));
+    }
+
+    // Show admin settings page
+    public function showSettings()
+    {
+        $user = Auth::user();
+        
+        $pendingJobsCount = DB::table('job_posts')->where('status', 'pending')->count();
+        $approvedNotifications = DB::table('job_posts')
+            ->where('status', 'active')
+            ->orderBy('updated_at', 'desc')
+            ->limit(5)
+            ->get();
+            
+        $rejectedNotifications = DB::table('job_archive')
+            ->where('archived_reason', 'rejected_by_admin')
+            ->orderBy('archived_at', 'desc')
+            ->limit(5)
+            ->get();
+            
+        return view('admin.settings', compact('user', 'pendingJobsCount', 'approvedNotifications', 'rejectedNotifications'));
+    }
 }

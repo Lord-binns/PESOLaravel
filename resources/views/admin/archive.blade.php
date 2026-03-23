@@ -477,37 +477,7 @@
 </head>
 <body>
     @include('components.admin-navbar')
-    
-    <!-- Sidebar -->
-    <div class="dashboard-sidebar" id="dashboardSidebar">
-        <a href="{{ route('dashboard') }}" class="sidebar-icon-btn"><i class="fas fa-home"></i><span>Home</span></a>
-        <a href="{{ route('admin.pending') }}" class="sidebar-icon-btn">
-            <i class="fas fa-clock"></i><span>Pending</span>
-            @if($pendingJobsCount > 0)
-                <span class="sidebar-badge">{{ $pendingJobsCount }}</span>
-            @endif
-        </a>
-        <a href="{{ route('admin.archive') }}" class="sidebar-icon-btn active">
-            <i class="fas fa-archive"></i><span>Archive</span>
-            @if($rejectedCount > 0)
-                <span class="sidebar-badge">{{ $rejectedCount }}</span>
-            @endif
-        </a>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-briefcase"></i><span>Jobs</span></a>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-building"></i><span>Employers</span></a>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-users"></i><span>Seekers</span></a>
-        <div class="sidebar-divider"></div>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-file-alt"></i><span>Clearances</span></a>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-chart-line"></i><span>Reports</span></a>
-        <div class="sidebar-divider"></div>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-cog"></i><span>Settings</span></a>
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit" class="sidebar-icon-btn" style="border: none; cursor: pointer; width: 55px;">
-                <i class="fas fa-sign-out-alt"></i><span>Logout</span>
-            </button>
-        </form>
-    </div>
+    @include('components.admin-sidebar', ['pendingJobsCount' => $pendingJobsCount ?? 0])
     
     <div class="main-content" id="mainContent">
         <!-- Flash Messages -->
@@ -669,6 +639,44 @@
         
         updateClock();
         setInterval(updateClock, 1000);
+
+        // Search Filter Functionality
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                const query = this.value.toLowerCase().trim();
+                const jobCards = document.querySelectorAll('.job-card');
+                let visibleCount = 0;
+
+                jobCards.forEach(card => {
+                    const title = card.querySelector('.job-title')?.textContent.toLowerCase() || '';
+                    const details = card.querySelector('.job-details')?.textContent.toLowerCase() || '';
+                    const salary = card.querySelector('.job-salary')?.textContent.toLowerCase() || '';
+                    
+                    if (title.includes(query) || details.includes(query) || salary.includes(query)) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                const jobsGrid = document.querySelector('.jobs-grid');
+                if (visibleCount === 0 && query.length > 0) {
+                    if (jobsGrid && !document.querySelector('.no-search-results')) {
+                        jobsGrid.style.display = 'none';
+                        const noResults = document.createElement('div');
+                        noResults.className = 'empty-state no-search-results';
+                        noResults.innerHTML = `<i class="fas fa-search"></i><h5>No Results Found</h5><p>No jobs match your search for "<strong>${this.value}</strong>"</p>`;
+                        jobsGrid.parentElement.insertBefore(noResults, jobsGrid);
+                    }
+                } else {
+                    if (jobsGrid) jobsGrid.style.display = 'grid';
+                    const noResults = document.querySelector('.no-search-results');
+                    if (noResults) noResults.remove();
+                }
+            });
+        }
     </script>
 </body>
 </html>

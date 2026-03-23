@@ -430,7 +430,10 @@
             <i class="fas fa-briefcase"></i><span>Posts</span>
         </a>
         <a href="#" class="sidebar-icon-btn"><i class="fas fa-users"></i><span>Applicants</span></a>
-        <a href="#" class="sidebar-icon-btn"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
+<a href="#" class="sidebar-icon-btn"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
+        <a href="{{ url('/employer/profile') }}" class="sidebar-icon-btn">
+            <i class="fas fa-user"></i><span>Profile</span>
+        </a>
         <div class="sidebar-divider"></div>
         <a href="{{ url('/employer/archive') }}" class="sidebar-icon-btn"><i class="fas fa-archive"></i><span>Archive</span></a>
         <div class="sidebar-divider"></div>

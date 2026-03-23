@@ -1,4 +1,4 @@
-<header class="dashboard-header">
+spe<header class="dashboard-header">
     <div class="header-container">
         
         <!-- Sidebar Toggle (Left Most) -->
@@ -39,7 +39,7 @@
             <div class="nav-item notification-item">
                 <a class="btn notification-btn" href="#">
                     <i class="fas fa-bell notification-icon"></i>
-                    <span class="notification-badge">{{ ($pendingJobsCount ?? 0) + ($approvedNotifications->count() ?? 0) + ($rejectedNotifications->count() ?? 0) }}</span>
+                    <span class="notification-badge">{{ ($pendingJobsCount ?? 0) + (isset($approvedNotifications) && $approvedNotifications ? $approvedNotifications->count() : 0) + (isset($rejectedNotifications) && $rejectedNotifications ? $rejectedNotifications->count() : 0) }}</span>
                 </a>
                 <ul class="dropdown-menu notification-dropdown">
                     <li class="dropdown-header">
@@ -60,7 +60,7 @@
                     @endif
                     
                     <!-- Approved Jobs Section -->
-                    @if($approvedNotifications->count() > 0)
+                    @if(isset($approvedNotifications) && $approvedNotifications && $approvedNotifications->count() > 0)
                         <li class="notification-section-header">
                             <i class="fas fa-check-circle"></i> Recently Approved
                         </li>
@@ -78,7 +78,7 @@
                     @endif
                     
                     <!-- Rejected Jobs Section -->
-                    @if($rejectedNotifications->count() > 0)
+                    @if(isset($rejectedNotifications) && $rejectedNotifications && $rejectedNotifications->count() > 0)
                         <li class="notification-section-header">
                             <i class="fas fa-times-circle"></i> Recently Rejected
                         </li>
@@ -96,7 +96,7 @@
                     @endif
                     
                     <!-- Empty State -->
-                    @if(($pendingJobsCount ?? 0) == 0 && $approvedNotifications->count() == 0 && $rejectedNotifications->count() == 0)
+                    @if(($pendingJobsCount ?? 0) == 0 && (isset($approvedNotifications) && $approvedNotifications ? $approvedNotifications->count() : 0) == 0 && (isset($rejectedNotifications) && $rejectedNotifications ? $rejectedNotifications->count() : 0) == 0)
                         <li>
                             <a href="#" class="text-muted">
                                 <i class="fas fa-check"></i> No new notifications
@@ -112,12 +112,13 @@
             <!-- User Menu -->
             <div class="nav-item user-menu">
                 <a class="btn user-btn" href="#">
-                    <div class="user-avatar">AD</div>
-                    <span class="user-name">Admin</span>
+                    
+                    <div class="user-avatar">{{ strtoupper(substr(Auth::user()->first_name ?? 'A', 0, 1) . substr(Auth::user()->last_name ?? 'D', 0, 1)) }}</div>
+                    <span class="user-name">{{ Auth::user()->first_name ?? Auth::user()->name ?? 'Admin' }}</span>
                     <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </a>
                 <ul class="dropdown-menu user-dropdown">
-                    <li><a href="{{ url('/profile') }}"><i class="fas fa-user"></i> My Profile</a></li>
+                    <li><a href="{{ route('admin.profile') }}"><i class="fas fa-user"></i> Profile</a></li>
                     <li><a href="{{ url('/settings') }}"><i class="fas fa-cog"></i> Settings</a></li>
                     <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
                     <li class="divider"></li>
